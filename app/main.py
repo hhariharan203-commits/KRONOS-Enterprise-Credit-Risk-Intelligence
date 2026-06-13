@@ -1,11 +1,15 @@
 import importlib
+import sys
 from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu
 from src.shared.utils import normalize_ifrs_stage_series
-
 
 st.set_page_config(
     page_title="KRONOS | Enterprise Risk Intelligence Platform",
