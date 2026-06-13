@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 import streamlit as st
 
@@ -33,6 +33,86 @@ def _format_timestamp(
         return str(value)
 
 
+def _format_live_value(
+    value,
+    suffix="",
+    decimals=2
+):
+    if value in {
+        None,
+        "",
+        "UNAVAILABLE",
+    }:
+        return "UNAVAILABLE"
+
+    try:
+        numeric_value = float(value)
+    except (TypeError, ValueError):
+        return str(value)
+
+    return f"{numeric_value:.{decimals}f}{suffix}"
+
+
+def _parse_source_timestamp(
+    value
+):
+    if not value or value == "UNAVAILABLE":
+        return None
+
+    try:
+        parsed = datetime.strptime(
+            str(value),
+            "%Y-%m-%d %H:%M:%S UTC"
+        )
+    except ValueError:
+        return None
+
+    return parsed.replace(
+        tzinfo=timezone.utc
+    )
+
+
+def _source_age_minutes(
+    source
+):
+    timestamp = _parse_source_timestamp(
+        source.get("last_updated")
+    )
+
+    if timestamp is None:
+        return None
+
+    return max(
+        (
+            datetime.now(timezone.utc) - timestamp
+        ).total_seconds() / 60,
+        0,
+    )
+
+
+def _source_currently_fresh(
+    source
+):
+    age_minutes = _source_age_minutes(
+        source
+    )
+
+    if age_minutes is None:
+        return False
+
+    try:
+        refresh_minutes = float(
+            source.get(
+                "refresh_minutes",
+                0,
+            )
+        )
+    except (TypeError, ValueError):
+        return False
+
+    return refresh_minutes > 0 and age_minutes <= refresh_minutes
+
+
 def _source_label(
     source_name,
     source
@@ -43,11 +123,8 @@ def _source_label(
             ""
         )
     )
-    is_fresh = bool(
-        source.get(
-            "is_fresh",
-            False
-        )
+    is_fresh = _source_currently_fresh(
+        source
     )
     has_artifact = (
         source.get("last_updated")
@@ -58,8 +135,20 @@ def _source_label(
         }
     )
 
-    if status == "LIVE_REFRESHED":
+    if (
+        status == "LIVE_REFRESHED"
+        and is_fresh
+        and (
+            _source_age_minutes(source) or 0
+        ) <= 1
+    ):
         return "Connected"
+
+    if status == "LIVE_REFRESHED" and is_fresh:
+        return "Cached"
+
+    if status == "LIVE_REFRESHED" and has_artifact:
+        return "Stale"
 
     if status in {
         "CACHE_FRESH",
@@ -67,7 +156,10 @@ def _source_label(
     } and is_fresh:
         return "Cached"
 
-    if status == "CACHE_ONLY" and has_artifact:
+    if status in {
+        "CACHE_FRESH",
+        "CACHE_ONLY",
+    } and has_artifact:
         return "Stale"
 
     if status.startswith("CACHE_FALLBACK") and has_artifact:
@@ -130,6 +222,110 @@ def render_live_status_card(
     st.caption(
         "Current Regime: "
         f"{summary.get('executive_risk_regime', 'UNAVAILABLE')}"
+    )
+
+    render_live_market_snapshot(
+        live_context
+    )
+
+
+def render_live_market_snapshot(
+    live_context
+):
+    macro = live_context.get(
+        "macro_intelligence",
+        {}
+    )
+    market = live_context.get(
+        "market_intelligence",
+        {}
+    )
+    vix = live_context.get(
+        "vix_intelligence",
+        {}
+    )
+    news = live_context.get(
+        "news_intelligence",
+        {}
+    )
+
+    st.markdown("**Live Market Snapshot**")
+
+    macro_cols = st.columns(4)
+    macro_cols[0].metric(
+        "Fed Funds",
+        _format_live_value(
+            macro.get("fed_funds_rate"),
+            "%"
+        )
+    )
+    macro_cols[1].metric(
+        "10Y Treasury",
+        _format_live_value(
+            macro.get("treasury_10y"),
+            "%"
+        )
+    )
+    macro_cols[2].metric(
+        "Unemployment",
+        _format_live_value(
+            macro.get("unemployment_rate"),
+            "%"
+        )
+    )
+    macro_cols[3].metric(
+        "CPI Inflation",
+        _format_live_value(
+            macro.get("inflation_rate"),
+            "%"
+        )
+    )
+
+    market_cols = st.columns(4)
+    market_cols[0].metric(
+        "SPY",
+        _format_live_value(
+            market.get("sp500_latest")
+        )
+    )
+    market_cols[1].metric(
+        "XLF",
+        _format_live_value(
+            market.get("financial_sector_latest")
+        )
+    )
+    market_cols[2].metric(
+        "Treasury ETF",
+        _format_live_value(
+            market.get("treasury_etf_latest")
+        )
+    )
+    market_cols[3].metric(
+        "Dollar Index",
+        _format_live_value(
+            market.get("dollar_index_latest")
+        )
+    )
+
+    signal_cols = st.columns(3)
+    signal_cols[0].metric(
+        "VIX",
+        _format_live_value(
+            vix.get("latest_vix")
+        )
+    )
+    signal_cols[1].metric(
+        "Market Sentiment",
+        _format_live_value(
+            news.get("market_sentiment_score")
+        )
+    )
+    signal_cols[2].metric(
+        "Sentiment Regime",
+        news.get(
+            "risk_sentiment_regime",
+            "UNAVAILABLE"
+        )
     )
 
 

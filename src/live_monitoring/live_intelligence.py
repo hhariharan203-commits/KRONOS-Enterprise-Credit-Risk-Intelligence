@@ -585,6 +585,44 @@ def _instrument_return(
     )
 
 
+def _instrument_latest_close(
+    market_df,
+    instrument
+):
+    if (
+        market_df.empty
+        or "instrument" not in market_df.columns
+        or "close" not in market_df.columns
+    ):
+        return None
+
+    frame = market_df[
+        market_df["instrument"] == instrument
+    ].copy()
+
+    if frame.empty:
+        return None
+
+    frame["date"] = pd.to_datetime(
+        frame["date"],
+        errors="coerce"
+    )
+    frame = frame.sort_values("date")
+
+    close = pd.to_numeric(
+        frame["close"],
+        errors="coerce"
+    ).dropna()
+
+    if close.empty:
+        return None
+
+    return round(
+        float(close.iloc[-1]),
+        2
+    )
+
+
 def build_market_intelligence(
     market_df,
     vix_intelligence
@@ -634,6 +672,22 @@ def build_market_intelligence(
     )
 
     return {
+        "sp500_latest": _instrument_latest_close(
+            market_df,
+            "sp500"
+        ),
+        "financial_sector_latest": _instrument_latest_close(
+            market_df,
+            "financial_sector"
+        ),
+        "treasury_etf_latest": _instrument_latest_close(
+            market_df,
+            "treasury_etf"
+        ),
+        "dollar_index_latest": _instrument_latest_close(
+            market_df,
+            "dollar_index"
+        ),
         "sp500_5d_return": sp500_5d,
         "financial_sector_5d_return": financial_5d,
         "bank_etf_5d_return": bank_5d,

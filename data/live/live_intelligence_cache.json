@@ -28,6 +28,10 @@
     "neutral_headlines": 66
   },
   "market_intelligence": {
+    "sp500_latest": 741.75,
+    "financial_sector_latest": 53.34,
+    "treasury_etf_latest": 85.77,
+    "dollar_index_latest": 27.95,
     "sp500_5d_return": 0.57,
     "financial_sector_5d_return": 1.99,
     "bank_etf_5d_return": 4.4,
@@ -53,7 +57,7 @@
     "volatility_score": 44.2,
     "liquidity_stress_score": 0,
     "portfolio_risk_context": "Live external conditions are supportive",
-    "generated_at": "2026-06-13 18:32:07 UTC"
+    "generated_at": "2026-06-13 19:22:20 UTC"
   },
   "source_freshness": {
     "fred": {
@@ -61,7 +65,7 @@
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\fred_market_data.csv",
       "last_updated": "2026-06-13 17:58:19 UTC",
       "refresh_minutes": 60,
-      "is_fresh": true
+      "is_fresh": false
     },
     "news": {
       "status": "CACHE_ONLY",
