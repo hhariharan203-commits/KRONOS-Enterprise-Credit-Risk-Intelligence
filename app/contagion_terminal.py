@@ -56,6 +56,14 @@ from src.contagion.systemic_risk import (
 
 from src.shared.cache_manager import timed_cache
 
+from app.live_intelligence_components import (
+    get_dashboard_live_context,
+    macro_intelligence,
+    market_intelligence,
+    render_live_status_card,
+    live_summary,
+)
+
 cached_run_contagion_analysis = timed_cache()(run_contagion_analysis)
 cached_run_network_analysis = timed_cache()(run_network_analysis)
 cached_run_cascade_simulation = timed_cache()(run_cascade_simulation)
@@ -704,6 +712,34 @@ def render(shared_data=None):
         systemic_results[
             "summary"
         ]
+    )
+
+    live_context = get_dashboard_live_context(
+        allow_api_refresh=True
+    )
+    live_data = live_summary(live_context)
+    macro_data = macro_intelligence(live_context)
+    market_data = market_intelligence(live_context)
+
+    _section("🌐", "Live Contagion Environment", "CONTEXT")
+    render_live_status_card(live_context)
+
+    live_cols = st.columns(4)
+    live_cols[0].metric(
+        "Market Contagion",
+        f"{market_data.get('market_risk_score', 0):.2f}"
+    )
+    live_cols[1].metric(
+        "Macro Stress",
+        f"{macro_data.get('macro_stress_score', 0):.2f}"
+    )
+    live_cols[2].metric(
+        "Sentiment Stress",
+        f"{live_data.get('sentiment_stress_score', 0):.2f}"
+    )
+    live_cols[3].metric(
+        "Liquidity Stress",
+        f"{market_data.get('liquidity_stress_score', 0):.2f}"
     )
 
     # ==========================================================

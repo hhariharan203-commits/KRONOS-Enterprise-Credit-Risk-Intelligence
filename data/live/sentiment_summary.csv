@@ -1,2 +1,2 @@
-market_sentiment_score,stress_score,sentiment_regime,bullish_headlines,bearish_headlines,neutral_headlines,analysis_timestamp
-53.26,46.74,NEUTRAL,23,4,73,2026-06-03 12:53:54
+market_sentiment_score,stress_score,sentiment_regime,bullish_headlines,bearish_headlines,neutral_headlines,credit_sentiment_score,economic_sentiment_score,financial_stress_score,risk_sentiment_regime,analysis_timestamp
+55.39,44.61,MODERATE RISK-ON,26,5,66,49.61,59.41,50.39,NEUTRAL,2026-06-13 23:28:26

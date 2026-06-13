@@ -135,6 +135,7 @@ date,value,series_name,series_id
 2026-02-01,3.64,fed_funds_rate,FEDFUNDS
 2026-03-01,3.64,fed_funds_rate,FEDFUNDS
 2026-04-01,3.64,fed_funds_rate,FEDFUNDS
+2026-05-01,3.63,fed_funds_rate,FEDFUNDS
 2015-01-01,234.747,cpi,CPIAUCSL
 2015-02-01,235.342,cpi,CPIAUCSL
 2015-03-01,235.976,cpi,CPIAUCSL
@@ -271,6 +272,7 @@ date,value,series_name,series_id
 2026-02-01,327.46,cpi,CPIAUCSL
 2026-03-01,330.293,cpi,CPIAUCSL
 2026-04-01,332.407,cpi,CPIAUCSL
+2026-05-01,333.979,cpi,CPIAUCSL
 2015-01-01,239.811,core_cpi,CPILFESL
 2015-02-01,240.172,core_cpi,CPILFESL
 2015-03-01,240.755,core_cpi,CPILFESL
@@ -407,6 +409,7 @@ date,value,series_name,series_id
 2026-02-01,333.512,core_cpi,CPILFESL
 2026-03-01,334.165,core_cpi,CPILFESL
 2026-04-01,335.423,core_cpi,CPILFESL
+2026-05-01,336.121,core_cpi,CPILFESL
 2015-01-01,5.7,unemployment_rate,UNRATE
 2015-02-01,5.5,unemployment_rate,UNRATE
 2015-03-01,5.4,unemployment_rate,UNRATE
@@ -543,6 +546,7 @@ date,value,series_name,series_id
 2026-02-01,4.4,unemployment_rate,UNRATE
 2026-03-01,4.3,unemployment_rate,UNRATE
 2026-04-01,4.3,unemployment_rate,UNRATE
+2026-05-01,4.3,unemployment_rate,UNRATE
 2015-01-01,18666.621,real_gdp,GDPC1
 2015-04-01,18782.243,real_gdp,GDPC1
 2015-07-01,18857.418,real_gdp,GDPC1
@@ -860,6 +864,7 @@ date,value,series_name,series_id
 2026-02-01,4.13,10y_treasury,GS10
 2026-03-01,4.25,10y_treasury,GS10
 2026-04-01,4.32,10y_treasury,GS10
+2026-05-01,4.48,10y_treasury,GS10
 2015-01-01,0.55,2y_treasury,GS2
 2015-02-01,0.62,2y_treasury,GS2
 2015-03-01,0.64,2y_treasury,GS2
@@ -996,6 +1001,7 @@ date,value,series_name,series_id
 2026-02-01,3.47,2y_treasury,GS2
 2026-03-01,3.71,2y_treasury,GS2
 2026-04-01,3.8,2y_treasury,GS2
+2026-05-01,4.0,2y_treasury,GS2
 2015-01-01,3.46,aaa_corporate_yield,AAA
 2015-02-01,3.61,aaa_corporate_yield,AAA
 2015-03-01,3.64,aaa_corporate_yield,AAA
@@ -1132,6 +1138,7 @@ date,value,series_name,series_id
 2026-02-01,5.3,aaa_corporate_yield,AAA
 2026-03-01,5.48,aaa_corporate_yield,AAA
 2026-04-01,5.42,aaa_corporate_yield,AAA
+2026-05-01,5.56,aaa_corporate_yield,AAA
 2015-01-01,4.45,bbb_corporate_yield,BAA
 2015-02-01,4.51,bbb_corporate_yield,BAA
 2015-03-01,4.54,bbb_corporate_yield,BAA
@@ -1268,6 +1275,7 @@ date,value,series_name,series_id
 2026-02-01,5.81,bbb_corporate_yield,BAA
 2026-03-01,6.04,bbb_corporate_yield,BAA
 2026-04-01,6.03,bbb_corporate_yield,BAA
+2026-05-01,6.1,bbb_corporate_yield,BAA
 2015-01-03,294000.0,initial_jobless_claims,ICSA
 2015-01-10,304000.0,initial_jobless_claims,ICSA
 2015-01-17,298000.0,initial_jobless_claims,ICSA
@@ -1862,7 +1870,9 @@ date,value,series_name,series_id
 2026-05-02,199000.0,initial_jobless_claims,ICSA
 2026-05-09,212000.0,initial_jobless_claims,ICSA
 2026-05-16,210000.0,initial_jobless_claims,ICSA
-2026-05-23,215000.0,initial_jobless_claims,ICSA
+2026-05-23,212000.0,initial_jobless_claims,ICSA
+2026-05-30,225000.0,initial_jobless_claims,ICSA
+2026-06-06,229000.0,initial_jobless_claims,ICSA
 2015-01-01,98.1,consumer_sentiment,UMCSENT
 2015-02-01,95.4,consumer_sentiment,UMCSENT
 2015-03-01,93.0,consumer_sentiment,UMCSENT
@@ -2135,3 +2145,4 @@ date,value,series_name,series_id
 2026-02-01,0.0,recession_indicator,USREC
 2026-03-01,0.0,recession_indicator,USREC
 2026-04-01,0.0,recession_indicator,USREC
+2026-05-01,0.0,recession_indicator,USREC

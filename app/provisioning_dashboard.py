@@ -53,6 +53,14 @@ from src.provisioning.reserve_simulator import (
 
 from src.shared.cache_manager import timed_cache
 
+from app.live_intelligence_components import (
+    get_dashboard_live_context,
+    macro_intelligence,
+    market_intelligence,
+    render_live_status_card,
+    live_summary,
+)
+
 cached_run_stage_migration_analysis = timed_cache()(run_stage_migration_analysis)
 cached_run_ecl_pipeline = timed_cache()(run_ecl_pipeline)
 cached_run_reserve_simulation = timed_cache()(run_reserve_simulation)
@@ -692,6 +700,30 @@ def render(shared_data=None):
         cached_run_all_scenarios(
             portfolio
         )
+    )
+
+    live_context = get_dashboard_live_context(
+        allow_api_refresh=True
+    )
+    live_data = live_summary(live_context)
+    macro_data = macro_intelligence(live_context)
+    market_data = market_intelligence(live_context)
+
+    _section("🌐", "Live IFRS 9 Environment", "CONTEXT")
+    render_live_status_card(live_context)
+
+    live_cols = st.columns(3)
+    live_cols[0].metric(
+        "Macro Deterioration",
+        f"{macro_data.get('macro_stress_score', 0):.2f}"
+    )
+    live_cols[1].metric(
+        "Live Risk Regime",
+        live_data.get("executive_risk_regime", "UNAVAILABLE")
+    )
+    live_cols[2].metric(
+        "Market Stress",
+        f"{market_data.get('market_risk_score', 0):.2f}"
     )
 
     # =============================================================================

@@ -5,6 +5,7 @@
 
 import json
 import joblib
+import sys
 import pandas as pd
 import numpy as np
 
@@ -13,6 +14,7 @@ from lightgbm import LGBMRegressor
 
 from sklearn.ensemble import VotingRegressor
 from sklearn.model_selection import train_test_split
+from sklearn.utils import RegressorTags
 from sklearn.metrics import (
     mean_absolute_error,
     mean_squared_error,
@@ -30,6 +32,29 @@ from src.shared.config import (
     RANDOM_STATE,
     TEST_SIZE,
 )
+from src.shared.utils import (
+    legacy_ifrs_stage_label,
+    normalize_ifrs_stage_series,
+)
+
+
+class KronosXGBRegressor(XGBRegressor):
+    """
+    Compatibility shim for scikit-learn estimator tags.
+    """
+
+    def __sklearn_tags__(self):
+        tags = super().__sklearn_tags__()
+        tags.estimator_type = "regressor"
+        tags.regressor_tags = RegressorTags()
+        tags.target_tags.required = True
+        return tags
+
+
+if __name__ == "__main__":
+    sys.modules["src.credit_risk.train_lgd_model"] = sys.modules[__name__]
+
+KronosXGBRegressor.__module__ = "src.credit_risk.train_lgd_model"
 
 # =============================================================================
 # LOAD DATASET
@@ -136,6 +161,11 @@ def prepare_training_data(df):
     # Encode categorical variables
     # ---------------------------------------------------------
 
+    if "ifrs_stage" in X.columns:
+        X["ifrs_stage"] = normalize_ifrs_stage_series(
+            X["ifrs_stage"]
+        ).apply(legacy_ifrs_stage_label)
+
     categorical_cols = X.select_dtypes(
         include=["object", "string"]
     ).columns
@@ -150,22 +180,13 @@ def prepare_training_data(df):
 
     feature_cols = X.columns.tolist()
 
-    # ---------------------------------------------------------
-    # Scaling
-    # ---------------------------------------------------------
-
-    scaler = StandardScaler()
-
-    X_scaled = scaler.fit_transform(X)
-
     print(f"[KRONOS] LGD Features: {len(feature_cols)}")
 
     print(f"[KRONOS] Samples: {len(X)}")
 
     return (
-        X_scaled,
+        X,
         y,
-        scaler,
         feature_cols
     )
 
@@ -178,7 +199,7 @@ def build_xgb_model():
     Build XGBoost LGD model.
     """
 
-    model = XGBRegressor(
+    model = KronosXGBRegressor(
         n_estimators=250,
         max_depth=5,
         learning_rate=0.05,
@@ -249,7 +270,6 @@ def train_lgd_model():
     (
         X,
         y,
-        scaler,
         feature_cols
     ) = prepare_training_data(df)
 
@@ -263,6 +283,16 @@ def train_lgd_model():
         y,
         test_size=TEST_SIZE,
         random_state=RANDOM_STATE,
+    )
+
+    scaler = StandardScaler()
+
+    X_train = scaler.fit_transform(
+        X_train
+    )
+
+    X_test = scaler.transform(
+        X_test
     )
 
     print("\n" + "=" * 80)

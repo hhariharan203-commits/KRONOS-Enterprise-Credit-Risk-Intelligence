@@ -5,6 +5,15 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+from app.live_intelligence_components import (
+    get_dashboard_live_context,
+    macro_intelligence,
+    market_intelligence,
+    news_intelligence,
+    render_live_status_card,
+    live_summary,
+)
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -429,6 +438,14 @@ def render(shared_data=None):
         .sum()
     )
 
+    live_context = get_dashboard_live_context(
+        allow_api_refresh=True
+    )
+    live_data = live_summary(live_context)
+    macro_data = macro_intelligence(live_context)
+    market_data = market_intelligence(live_context)
+    news_data = news_intelligence(live_context)
+
     # ============================================================
     # EXECUTIVE BANNER
     # ============================================================
@@ -489,6 +506,28 @@ def render(shared_data=None):
     c6.metric(
         "Credit Score",
         f"{avg_credit_score:.0f}"
+    )
+
+    st.markdown("<div style='height:0.75rem'></div>", unsafe_allow_html=True)
+    render_live_status_card(live_context)
+
+    st.markdown("<div style='height:0.75rem'></div>", unsafe_allow_html=True)
+    context_cols = st.columns(4)
+    context_cols[0].metric(
+        "Macro Regime",
+        macro_data.get("macro_regime", "UNAVAILABLE")
+    )
+    context_cols[1].metric(
+        "Market Stress",
+        f"{market_data.get('market_risk_score', 0):.2f}"
+    )
+    context_cols[2].metric(
+        "Sentiment Regime",
+        news_data.get("risk_sentiment_regime", "UNAVAILABLE")
+    )
+    context_cols[3].metric(
+        "Enterprise Live Risk",
+        f"{live_data.get('enterprise_live_risk_score', 0):.2f}"
     )
 
     st.markdown('</div>', unsafe_allow_html=True)

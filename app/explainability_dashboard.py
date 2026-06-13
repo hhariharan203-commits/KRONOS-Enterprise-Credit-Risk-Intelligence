@@ -48,6 +48,14 @@ from src.explainability.feature_importance import (
 
 from src.shared.cache_manager import timed_cache
 
+from app.live_intelligence_components import (
+    get_dashboard_live_context,
+    macro_intelligence,
+    market_intelligence,
+    render_live_status_card,
+    live_summary,
+)
+
 cached_explain_borrower = timed_cache()(explain_borrower)
 cached_run_shap_pipeline = timed_cache()(run_shap_pipeline)
 cached_run_feature_analysis = timed_cache()(run_feature_analysis)
@@ -789,6 +797,13 @@ def render(shared_data=None):
 
         return
 
+    live_context = get_dashboard_live_context(
+        allow_api_refresh=True
+    )
+    live_data = live_summary(live_context)
+    macro_data = macro_intelligence(live_context)
+    market_data = market_intelligence(live_context)
+
     # ==========================================================
     # EXECUTIVE EXPLAINABILITY OVERVIEW
     # ==========================================================
@@ -796,6 +811,22 @@ def render(shared_data=None):
     st.divider()
 
     _section("Executive Explainability Overview", "XAI · MODEL TRANSPARENCY")
+
+    render_live_status_card(live_context)
+
+    driver_cols = st.columns(3)
+    driver_cols[0].metric(
+        "Macro Driver Context",
+        f"{macro_data.get('macro_stress_score', 0):.2f}"
+    )
+    driver_cols[1].metric(
+        "Market Driver Context",
+        f"{market_data.get('market_risk_score', 0):.2f}"
+    )
+    driver_cols[2].metric(
+        "Sentiment Driver Context",
+        f"{live_data.get('sentiment_stress_score', 0):.2f}"
+    )
 
     _insight(
         "Explainability engines have completed analysis for the lead borrower in the active portfolio. "

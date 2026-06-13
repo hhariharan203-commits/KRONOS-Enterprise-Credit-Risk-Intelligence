@@ -5,6 +5,7 @@
 
 import json
 import joblib
+import sys
 import pandas as pd
 import numpy as np
 
@@ -13,6 +14,7 @@ from lightgbm import LGBMClassifier
 
 from sklearn.ensemble import VotingClassifier
 from sklearn.model_selection import train_test_split
+from sklearn.utils import ClassifierTags
 from sklearn.metrics import (
     accuracy_score,
     roc_auc_score,
@@ -40,6 +42,29 @@ from src.credit_risk.model_validation import (
     classify_model_drift,
     detect_overfitting,
 )
+from src.shared.utils import (
+    legacy_ifrs_stage_label,
+    normalize_ifrs_stage_series,
+)
+
+
+class KronosXGBClassifier(XGBClassifier):
+    """
+    Compatibility shim for scikit-learn estimator tags.
+    """
+
+    def __sklearn_tags__(self):
+        tags = super().__sklearn_tags__()
+        tags.estimator_type = "classifier"
+        tags.classifier_tags = ClassifierTags()
+        tags.target_tags.required = True
+        return tags
+
+
+if __name__ == "__main__":
+    sys.modules["src.credit_risk.train_pd_model"] = sys.modules[__name__]
+
+KronosXGBClassifier.__module__ = "src.credit_risk.train_pd_model"
 
 # =============================================================================
 # LOAD MASTER DATASET
@@ -108,6 +133,11 @@ def prepare_training_data(df):
     # Encode categorical variables
     # ---------------------------------------------------------
 
+    if "ifrs_stage" in X.columns:
+        X["ifrs_stage"] = normalize_ifrs_stage_series(
+            X["ifrs_stage"]
+        ).apply(legacy_ifrs_stage_label)
+
     categorical_cols = X.select_dtypes(
         include=["object", "string"]
     ).columns
@@ -123,22 +153,13 @@ def prepare_training_data(df):
     # Update feature list after encoding
     feature_cols = X.columns.tolist()
 
-    # ---------------------------------------------------------
-    # Scale features
-    # ---------------------------------------------------------
-
-    scaler = StandardScaler()
-
-    X_scaled = scaler.fit_transform(X)
-
     print(f"[KRONOS] Features: {len(feature_cols)}")
 
     print(f"[KRONOS] Samples: {len(X)}")
 
     return (
-        X_scaled,
+        X,
         y,
-        scaler,
         feature_cols
     )
 
@@ -168,7 +189,7 @@ def build_xgboost():
     Create XGBoost classifier.
     """
 
-    model = XGBClassifier(
+    model = KronosXGBClassifier(
         n_estimators=300,
         max_depth=6,
         learning_rate=0.05,
@@ -236,7 +257,7 @@ def train_pd_model():
 
         return None
 
-    X, y, scaler, feature_cols = prepare_training_data(df)
+    X, y, feature_cols = prepare_training_data(df)
 
     (
         X_train,
@@ -244,6 +265,16 @@ def train_pd_model():
         y_train,
         y_test
     ) = split_data(X, y)
+
+    scaler = StandardScaler()
+
+    X_train = scaler.fit_transform(
+        X_train
+    )
+
+    X_test = scaler.transform(
+        X_test
+    )
 
     print("\n" + "=" * 80)
     print("[KRONOS] TRAINING PD MODEL")

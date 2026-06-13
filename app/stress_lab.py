@@ -64,6 +64,13 @@ from src.stress_testing.capital_impact import (
 
 from src.shared.cache_manager import timed_cache
 
+from app.live_intelligence_components import (
+    get_dashboard_live_context,
+    macro_intelligence,
+    render_live_status_card,
+    vix_intelligence,
+)
+
 cached_run_stress_pipeline = timed_cache()(run_stress_pipeline)
 cached_run_macro_pipeline = timed_cache()(run_macro_pipeline)
 cached_run_var_analysis = timed_cache()(run_var_analysis)
@@ -710,6 +717,29 @@ def render(shared_data=None):
             )
 
     portfolio = portfolio.fillna(0)
+
+    live_context = get_dashboard_live_context(
+        allow_api_refresh=True
+    )
+    macro_data = macro_intelligence(live_context)
+    vix_data = vix_intelligence(live_context)
+
+    _section("🌐", "Current Live Environment", "LIVE CONTEXT")
+    render_live_status_card(live_context)
+
+    live_cols = st.columns(3)
+    live_cols[0].metric(
+        "Current VIX",
+        f"{vix_data.get('latest_vix', 0):.2f}"
+    )
+    live_cols[1].metric(
+        "Yield Curve",
+        f"{macro_data.get('yield_curve_spread') or 0:.2f}%"
+    )
+    live_cols[2].metric(
+        "Macro Regime",
+        macro_data.get("macro_regime", "UNAVAILABLE")
+    )
 
     # ==========================================================
     # SCENARIO CONTROL CENTER

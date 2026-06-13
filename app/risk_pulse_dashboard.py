@@ -46,6 +46,7 @@ from src.live_monitoring.live_alerts import (
     run_live_alert_engine
 )
 from src.live_monitoring.live_intelligence import get_live_intelligence
+from app.live_intelligence_components import render_live_status_card
 
 from src.shared.cache_manager import timed_cache
 
@@ -802,6 +803,8 @@ def render(shared_data=None):
         kind="signal",
         eyebrow="Live Intelligence · Enterprise Overlay"
     )
+
+    render_live_status_card(live_context)
 
     lp1, lp2, lp3, lp4 = st.columns(4)
 

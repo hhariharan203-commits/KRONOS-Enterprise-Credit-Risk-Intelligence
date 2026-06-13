@@ -7,6 +7,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+from app.live_intelligence_components import render_live_status_card
 from src.live_monitoring.live_intelligence import get_live_intelligence
 
 
@@ -31,7 +32,6 @@ def render(shared_data=None):
     market_intelligence = live_context.get("market_intelligence", {})
     vix_intelligence = live_context.get("vix_intelligence", {})
     live_summary = live_context.get("summary", {})
-    source_freshness = live_context.get("source_freshness", {})
 
     # ── SECTION HEADER HELPER ───────────────────────────────────────
     def section_header(icon, title, subtitle=None):
@@ -586,6 +586,8 @@ def render(shared_data=None):
         "Macroeconomic, market, and news intelligence with source freshness"
     )
 
+    render_live_status_card(live_context)
+
     live_cols = st.columns(5)
 
     live_cols[0].metric(
@@ -657,14 +659,6 @@ def render(shared_data=None):
         f"{news_intelligence.get('credit_sentiment_score', market_sentiment):.2f}"
     )
 
-    freshness_text = " · ".join(
-        [
-            f"{name.upper()}: {details.get('status', 'UNKNOWN')} "
-            f"({details.get('last_updated', 'UNAVAILABLE')})"
-            for name, details in source_freshness.items()
-        ]
-    )
-
     st.markdown(
         f"""
         <div class="kx-commentary" style="margin-top:1rem;">
@@ -676,7 +670,6 @@ def render(shared_data=None):
                 {live_summary.get('portfolio_risk_context', 'Live intelligence context unavailable.')}
                 Current external regime is
                 <strong>{live_summary.get('executive_risk_regime', 'UNAVAILABLE')}</strong>.
-                Source freshness: {freshness_text}.
             </div>
         </div>
         """,

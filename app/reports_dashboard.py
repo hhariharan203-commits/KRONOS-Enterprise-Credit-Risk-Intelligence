@@ -4,6 +4,8 @@
 # =============================================================================
 
 import os
+import contextlib
+import io
 
 import pandas as pd
 import numpy as np
@@ -29,9 +31,29 @@ if str(ROOT_DIR) not in sys.path:
 
 from src.reporting.report_generator import (
     generate_institutional_report,
-    prepare_engine_derived_reporting_data,
 )
 from src.live_monitoring.live_intelligence import get_live_intelligence
+from src.shared.cache_manager import timed_cache
+from app.live_intelligence_components import render_live_status_card
+
+
+def _generate_report_quiet(
+    portfolio,
+    live_context,
+    build_pdf
+):
+    buffer = io.StringIO()
+    with contextlib.redirect_stdout(buffer):
+        return generate_institutional_report(
+            portfolio,
+            live_context=live_context,
+            build_pdf=build_pdf
+        )
+
+
+cached_generate_report = timed_cache()(
+    _generate_report_quiet
+)
 
 # =============================================================================
 # KRONOS GLOBAL DESIGN SYSTEM — INJECTED CSS
@@ -652,21 +674,69 @@ def render(shared_data=None):
     macro_intelligence = live_context.get("macro_intelligence", {})
     news_intelligence = live_context.get("news_intelligence", {})
     market_intelligence = live_context.get("market_intelligence", {})
+    pdf_report_path = str(
+        Path("reports") / "kronos_enterprise_report.pdf"
+    )
+    report_cache_key = "kronos_enterprise_report_package"
+
+    generate_report = st.button(
+        "Generate / Refresh Enterprise Report"
+    )
+
+    if generate_report:
+        st.session_state[report_cache_key] = cached_generate_report(
+            portfolio,
+            live_context,
+            False
+        )
+
+    if report_cache_key not in st.session_state:
+        render_live_status_card(live_context)
+        st.info(
+            "Generate the current enterprise report to display the board-ready "
+            "reporting sections. The latest cached PDF remains available when present."
+        )
+
+        if os.path.exists(
+            pdf_report_path
+        ):
+
+            with open(
+                pdf_report_path,
+                "rb"
+            ) as pdf_file:
+
+                st.download_button(
+                    label=
+                        "Download Latest Enterprise PDF Report",
+                    data=
+                        pdf_file,
+                    file_name=
+                        "KRONOS_Enterprise_Report.pdf",
+                    mime=
+                        "application/pdf"
+                )
+
+        return
 
     # ==========================================================
     # REPORT GENERATION
     # ==========================================================
 
-    report_package = (
-        generate_institutional_report(
-            portfolio,
-            live_context=live_context
-        )
-    )
+    report_package = st.session_state[
+        report_cache_key
+    ]
 
-    portfolio, _ = prepare_engine_derived_reporting_data(
-        portfolio,
-        live_context=live_context
+    portfolio = (
+        report_package
+        .get(
+            "engine_reporting_context",
+            {}
+        )
+        .get(
+            "prepared_portfolio",
+            portfolio
+        )
     )
 
     executive_summary = (
@@ -694,9 +764,10 @@ def render(shared_data=None):
     )
 
     pdf_report_path = (
-        report_package[
+        report_package.get(
             "pdf_report_path"
-        ]
+        )
+        or pdf_report_path
     )
 
     regime_classification = executive_summary[
@@ -776,6 +847,8 @@ def render(shared_data=None):
         kind="gold",
         eyebrow="Report Generator · Live Intelligence"
     )
+
+    render_live_status_card(live_context)
 
     li1, li2, li3, li4 = st.columns(4)
 
@@ -1411,6 +1484,22 @@ def render(shared_data=None):
         """,
         unsafe_allow_html=True
     )
+
+    if st.button(
+        "Generate / Refresh Enterprise PDF Report"
+    ):
+
+        pdf_report_package = cached_generate_report(
+            portfolio,
+            live_context,
+            True
+        )
+        pdf_report_path = (
+            pdf_report_package.get(
+                "pdf_report_path"
+            )
+            or pdf_report_path
+        )
 
     if os.path.exists(
         pdf_report_path

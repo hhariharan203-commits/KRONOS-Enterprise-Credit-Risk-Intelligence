@@ -3,6 +3,8 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+import contextlib
+import io
 
 import sys
 from pathlib import Path
@@ -26,6 +28,33 @@ from src.ews.migration_tracker import (
 
 from src.ews.watchlist import (
     classify_watchlist_level
+)
+
+from src.live_monitoring.live_alerts import (
+    run_live_alert_engine
+)
+from src.shared.cache_manager import timed_cache
+
+from app.live_intelligence_components import (
+    get_dashboard_live_context,
+    render_live_status_card,
+)
+
+
+def _run_live_alert_engine_quiet(
+    portfolio,
+    live_context
+):
+    buffer = io.StringIO()
+    with contextlib.redirect_stdout(buffer):
+        return run_live_alert_engine(
+            portfolio,
+            live_context=live_context
+        )
+
+
+cached_run_live_alert_engine = timed_cache()(
+    _run_live_alert_engine_quiet
 )
 
 
@@ -499,6 +528,54 @@ def render(shared_data=None):
         ]
     )
 
+    live_context = get_dashboard_live_context(
+        allow_api_refresh=True
+    )
+    alert_cache_context = {
+        "summary": {
+            key: live_context.get("summary", {}).get(key)
+            for key in [
+                "macro_stress_score",
+                "market_stress_score",
+                "sentiment_stress_score",
+                "enterprise_live_risk_score",
+            ]
+        },
+        "macro_intelligence": {
+            "yield_curve_spread": (
+                live_context
+                .get("macro_intelligence", {})
+                .get("yield_curve_spread")
+            )
+        },
+    }
+
+    live_alerts = cached_run_live_alert_engine(
+        portfolio,
+        live_context=alert_cache_context
+    )
+    live_alert_df = live_alerts["live_alert_results"]
+    live_alert_summary = live_alerts["summary"]
+
+    macro_alerts = int(
+        live_alert_df["macro_deterioration_alert"]
+        .astype(str)
+        .str.contains("WARNING|HIGH RISK|CRITICAL|ACTION", regex=True)
+        .sum()
+    )
+    market_alerts = int(
+        live_alert_df["market_stress_alert"]
+        .astype(str)
+        .str.contains("WARNING|HIGH RISK|CRITICAL|ACTION", regex=True)
+        .sum()
+    )
+    sentiment_alerts = int(
+        live_alert_df["negative_news_sentiment_alert"]
+        .astype(str)
+        .str.contains("WARNING|HIGH RISK|CRITICAL|ACTION", regex=True)
+        .sum()
+    )
+
     # ── EXECUTIVE BANNER ────────────────────────────────────────────
     st.markdown(
         """
@@ -567,6 +644,42 @@ def render(shared_data=None):
     c3.metric(
         "STAGE 3",
         f"{stage3_accounts:,}"
+    )
+
+    st.markdown("<div style='height:0.75rem'></div>", unsafe_allow_html=True)
+    render_live_status_card(live_context)
+
+    st.markdown("<div style='height:0.75rem'></div>", unsafe_allow_html=True)
+    live_cols = st.columns(4)
+    live_cols[0].metric(
+        "Macro Alerts",
+        f"{macro_alerts:,}"
+    )
+    live_cols[1].metric(
+        "Market Alerts",
+        f"{market_alerts:,}"
+    )
+    live_cols[2].metric(
+        "Sentiment Alerts",
+        f"{sentiment_alerts:,}"
+    )
+    live_cols[3].metric(
+        "Exec Action Alerts",
+        f"{live_alert_summary.get('executive_action_required_alerts', 0):,}"
+    )
+
+    st.dataframe(
+        live_alert_df[
+            [
+                "borrower_id",
+                "macro_deterioration_alert",
+                "market_stress_alert",
+                "negative_news_sentiment_alert",
+                "executive_alert_level",
+            ]
+        ].head(8),
+        width="stretch",
+        hide_index=True,
     )
 
     st.markdown(

@@ -1135,7 +1135,8 @@ def build_enterprise_sections(
 def generate_institutional_report(
     portfolio_df,
     output_filename="kronos_enterprise_report.pdf",
-    live_context=None
+    live_context=None,
+    build_pdf=True
 ):
     """
     Master executive reporting orchestration workflow.
@@ -1149,6 +1150,7 @@ def generate_institutional_report(
         portfolio_df,
         live_context=live_context
     )
+    engine_context["prepared_portfolio"] = portfolio_df
 
     # -------------------------------------------------------------------------
     # EXECUTIVE METRICS
@@ -1325,26 +1327,30 @@ def generate_institutional_report(
     # BUILD PDF REPORT
     # -------------------------------------------------------------------------
 
-    pdf_path = build_pdf_report(
+    pdf_path = None
 
-        executive_summary=
-            executive_summary,
+    if build_pdf:
 
-        narrative_results=
-            narrative_results,
+        pdf_path = build_pdf_report(
 
-        metrics_df=
-            metrics_df,
+            executive_summary=
+                executive_summary,
 
-        governance_summary=
-            governance,
+            narrative_results=
+                narrative_results,
 
-        enterprise_sections=
-            enterprise_sections,
+            metrics_df=
+                metrics_df,
 
-        output_filename=
-            output_filename,
-    )
+            governance_summary=
+                governance,
+
+            enterprise_sections=
+                enterprise_sections,
+
+            output_filename=
+                output_filename,
+        )
 
     # -------------------------------------------------------------------------
     # FINAL REPORT PACKAGE

@@ -15,6 +15,10 @@ from src.shared.config import (
     SENTIMENT_DATA,
     NEWS_API_KEY
 )
+from src.shared.logger import get_logger
+
+
+log = get_logger("kronos.fetch_sentiment")
 
 # =============================================================================
 # LIVE NEWS QUERY
@@ -61,13 +65,16 @@ def fetch_live_headlines():
 
         return headlines
 
-    except Exception as e:
+    except Exception as exc:
 
         print(
             "[KRONOS ERROR] Failed fetching live headlines"
         )
 
-        print(e)
+        log.warning(
+            "News API headline fetch failed: %s",
+            exc.__class__.__name__
+        )
 
         return []
 

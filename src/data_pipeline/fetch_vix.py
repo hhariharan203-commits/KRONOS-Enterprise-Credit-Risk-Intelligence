@@ -5,11 +5,17 @@
 
 import pandas as pd
 import yfinance as yf
+from fredapi import Fred
 from datetime import datetime
 
 from src.shared.config import (
+    FRED_API_KEY,
     VIX_DATA
 )
+from src.shared.logger import get_logger
+
+
+log = get_logger("kronos.fetch_vix")
 
 # =============================================================================
 # FETCH VIX DATA
@@ -34,9 +40,9 @@ def fetch_vix_data(period="5y"):
 
         if vix.empty:
 
-            print("[KRONOS ERROR] No VIX data retrieved")
+            print("[KRONOS WARNING] No VIX data retrieved from yfinance")
 
-            return pd.DataFrame()
+            return fetch_vix_from_fred()
 
         vix.reset_index(inplace=True)
 
@@ -75,13 +81,87 @@ def fetch_vix_data(period="5y"):
 
         return vix
 
-    except Exception as e:
+    except Exception as exc:
 
         print(
-            "[KRONOS ERROR] Failed fetching VIX data"
+            "[KRONOS WARNING] yfinance VIX refresh failed; trying FRED fallback"
         )
 
-        print(e)
+        log.warning(
+            "yfinance VIX refresh failed: %s",
+            exc.__class__.__name__
+        )
+
+        return fetch_vix_from_fred()
+
+
+def fetch_vix_from_fred(start_date="2015-01-01"):
+    """
+    Fetch VIX from FRED VIXCLS and map it to the existing VIX artifact schema.
+    """
+
+    if not FRED_API_KEY:
+
+        log.warning("FRED VIX fallback unavailable: API key missing")
+
+        return pd.DataFrame()
+
+    try:
+
+        fred = Fred(api_key=FRED_API_KEY)
+        series = fred.get_series(
+            "VIXCLS",
+            observation_start=start_date
+        )
+
+        vix = pd.DataFrame(series)
+        vix.columns = ["close_^vix"]
+        vix.index.name = "date"
+        vix.reset_index(inplace=True)
+        vix = vix.dropna(
+            subset=["close_^vix"]
+        )
+
+        if vix.empty:
+
+            log.warning("FRED VIX fallback returned no records")
+
+            return pd.DataFrame()
+
+        for col in [
+            "adj_close_^vix",
+            "high_^vix",
+            "low_^vix",
+            "open_^vix",
+        ]:
+
+            vix[col] = vix["close_^vix"]
+
+        vix["volume_^vix"] = 0
+        vix = vix[
+            [
+                "date",
+                "adj_close_^vix",
+                "close_^vix",
+                "high_^vix",
+                "low_^vix",
+                "open_^vix",
+                "volume_^vix",
+            ]
+        ]
+
+        print(
+            f"[KRONOS] VIX records fetched from FRED: {len(vix):,}"
+        )
+
+        return vix
+
+    except Exception as exc:
+
+        log.warning(
+            "FRED VIX fallback failed: %s",
+            exc.__class__.__name__
+        )
 
         return pd.DataFrame()
 

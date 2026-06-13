@@ -121,9 +121,28 @@ PORTFOLIO_ANALYSIS_DIR: Path = OUTPUTS_DIR / "portfolio_analysis"
 # API CONFIGURATION
 # ---------------------------------------------------------------------------
 
-FRED_API_KEY:          str = os.getenv("FRED_API_KEY", "")
-NEWS_API_KEY:          str = os.getenv("NEWS_API_KEY", "")
-ALPHA_VANTAGE_API_KEY: str = os.getenv("ALPHA_VANTAGE_API_KEY", "")
+def _get_secret(
+    name: str
+) -> str:
+    env_value = os.getenv(name, "")
+
+    if env_value:
+        return env_value
+
+    try:
+        import streamlit as st
+
+        secret_value = st.secrets.get(name, "")
+    except Exception:
+        # Streamlit secrets are optional for non-Streamlit batch execution.
+        return ""
+
+    return str(secret_value) if secret_value else ""
+
+
+FRED_API_KEY:          str = _get_secret("FRED_API_KEY")
+NEWS_API_KEY:          str = _get_secret("NEWS_API_KEY")
+ALPHA_VANTAGE_API_KEY: str = _get_secret("ALPHA_VANTAGE_API_KEY")
 
 # ---------------------------------------------------------------------------
 # APPLICATION SETTINGS

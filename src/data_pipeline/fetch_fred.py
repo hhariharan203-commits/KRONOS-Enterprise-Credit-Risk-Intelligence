@@ -11,6 +11,10 @@ from src.shared.config import (
     FRED_API_KEY,
     FRED_MARKET_DATA
 )
+from src.shared.logger import get_logger
+
+
+log = get_logger("kronos.fetch_fred")
 
 # =============================================================================
 # INITIALIZE FRED CLIENT
@@ -29,10 +33,13 @@ def initialize_fred():
 
         return fred
 
-    except Exception as e:
+    except Exception as exc:
 
         print("[KRONOS ERROR] Failed to initialize FRED API")
-        print(e)
+        log.warning(
+            "FRED API initialization failed: %s",
+            exc.__class__.__name__
+        )
 
         return None
 
@@ -95,10 +102,14 @@ def fetch_series(fred, series_id, start_date="2015-01-01"):
 
         return df
 
-    except Exception as e:
+    except Exception as exc:
 
         print(f"[KRONOS ERROR] Failed fetching series: {series_id}")
-        print(e)
+        log.warning(
+            "FRED series fetch failed for %s: %s",
+            series_id,
+            exc.__class__.__name__
+        )
 
         return pd.DataFrame()
 
