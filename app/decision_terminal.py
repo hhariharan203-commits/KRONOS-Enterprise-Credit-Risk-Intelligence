@@ -45,6 +45,7 @@ from src.decisioning.policy_rules import (
 from src.decisioning.recommendation_engine import (
     run_recommendation_engine
 )
+from src.live_monitoring.live_intelligence import get_live_intelligence
 
 from src.shared.cache_manager import timed_cache
 
@@ -777,6 +778,11 @@ def render(shared_data=None):
 
     portfolio = portfolio.fillna(0)
 
+    live_context = get_live_intelligence(
+        allow_api_refresh=True
+    )
+    live_summary = live_context.get("summary", {})
+
     # ==========================================================
     # DATA PREPARATION
     # ==========================================================
@@ -791,6 +797,45 @@ def render(shared_data=None):
 
         portfolio["early_warning_score"]
 
+    )
+
+    portfolio["macro_stress_score"] = live_summary.get(
+        "macro_stress_score",
+        0
+    )
+
+    portfolio["market_stress_score"] = live_summary.get(
+        "market_stress_score",
+        0
+    )
+
+    portfolio["sentiment_stress_score"] = live_summary.get(
+        "sentiment_stress_score",
+        0
+    )
+
+    portfolio["enterprise_live_risk_score"] = live_summary.get(
+        "enterprise_live_risk_score",
+        0
+    )
+
+    live_pressure = (
+        portfolio["macro_stress_score"]
+        + portfolio["market_stress_score"]
+        + portfolio["enterprise_live_risk_score"]
+    ) / 3
+
+    portfolio["systemic_risk_score"] = np.maximum(
+        portfolio["systemic_risk_score"],
+        live_pressure
+    )
+
+    portfolio["reserve_pressure_score"] = np.maximum(
+        portfolio["reserve_pressure_score"],
+        (
+            portfolio["sentiment_stress_score"]
+            + portfolio["macro_stress_score"]
+        ) / 2
     )
 
     portfolio["policy_status"] = np.where(
@@ -817,7 +862,8 @@ def render(shared_data=None):
 
     decision_results = (
         cached_run_decision_engine(
-            portfolio
+            portfolio,
+            live_context=live_context
         )
     )
 
@@ -878,7 +924,8 @@ def render(shared_data=None):
 
     recommendation_results = (
         cached_run_recommendation_engine(
-            recommendation_input
+            recommendation_input,
+            live_context=live_context
         )
     )
 
@@ -897,6 +944,41 @@ def render(shared_data=None):
     # ==========================================================
     # EXECUTIVE DECISION DASHBOARD
     # ==========================================================
+
+    st.divider()
+
+    _section("Live Decision Context", "MACRO · MARKET · NEWS")
+
+    _insight(
+        "Decision recommendations now include live macroeconomic, market, and news sentiment "
+        "conditions as contextual risk overlays. Historical portfolio risk remains the primary "
+        "decision base; live intelligence elevates governance attention when external conditions "
+        "deteriorate.",
+        kind="warning",
+        eyebrow="Live Intelligence · Decision Overlay"
+    )
+
+    lc1, lc2, lc3, lc4 = st.columns(4)
+
+    lc1.metric(
+        "Enterprise Live Risk",
+        f"{live_summary.get('enterprise_live_risk_score', 0):.2f}"
+    )
+
+    lc2.metric(
+        "Macro Stress",
+        f"{live_summary.get('macro_stress_score', 0):.2f}"
+    )
+
+    lc3.metric(
+        "Market Stress",
+        f"{live_summary.get('market_stress_score', 0):.2f}"
+    )
+
+    lc4.metric(
+        "Sentiment Stress",
+        f"{live_summary.get('sentiment_stress_score', 0):.2f}"
+    )
 
     st.divider()
 

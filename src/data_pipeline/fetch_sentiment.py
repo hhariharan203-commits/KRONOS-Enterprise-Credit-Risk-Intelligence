@@ -215,6 +215,66 @@ def sentiment_breakdown(sentiment_df):
 
     return breakdown
 
+
+def filtered_sentiment_score(
+    sentiment_df,
+    keywords,
+    fallback
+):
+    """
+    Calculate a keyword-specific sentiment score.
+    """
+
+    if sentiment_df.empty or "headline" not in sentiment_df.columns:
+        return fallback
+
+    mask = sentiment_df["headline"].astype(str).str.contains(
+        "|".join(keywords),
+        case=False,
+        regex=True,
+        na=False
+    )
+
+    filtered = sentiment_df[mask]
+
+    if filtered.empty or "polarity" not in filtered.columns:
+        return fallback
+
+    polarity = filtered["polarity"].mean()
+
+    return float(
+        round(
+            (polarity + 1) * 50,
+            2
+        )
+    )
+
+
+def risk_sentiment_regime(
+    score
+):
+    """
+    Classify executive risk sentiment.
+    """
+
+    if score >= 65:
+
+        return "BULLISH"
+
+    elif score >= 45:
+
+        return "NEUTRAL"
+
+    elif score >= 30:
+
+        return "BEARISH"
+
+    elif score >= 15:
+
+        return "STRESS"
+
+    return "CRISIS"
+
 # =============================================================================
 # GENERATE SENTIMENT SUMMARY
 # =============================================================================
@@ -234,6 +294,42 @@ def generate_sentiment_summary(sentiment_df):
 
     breakdown = sentiment_breakdown(
         sentiment_df
+    )
+
+    credit_sentiment_score = filtered_sentiment_score(
+        sentiment_df,
+        [
+            "credit",
+            "default",
+            "loan",
+            "bank",
+            "delinquency",
+        ],
+        sentiment_score
+    )
+
+    economic_sentiment_score = filtered_sentiment_score(
+        sentiment_df,
+        [
+            "economy",
+            "inflation",
+            "recession",
+            "interest",
+            "rates",
+            "unemployment",
+        ],
+        sentiment_score
+    )
+
+    financial_stress_score = float(
+        round(
+            100 - min(
+                sentiment_score,
+                credit_sentiment_score,
+                economic_sentiment_score
+            ),
+            2
+        )
     )
 
     summary = {
@@ -265,6 +361,20 @@ def generate_sentiment_summary(sentiment_df):
             breakdown.get(
                 "NEUTRAL",
                 0
+            ),
+
+        "credit_sentiment_score":
+            credit_sentiment_score,
+
+        "economic_sentiment_score":
+            economic_sentiment_score,
+
+        "financial_stress_score":
+            financial_stress_score,
+
+        "risk_sentiment_regime":
+            risk_sentiment_regime(
+                sentiment_score
             ),
 
         "analysis_timestamp":

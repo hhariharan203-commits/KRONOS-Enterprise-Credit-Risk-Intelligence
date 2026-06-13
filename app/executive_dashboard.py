@@ -7,6 +7,8 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+from src.live_monitoring.live_intelligence import get_live_intelligence
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,6 +23,15 @@ def render(shared_data=None):
     vix = shared_data.get("vix", pd.DataFrame())
     feature_importance = shared_data.get("feature_importance", pd.DataFrame())
     category_importance = shared_data.get("category_importance", pd.DataFrame())
+    live_context = get_live_intelligence(
+        allow_api_refresh=True
+    )
+    macro_intelligence = live_context.get("macro_intelligence", {})
+    news_intelligence = live_context.get("news_intelligence", {})
+    market_intelligence = live_context.get("market_intelligence", {})
+    vix_intelligence = live_context.get("vix_intelligence", {})
+    live_summary = live_context.get("summary", {})
+    source_freshness = live_context.get("source_freshness", {})
 
     # ── SECTION HEADER HELPER ───────────────────────────────────────
     def section_header(icon, title, subtitle=None):
@@ -430,21 +441,30 @@ def render(shared_data=None):
     )
 
     market_sentiment = (
-        sentiment["market_sentiment_score"].iloc[0]
-        if not sentiment.empty
-        else 0
+        news_intelligence.get(
+            "market_sentiment_score",
+            sentiment["market_sentiment_score"].iloc[0]
+            if not sentiment.empty
+            else 0
+        )
     )
 
     stress_score = (
-        sentiment["stress_score"].iloc[0]
-        if not sentiment.empty
-        else 0
+        news_intelligence.get(
+            "financial_stress_score",
+            sentiment["stress_score"].iloc[0]
+            if not sentiment.empty
+            else 0
+        )
     )
 
     sentiment_regime = (
-        sentiment["sentiment_regime"].iloc[0]
-        if not sentiment.empty
-        else "Unavailable"
+        news_intelligence.get(
+            "risk_sentiment_regime",
+            sentiment["sentiment_regime"].iloc[0]
+            if not sentiment.empty
+            else "Unavailable"
+        )
     )
 
     # ==================================================
@@ -546,6 +566,117 @@ def render(shared_data=None):
                 <strong>Enhanced Monitoring</strong>, <strong>Critical Watchlist</strong>, and
                 <strong>Decision Watchlist</strong>. Leadership should review STAGE 3 migration,
                 watchlist remediation, and concentration exposure before the next risk committee cycle.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # ==================================================
+    # LIVE INTELLIGENCE COMMAND LAYER
+    # ==================================================
+
+    st.markdown('<div class="kx-divider"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="kx-section">', unsafe_allow_html=True)
+    section_header(
+        "🌍",
+        "Live Intelligence Command Layer",
+        "Macroeconomic, market, and news intelligence with source freshness"
+    )
+
+    live_cols = st.columns(5)
+
+    live_cols[0].metric(
+        "Enterprise Live Risk",
+        f"{live_summary.get('enterprise_live_risk_score', 0):.2f}"
+    )
+
+    live_cols[1].metric(
+        "Executive Regime",
+        live_summary.get("executive_risk_regime", "UNAVAILABLE")
+    )
+
+    live_cols[2].metric(
+        "Macro Stress",
+        f"{live_summary.get('macro_stress_score', 0):.2f}"
+    )
+
+    live_cols[3].metric(
+        "Market Risk",
+        f"{live_summary.get('market_stress_score', 0):.2f}"
+    )
+
+    live_cols[4].metric(
+        "Sentiment Stress",
+        f"{live_summary.get('sentiment_stress_score', 0):.2f}"
+    )
+
+    macro_cols = st.columns(4)
+
+    macro_cols[0].metric(
+        "Fed Funds",
+        f"{macro_intelligence.get('fed_funds_rate') or 0:.2f}%"
+    )
+
+    macro_cols[1].metric(
+        "Inflation",
+        f"{macro_intelligence.get('inflation_rate') or 0:.2f}%"
+    )
+
+    macro_cols[2].metric(
+        "Unemployment",
+        f"{macro_intelligence.get('unemployment_rate') or 0:.2f}%"
+    )
+
+    macro_cols[3].metric(
+        "Yield Curve",
+        f"{macro_intelligence.get('yield_curve_spread') or 0:.2f}%"
+    )
+
+    market_cols = st.columns(4)
+
+    market_cols[0].metric(
+        "VIX",
+        f"{vix_intelligence.get('latest_vix', 0):.2f}"
+    )
+
+    market_cols[1].metric(
+        "Volatility Score",
+        f"{market_intelligence.get('volatility_score', 0):.2f}"
+    )
+
+    market_cols[2].metric(
+        "Liquidity Stress",
+        f"{market_intelligence.get('liquidity_stress_score', 0):.2f}"
+    )
+
+    market_cols[3].metric(
+        "Credit Sentiment",
+        f"{news_intelligence.get('credit_sentiment_score', market_sentiment):.2f}"
+    )
+
+    freshness_text = " · ".join(
+        [
+            f"{name.upper()}: {details.get('status', 'UNKNOWN')} "
+            f"({details.get('last_updated', 'UNAVAILABLE')})"
+            for name, details in source_freshness.items()
+        ]
+    )
+
+    st.markdown(
+        f"""
+        <div class="kx-commentary" style="margin-top:1rem;">
+            <div class="kx-commentary-header">
+                <span class="kx-commentary-badge">LIVE INTELLIGENCE</span>
+                <span class="kx-commentary-title">What Changed Since Last Refresh?</span>
+            </div>
+            <div class="kx-commentary-body">
+                {live_summary.get('portfolio_risk_context', 'Live intelligence context unavailable.')}
+                Current external regime is
+                <strong>{live_summary.get('executive_risk_regime', 'UNAVAILABLE')}</strong>.
+                Source freshness: {freshness_text}.
             </div>
         </div>
         """,
@@ -757,12 +888,15 @@ def render(shared_data=None):
     m1, m2, m3, m4 = st.columns(4)
 
     latest_vix = (
-        vix["close_^vix"].iloc[-1]
-        if not vix.empty
-        else 0
+        vix_intelligence.get(
+            "latest_vix",
+            vix["close_^vix"].iloc[-1]
+            if not vix.empty
+            else 0
+        )
     )
 
-    m1.metric("Regime", sentiment_regime)
+    m1.metric("Regime", live_summary.get("executive_risk_regime", sentiment_regime))
     m2.metric("Sentiment", f"{market_sentiment:.2f}")
     m3.metric("Stress", f"{stress_score:.2f}")
     m4.metric("Latest VIX", f"{latest_vix:.2f}")

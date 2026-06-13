@@ -1,0 +1,95 @@
+{
+  "macro_intelligence": {
+    "fed_funds_rate": 3.64,
+    "inflation_rate": 3.78,
+    "unemployment_rate": 4.3,
+    "treasury_10y": 4.32,
+    "treasury_2y": 3.8,
+    "yield_curve_spread": 0.52,
+    "credit_spread": 0.61,
+    "consumer_sentiment": 49.8,
+    "recession_indicator": 0.0,
+    "macro_stress_score": 0,
+    "economic_stress": "LOW",
+    "recession_risk": "LOW",
+    "credit_conditions": "NORMAL",
+    "macro_regime": "EXPANSION"
+  },
+  "news_intelligence": {
+    "market_sentiment_score": 53.26,
+    "credit_sentiment_score": 47.5,
+    "economic_sentiment_score": 56.0,
+    "financial_stress_score": 52.5,
+    "sentiment_stress_score": 46.74,
+    "risk_sentiment_regime": "NEUTRAL",
+    "source_sentiment_regime": "NEUTRAL",
+    "bullish_headlines": 23,
+    "bearish_headlines": 4,
+    "neutral_headlines": 73
+  },
+  "market_intelligence": {
+    "sp500_5d_return": 0,
+    "financial_sector_5d_return": 0,
+    "bank_etf_5d_return": 0,
+    "treasury_etf_5d_return": 0,
+    "dollar_index_5d_return": 0,
+    "market_risk_score": 5.74,
+    "volatility_score": 38.3,
+    "liquidity_stress_score": 0,
+    "market_regime": "EXPANSION"
+  },
+  "vix_intelligence": {
+    "latest_vix": 15.32,
+    "volatility_score": 38.3,
+    "vix_regime": "MODERATE"
+  },
+  "summary": {
+    "enterprise_live_risk_score": 20.59,
+    "executive_risk_regime": "NORMAL",
+    "macro_stress_score": 0,
+    "market_stress_score": 5.74,
+    "sentiment_score": 53.26,
+    "sentiment_stress_score": 52.5,
+    "volatility_score": 38.3,
+    "liquidity_stress_score": 0,
+    "portfolio_risk_context": "Live external conditions are supportive",
+    "generated_at": "2026-06-13 12:59:51 UTC"
+  },
+  "source_freshness": {
+    "fred": {
+      "status": "CACHE_ONLY",
+      "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\fred_market_data.csv",
+      "last_updated": "2026-05-30 16:27:37 UTC",
+      "refresh_minutes": 60,
+      "is_fresh": false
+    },
+    "news": {
+      "status": "CACHE_ONLY",
+      "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\sentiment_data.csv",
+      "last_updated": "2026-05-30 17:58:22 UTC",
+      "refresh_minutes": 30,
+      "is_fresh": false
+    },
+    "sentiment": {
+      "status": "CACHE_ONLY",
+      "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\sentiment_summary.csv",
+      "last_updated": "2026-06-03 07:23:54 UTC",
+      "refresh_minutes": 30,
+      "is_fresh": false
+    },
+    "market": {
+      "status": "CACHE_ONLY",
+      "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\alpha_vantage_market_data.csv",
+      "last_updated": "UNAVAILABLE",
+      "refresh_minutes": 15,
+      "is_fresh": false
+    },
+    "vix": {
+      "status": "CACHE_ONLY",
+      "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\vix_data.csv",
+      "last_updated": "2026-05-30 16:45:39 UTC",
+      "refresh_minutes": 15,
+      "is_fresh": false
+    }
+  }
+}

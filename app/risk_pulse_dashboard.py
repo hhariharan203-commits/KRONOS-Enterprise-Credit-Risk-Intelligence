@@ -45,6 +45,7 @@ from src.live_monitoring.regime_detector import (
 from src.live_monitoring.live_alerts import (
     run_live_alert_engine
 )
+from src.live_monitoring.live_intelligence import get_live_intelligence
 
 from src.shared.cache_manager import timed_cache
 
@@ -727,6 +728,14 @@ def render(shared_data=None):
 
     portfolio = portfolio.fillna(0)
 
+    live_context = get_live_intelligence(
+        allow_api_refresh=True
+    )
+    live_summary = live_context.get("summary", {})
+    macro_intelligence = live_context.get("macro_intelligence", {})
+    market_intelligence = live_context.get("market_intelligence", {})
+    news_intelligence = live_context.get("news_intelligence", {})
+
     # =========================================================================
     # LIVE MONITORING FEATURES
     # =========================================================================
@@ -749,10 +758,74 @@ def render(shared_data=None):
 
     )
 
+    portfolio["macro_stress_score"] = live_summary.get(
+        "macro_stress_score",
+        0
+    )
+
+    portfolio["market_stress_score"] = live_summary.get(
+        "market_stress_score",
+        0
+    )
+
+    portfolio["sentiment_stress_score"] = live_summary.get(
+        "sentiment_stress_score",
+        0
+    )
+
+    portfolio["enterprise_live_risk_score"] = live_summary.get(
+        "enterprise_live_risk_score",
+        0
+    )
+
+    portfolio["stress_score"] = np.maximum(
+        portfolio["stress_score"],
+        (
+            portfolio["macro_stress_score"]
+            + portfolio["market_stress_score"]
+            + portfolio["sentiment_stress_score"]
+        ) / 3
+    )
+
     portfolio["previous_pulse_score"] = (
 
         portfolio["risk_migration_score"]
 
+    )
+
+    _section("Live Intelligence Overlay", "MACRO · MARKET · NEWS", live=True)
+
+    _insight(
+        "Risk Pulse blends historical portfolio deterioration with live macroeconomic, "
+        "market, and news sentiment intelligence. Cached source refresh prevents dashboard "
+        "failure when external APIs are unavailable.",
+        kind="signal",
+        eyebrow="Live Intelligence · Enterprise Overlay"
+    )
+
+    lp1, lp2, lp3, lp4 = st.columns(4)
+
+    lp1.metric(
+        "Enterprise Live Risk",
+        f"{live_summary.get('enterprise_live_risk_score', 0):.2f}"
+    )
+
+    lp2.metric(
+        "Macro Stress",
+        f"{live_summary.get('macro_stress_score', 0):.2f}"
+    )
+
+    lp3.metric(
+        "Market Risk",
+        f"{live_summary.get('market_stress_score', 0):.2f}"
+    )
+
+    lp4.metric(
+        "News Regime",
+        news_intelligence.get(
+            "risk_sentiment_regime",
+            "UNAVAILABLE"
+        )
     )
 
     # =========================================================================
@@ -761,7 +834,8 @@ def render(shared_data=None):
 
     pulse_results = (
         cached_run_risk_pulse_engine(
-            portfolio
+            portfolio,
+            live_context=live_context
         )
     )
 
@@ -855,13 +929,54 @@ def render(shared_data=None):
 
     ])
 
+    live_macro_row = pd.DataFrame([
+        {
+            "period": "LIVE-CURRENT",
+            "gdp_stress": -(
+                live_summary.get(
+                    "macro_stress_score",
+                    0
+                ) / 10
+            ),
+            "inflation_stress": macro_intelligence.get(
+                "inflation_rate",
+                0
+            ) or 0,
+            "unemployment_stress": macro_intelligence.get(
+                "unemployment_rate",
+                0
+            ) or 0,
+            "market_volatility": market_intelligence.get(
+                "volatility_score",
+                0
+            ),
+            "previous_regime_score": live_summary.get(
+                "enterprise_live_risk_score",
+                0
+            ),
+            "credit_stress_score": live_summary.get(
+                "enterprise_live_risk_score",
+                0
+            ),
+        }
+    ])
+
+    macro_df = pd.concat(
+        [
+            macro_df,
+            live_macro_row
+        ],
+        ignore_index=True
+    )
+
     # =========================================================================
     # REGIME DETECTOR
     # =========================================================================
 
     regime_results = (
         cached_run_regime_detector(
-            macro_df
+            macro_df,
+            live_context=live_context
         )
     )
 
@@ -908,7 +1023,8 @@ def render(shared_data=None):
 
     alert_results = (
         cached_run_live_alert_engine(
-            alert_input
+            alert_input,
+            live_context=live_context
         )
     )
 

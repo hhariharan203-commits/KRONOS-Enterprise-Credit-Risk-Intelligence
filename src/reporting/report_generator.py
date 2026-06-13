@@ -26,6 +26,8 @@ from src.ews.ews_engine import run_ews_engine
 from src.provisioning.ecl_calculator import run_ecl_pipeline
 from src.stress_testing.stress_engine import run_stress_pipeline
 from src.shared.utils import normalize_ifrs_stage, normalize_ifrs_stage_series
+from src.live_monitoring.live_intelligence import get_live_intelligence
+from src.live_monitoring.risk_pulse import run_risk_pulse_engine
 
 # =============================================================================
 # ENGINE-DERIVED REPORTING CONTEXT
@@ -128,7 +130,8 @@ def _derive_ews_scores(
 
 
 def prepare_engine_derived_reporting_data(
-    portfolio_df
+    portfolio_df,
+    live_context=None
 ):
     """
     Enrich report inputs from core engines when dashboard proxies are absent.
@@ -143,6 +146,18 @@ def prepare_engine_derived_reporting_data(
         "engine_errors": {},
         "engine_summaries": {},
     }
+
+    if live_context is None:
+        live_context = get_live_intelligence(
+            allow_api_refresh=False
+        )
+
+    context["live_intelligence"] = live_context
+
+    live_summary = live_context.get(
+        "summary",
+        {}
+    )
 
     portfolio_df = _derive_ews_scores(
         portfolio_df,
@@ -264,6 +279,7 @@ def prepare_engine_derived_reporting_data(
             "decision",
             run_decision_engine,
             portfolio_df,
+            live_context=live_context,
         )
 
         if decision_result:
@@ -304,6 +320,67 @@ def prepare_engine_derived_reporting_data(
             "early_warning_score",
             pd.Series([0] * len(portfolio_df))
         )
+
+    portfolio_df["macro_stress_score"] = live_summary.get(
+        "macro_stress_score",
+        0
+    )
+
+    portfolio_df["market_stress_score"] = live_summary.get(
+        "market_stress_score",
+        0
+    )
+
+    portfolio_df["sentiment_score"] = live_summary.get(
+        "sentiment_score",
+        50
+    )
+
+    portfolio_df["sentiment_stress_score"] = live_summary.get(
+        "sentiment_stress_score",
+        0
+    )
+
+    portfolio_df["enterprise_live_risk_score"] = live_summary.get(
+        "enterprise_live_risk_score",
+        0
+    )
+
+    if (
+        "live_risk_pulse_score" not in portfolio_df.columns
+        and _has_columns(
+            portfolio_df,
+            [
+                "borrower_id",
+                "pd_score",
+            ]
+        )
+    ):
+        pulse_result = _run_engine(
+            context,
+            "risk_pulse",
+            run_risk_pulse_engine,
+            portfolio_df,
+            live_context=live_context,
+        )
+
+        if pulse_result:
+            context["engine_summaries"]["risk_pulse"] = pulse_result[
+                "summary"
+            ]
+            pulse_results = pulse_result["risk_pulse_results"][
+                [
+                    "borrower_id",
+                    "live_risk_pulse_score",
+                    "portfolio_health_score",
+                    "executive_risk_regime",
+                ]
+            ]
+            portfolio_df = portfolio_df.merge(
+                pulse_results,
+                on="borrower_id",
+                how="left",
+            )
 
     if "live_risk_pulse_score" not in portfolio_df.columns:
         portfolio_df["live_risk_pulse_score"] = (
@@ -435,6 +512,50 @@ def aggregate_executive_metrics(
                 len(
                     portfolio_df
                 )
+            ),
+
+        "average_macro_stress_score":
+            round(
+                float(
+                    portfolio_df.get(
+                        "macro_stress_score",
+                        pd.Series([0] * len(portfolio_df))
+                    ).mean()
+                ),
+                2
+            ),
+
+        "average_market_stress_score":
+            round(
+                float(
+                    portfolio_df.get(
+                        "market_stress_score",
+                        pd.Series([0] * len(portfolio_df))
+                    ).mean()
+                ),
+                2
+            ),
+
+        "average_sentiment_score":
+            round(
+                float(
+                    portfolio_df.get(
+                        "sentiment_score",
+                        pd.Series([50] * len(portfolio_df))
+                    ).mean()
+                ),
+                2
+            ),
+
+        "average_enterprise_live_risk":
+            round(
+                float(
+                    portfolio_df.get(
+                        "enterprise_live_risk_score",
+                        pd.Series([0] * len(portfolio_df))
+                    ).mean()
+                ),
+                2
             ),
     }
 
@@ -971,6 +1092,32 @@ def build_enterprise_sections(
             top_exposure_summary(
                 portfolio_df
             ),
+
+        "live_intelligence_summary": {
+            "average_macro_stress_score":
+                metrics.get(
+                    "average_macro_stress_score",
+                    0
+                ),
+
+            "average_market_stress_score":
+                metrics.get(
+                    "average_market_stress_score",
+                    0
+                ),
+
+            "average_sentiment_score":
+                metrics.get(
+                    "average_sentiment_score",
+                    50
+                ),
+
+            "average_enterprise_live_risk":
+                metrics.get(
+                    "average_enterprise_live_risk",
+                    0
+                ),
+        },
     }
 
     sections["executive_narrative_section"] = (
@@ -987,7 +1134,8 @@ def build_enterprise_sections(
 
 def generate_institutional_report(
     portfolio_df,
-    output_filename="kronos_enterprise_report.pdf"
+    output_filename="kronos_enterprise_report.pdf",
+    live_context=None
 ):
     """
     Master executive reporting orchestration workflow.
@@ -998,7 +1146,8 @@ def generate_institutional_report(
     print("=" * 80)
 
     portfolio_df, engine_context = prepare_engine_derived_reporting_data(
-        portfolio_df
+        portfolio_df,
+        live_context=live_context
     )
 
     # -------------------------------------------------------------------------
@@ -1096,6 +1245,26 @@ def generate_institutional_report(
         "risk_pulse":
             metrics[
                 "average_risk_pulse"
+            ],
+
+        "enterprise_live_risk_score":
+            metrics[
+                "average_enterprise_live_risk"
+            ],
+
+        "macro_stress_score":
+            metrics[
+                "average_macro_stress_score"
+            ],
+
+        "market_stress_score":
+            metrics[
+                "average_market_stress_score"
+            ],
+
+        "sentiment_score":
+            metrics[
+                "average_sentiment_score"
             ],
 
         "critical_entities":

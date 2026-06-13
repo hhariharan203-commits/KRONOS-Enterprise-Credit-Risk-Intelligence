@@ -20,6 +20,68 @@ REGIME_THRESHOLDS = {
 }
 
 # =============================================================================
+# LIVE INTELLIGENCE CONTEXT
+# =============================================================================
+
+def _live_summary(
+    live_context
+):
+    if not live_context:
+        return {}
+
+    return live_context.get(
+        "summary",
+        {}
+    )
+
+
+def _live_score(
+    live_context,
+    key,
+    default=0
+):
+    summary = _live_summary(
+        live_context
+    )
+
+    return float(
+        summary.get(
+            key,
+            default
+        ) or default
+    )
+
+
+def executive_cycle_regime(
+    regime_score
+):
+    """
+    Classify the enterprise credit cycle regime.
+    """
+
+    if regime_score < 15:
+
+        return "EXPANSION"
+
+    elif regime_score < 35:
+
+        return "NORMAL"
+
+    elif regime_score < 55:
+
+        return "SLOWDOWN"
+
+    elif regime_score < 75:
+
+        return "RISK-OFF"
+
+    elif regime_score < 90:
+
+        return "STRESS"
+
+    return "CRISIS"
+
+# =============================================================================
 # REGIME SCORE
 # =============================================================================
 
@@ -311,7 +373,8 @@ def regime_timestamp():
 # =============================================================================
 
 def run_regime_detector(
-    macro_df
+    macro_df,
+    live_context=None
 ):
     """
     Run enterprise macro-regime intelligence workflow.
@@ -322,6 +385,26 @@ def run_regime_detector(
     print("=" * 80)
 
     macro_df = macro_df.copy()
+
+    live_macro_score = _live_score(
+        live_context,
+        "macro_stress_score"
+    )
+
+    live_market_score = _live_score(
+        live_context,
+        "market_stress_score"
+    )
+
+    live_sentiment_stress = _live_score(
+        live_context,
+        "sentiment_stress_score"
+    )
+
+    live_enterprise_score = _live_score(
+        live_context,
+        "enterprise_live_risk_score"
+    )
 
     regime_results = []
 
@@ -362,14 +445,47 @@ def run_regime_detector(
         # REGIME SCORE
         # ---------------------------------------------------------------------
 
-        regime_score = macro_regime_score(
+        base_regime_score = macro_regime_score(
             gdp_stress,
             inflation_stress,
             unemployment_stress,
             market_volatility
         )
 
+        credit_conditions_score = float(
+            row.get(
+                "credit_stress_score",
+                row.get(
+                    "enterprise_risk_score",
+                    live_enterprise_score
+                )
+            )
+            or 0
+        )
+
+        if live_context:
+
+            regime_score = min(
+                round(
+                    base_regime_score * 0.40
+                    + live_macro_score * 0.25
+                    + live_market_score * 0.15
+                    + live_sentiment_stress * 0.10
+                    + credit_conditions_score * 0.10,
+                    2
+                ),
+                100
+            )
+
+        else:
+
+            regime_score = base_regime_score
+
         regime = regime_classification(
+            regime_score
+        )
+
+        executive_regime = executive_cycle_regime(
             regime_score
         )
 
@@ -419,8 +535,26 @@ def run_regime_detector(
             "macro_regime_score":
                 regime_score,
 
+            "base_macro_regime_score":
+                base_regime_score,
+
+            "macro_conditions_score":
+                live_macro_score,
+
+            "market_conditions_score":
+                live_market_score,
+
+            "sentiment_conditions_score":
+                live_sentiment_stress,
+
+            "credit_conditions_score":
+                credit_conditions_score,
+
             "regime_classification":
                 regime,
+
+            "executive_cycle_regime":
+                executive_regime,
 
             "regime_transition":
                 transition,
@@ -558,6 +692,17 @@ def run_regime_detector(
                     ].mean()
                 ),
                 2
+            ),
+
+        "dominant_executive_cycle_regime":
+            (
+                regime_df[
+                    "executive_cycle_regime"
+                ]
+                .mode()
+                .iloc[0]
+                if not regime_df.empty
+                else "UNAVAILABLE"
             ),
     }
 

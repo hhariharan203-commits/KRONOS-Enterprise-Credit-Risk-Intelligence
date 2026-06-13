@@ -21,6 +21,38 @@ DECISION_THRESHOLDS = {
 }
 
 # =============================================================================
+# LIVE INTELLIGENCE CONTEXT
+# =============================================================================
+
+def _live_summary(
+    live_context
+):
+    if not live_context:
+        return {}
+
+    return live_context.get(
+        "summary",
+        {}
+    )
+
+
+def _live_score(
+    live_context,
+    key,
+    default=0
+):
+    summary = _live_summary(
+        live_context
+    )
+
+    return float(
+        summary.get(
+            key,
+            default
+        ) or default
+    )
+
+# =============================================================================
 # AGGREGATED RISK SCORE
 # =============================================================================
 
@@ -257,7 +289,8 @@ def decision_rationale(
     reserve_pressure_score,
     risk_score,
     policy_status,
-    decision
+    decision,
+    live_context_scores=None
 ):
     """
     Build an audit-friendly explanation without changing decision logic.
@@ -278,6 +311,9 @@ def decision_rationale(
                 "systemic_risk_score": round(float(systemic_risk_score), 2),
                 "reserve_pressure_score": round(float(reserve_pressure_score), 2),
             },
+
+        "live_intelligence_inputs":
+            live_context_scores or {},
 
         "weighting_model":
             {
@@ -373,7 +409,8 @@ def build_decision_audit_record(
 # =============================================================================
 
 def run_decision_engine(
-    portfolio_df
+    portfolio_df,
+    live_context=None
 ):
     """
     Run enterprise AI decision intelligence workflow.
@@ -384,6 +421,33 @@ def run_decision_engine(
     print("=" * 80)
 
     portfolio_df = portfolio_df.copy()
+
+    live_macro_score = _live_score(
+        live_context,
+        "macro_stress_score"
+    )
+
+    live_market_score = _live_score(
+        live_context,
+        "market_stress_score"
+    )
+
+    live_sentiment_stress = _live_score(
+        live_context,
+        "sentiment_stress_score"
+    )
+
+    live_enterprise_score = _live_score(
+        live_context,
+        "enterprise_live_risk_score"
+    )
+
+    live_context_scores = {
+        "macro_stress_score": round(live_macro_score, 2),
+        "market_stress_score": round(live_market_score, 2),
+        "sentiment_stress_score": round(live_sentiment_stress, 2),
+        "enterprise_live_risk_score": round(live_enterprise_score, 2),
+    } if live_context else {}
 
     decision_results = []
 
@@ -411,6 +475,25 @@ def run_decision_engine(
             "reserve_pressure_score",
             20
         )
+
+        if live_context:
+
+            systemic_risk_score = max(
+                systemic_risk_score,
+                (
+                    live_macro_score
+                    + live_market_score
+                    + live_enterprise_score
+                ) / 3
+            )
+
+            reserve_pressure_score = max(
+                reserve_pressure_score,
+                (
+                    live_sentiment_stress
+                    + live_macro_score
+                ) / 2
+            )
 
         # ---------------------------------------------------------------------
         # AGGREGATED RISK
@@ -482,7 +565,8 @@ def run_decision_engine(
             reserve_pressure_score,
             risk_score,
             policy_status,
-            decision
+            decision,
+            live_context_scores
         )
 
         recommendation_trace = recommendation_traceability(
@@ -511,6 +595,18 @@ def run_decision_engine(
 
             "aggregated_risk_score":
                 risk_score,
+
+            "macro_stress_score":
+                live_macro_score,
+
+            "market_stress_score":
+                live_market_score,
+
+            "sentiment_stress_score":
+                live_sentiment_stress,
+
+            "enterprise_live_risk_score":
+                live_enterprise_score,
 
             "underwriting_decision":
                 decision,

@@ -20,6 +20,68 @@ RISK_PULSE_THRESHOLDS = {
 }
 
 # =============================================================================
+# LIVE INTELLIGENCE CONTEXT
+# =============================================================================
+
+def _live_summary(
+    live_context
+):
+    if not live_context:
+        return {}
+
+    return live_context.get(
+        "summary",
+        {}
+    )
+
+
+def _live_score(
+    live_context,
+    key,
+    default=0
+):
+    summary = _live_summary(
+        live_context
+    )
+
+    return float(
+        summary.get(
+            key,
+            default
+        ) or default
+    )
+
+
+def executive_risk_regime(
+    pulse_score
+):
+    """
+    Classify enterprise live-risk regime.
+    """
+
+    if pulse_score < 15:
+
+        return "EXPANSION"
+
+    elif pulse_score < 35:
+
+        return "NORMAL"
+
+    elif pulse_score < 55:
+
+        return "SLOWDOWN"
+
+    elif pulse_score < 75:
+
+        return "RISK-OFF"
+
+    elif pulse_score < 90:
+
+        return "STRESS"
+
+    return "CRISIS"
+
+# =============================================================================
 # LIVE PORTFOLIO RISK SCORE
 # =============================================================================
 
@@ -27,20 +89,43 @@ def live_portfolio_risk_score(
     pd_score,
     systemic_risk_score,
     stress_score,
-    reserve_pressure
+    reserve_pressure,
+    macro_stress_score=None,
+    market_stress_score=None,
+    sentiment_stress_score=None
 ):
     """
     Aggregate real-time enterprise risk signals.
     """
 
-    pulse_score = (
+    if (
+        macro_stress_score is None
+        and market_stress_score is None
+        and sentiment_stress_score is None
+    ):
 
-        (pd_score * 100 * 0.35)
-        + (systemic_risk_score * 0.25)
-        + (stress_score * 0.25)
-        + (reserve_pressure * 0.15)
+        pulse_score = (
 
-    )
+            (pd_score * 100 * 0.35)
+            + (systemic_risk_score * 0.25)
+            + (stress_score * 0.25)
+            + (reserve_pressure * 0.15)
+
+        )
+
+    else:
+
+        pulse_score = (
+
+            (pd_score * 100 * 0.28)
+            + (systemic_risk_score * 0.18)
+            + (stress_score * 0.18)
+            + (reserve_pressure * 0.12)
+            + ((macro_stress_score or 0) * 0.10)
+            + ((market_stress_score or 0) * 0.07)
+            + ((sentiment_stress_score or 0) * 0.07)
+
+        )
 
     return min(
         round(pulse_score, 2),
@@ -245,7 +330,8 @@ def current_timestamp():
 # =============================================================================
 
 def run_risk_pulse_engine(
-    portfolio_df
+    portfolio_df,
+    live_context=None
 ):
     """
     Run enterprise live-risk pulse workflow.
@@ -256,6 +342,27 @@ def run_risk_pulse_engine(
     print("=" * 80)
 
     portfolio_df = portfolio_df.copy()
+
+    macro_stress_score = _live_score(
+        live_context,
+        "macro_stress_score"
+    )
+
+    market_stress_score = _live_score(
+        live_context,
+        "market_stress_score"
+    )
+
+    sentiment_stress_score = _live_score(
+        live_context,
+        "sentiment_stress_score"
+    )
+
+    sentiment_score = _live_score(
+        live_context,
+        "sentiment_score",
+        50
+    )
 
     pulse_results = []
 
@@ -297,7 +404,10 @@ def run_risk_pulse_engine(
             pd_score,
             systemic_risk_score,
             stress_score,
-            reserve_pressure
+            reserve_pressure,
+            macro_stress_score if live_context else None,
+            market_stress_score if live_context else None,
+            sentiment_stress_score if live_context else None
         )
 
         deterioration = systemic_deterioration_signal(
@@ -326,6 +436,10 @@ def run_risk_pulse_engine(
             pulse_score
         )
 
+        regime = executive_risk_regime(
+            pulse_score
+        )
+
         narrative = generate_risk_pulse_narrative(
             borrower_id,
             health_status,
@@ -341,6 +455,36 @@ def run_risk_pulse_engine(
 
             "live_risk_pulse_score":
                 pulse_score,
+
+            "credit_stress_score":
+                round(
+                    float(stress_score),
+                    2
+                ),
+
+            "macro_stress_score":
+                round(
+                    macro_stress_score,
+                    2
+                ),
+
+            "market_stress_score":
+                round(
+                    market_stress_score,
+                    2
+                ),
+
+            "sentiment_score":
+                round(
+                    sentiment_score,
+                    2
+                ),
+
+            "sentiment_stress_score":
+                round(
+                    sentiment_stress_score,
+                    2
+                ),
 
             "systemic_risk_score":
                 systemic_risk_score,
@@ -362,6 +506,12 @@ def run_risk_pulse_engine(
 
             "enterprise_resilience":
                 resilience,
+
+            "portfolio_health_score":
+                resilience,
+
+            "executive_risk_regime":
+                regime,
 
             "monitoring_timestamp":
                 timestamp,
@@ -457,6 +607,47 @@ def run_risk_pulse_engine(
                     ].min()
                 ),
                 2
+            ),
+
+        "average_macro_stress_score":
+            round(
+                float(
+                    pulse_df[
+                        "macro_stress_score"
+                    ].mean()
+                ),
+                2
+            ),
+
+        "average_market_stress_score":
+            round(
+                float(
+                    pulse_df[
+                        "market_stress_score"
+                    ].mean()
+                ),
+                2
+            ),
+
+        "average_sentiment_score":
+            round(
+                float(
+                    pulse_df[
+                        "sentiment_score"
+                    ].mean()
+                ),
+                2
+            ),
+
+        "dominant_executive_regime":
+            (
+                pulse_df[
+                    "executive_risk_regime"
+                ]
+                .mode()
+                .iloc[0]
+                if not pulse_df.empty
+                else "UNAVAILABLE"
             ),
     }
 

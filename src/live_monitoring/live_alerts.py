@@ -20,6 +20,113 @@ ALERT_THRESHOLDS = {
 }
 
 # =============================================================================
+# LIVE INTELLIGENCE CONTEXT
+# =============================================================================
+
+def _live_summary(
+    live_context
+):
+    if not live_context:
+        return {}
+
+    return live_context.get(
+        "summary",
+        {}
+    )
+
+
+def _live_score(
+    live_context,
+    key,
+    default=0
+):
+    summary = _live_summary(
+        live_context
+    )
+
+    return float(
+        summary.get(
+            key,
+            default
+        ) or default
+    )
+
+
+def _macro_intelligence(
+    live_context
+):
+    if not live_context:
+        return {}
+
+    return live_context.get(
+        "macro_intelligence",
+        {}
+    )
+
+
+def executive_alert_level(
+    alert_score
+):
+    """
+    Convert a combined alert score into an executive level.
+    """
+
+    if alert_score < 25:
+
+        return "INFORMATION"
+
+    elif alert_score < 50:
+
+        return "WARNING"
+
+    elif alert_score < 75:
+
+        return "HIGH RISK"
+
+    elif alert_score < 90:
+
+        return "CRITICAL"
+
+    return "EXECUTIVE ACTION REQUIRED"
+
+
+def condition_alert(
+    condition_score,
+    label
+):
+    """
+    Generate a live external condition alert.
+    """
+
+    level = executive_alert_level(
+        condition_score
+    )
+
+    return f"{label.upper()} {level}"
+
+
+def yield_curve_alert(
+    yield_curve_spread
+):
+    """
+    Generate a yield-curve signal.
+    """
+
+    if yield_curve_spread is None:
+
+        return "YIELD CURVE UNAVAILABLE"
+
+    if yield_curve_spread < 0:
+
+        return "YIELD CURVE INVERSION WARNING"
+
+    if yield_curve_spread < 0.5:
+
+        return "YIELD CURVE FLATTENING"
+
+    return "YIELD CURVE NORMAL"
+
+# =============================================================================
 # ALERT PRIORITY
 # =============================================================================
 
@@ -291,7 +398,8 @@ def generate_alert_narrative(
 # =============================================================================
 
 def run_live_alert_engine(
-    portfolio_df
+    portfolio_df,
+    live_context=None
 ):
     """
     Run enterprise real-time alert workflow.
@@ -302,6 +410,32 @@ def run_live_alert_engine(
     print("=" * 80)
 
     portfolio_df = portfolio_df.copy()
+
+    live_macro_score = _live_score(
+        live_context,
+        "macro_stress_score"
+    )
+
+    live_market_score = _live_score(
+        live_context,
+        "market_stress_score"
+    )
+
+    live_sentiment_stress = _live_score(
+        live_context,
+        "sentiment_stress_score"
+    )
+
+    live_enterprise_score = _live_score(
+        live_context,
+        "enterprise_live_risk_score"
+    )
+
+    yield_curve_spread = _macro_intelligence(
+        live_context
+    ).get(
+        "yield_curve_spread"
+    )
 
     alert_results = []
 
@@ -337,6 +471,15 @@ def run_live_alert_engine(
             "stress_score",
             25
         )
+
+        if live_context:
+
+            stress_score = max(
+                stress_score,
+                live_macro_score,
+                live_market_score,
+                live_sentiment_stress
+            )
 
         # ---------------------------------------------------------------------
         # ALERT GENERATION
@@ -374,6 +517,32 @@ def run_live_alert_engine(
             stress_score
         )
 
+        combined_alert_score = max(
+            risk_pulse,
+            systemic_risk,
+            stress_score,
+            live_enterprise_score if live_context else 0
+        )
+
+        macro_alert = condition_alert(
+            live_macro_score,
+            "Macro"
+        )
+
+        market_alert = condition_alert(
+            live_market_score,
+            "Market"
+        )
+
+        news_alert = condition_alert(
+            live_sentiment_stress,
+            "News Sentiment"
+        )
+
+        curve_alert = yield_curve_alert(
+            yield_curve_spread
+        )
+
         confidence = alert_confidence(
             risk_pulse,
             systemic_risk
@@ -406,6 +575,23 @@ def run_live_alert_engine(
 
             "stress_alert":
                 stress_alert,
+
+            "macro_deterioration_alert":
+                macro_alert,
+
+            "market_stress_alert":
+                market_alert,
+
+            "negative_news_sentiment_alert":
+                news_alert,
+
+            "yield_curve_alert":
+                curve_alert,
+
+            "executive_alert_level":
+                executive_alert_level(
+                    combined_alert_score
+                ),
 
             "executive_escalation":
                 escalation,
@@ -511,6 +697,28 @@ def run_live_alert_engine(
                     ]
                     == "CRITICAL SYSTEMIC ALERT"
                 ).sum()
+            ),
+
+        "executive_action_required_alerts":
+            int(
+                (
+                    alert_df[
+                        "executive_alert_level"
+                    ]
+                    == "EXECUTIVE ACTION REQUIRED"
+                ).sum()
+            ),
+
+        "average_live_macro_stress":
+            round(
+                float(live_macro_score),
+                2
+            ),
+
+        "average_live_market_stress":
+            round(
+                float(live_market_score),
+                2
             ),
     }
 

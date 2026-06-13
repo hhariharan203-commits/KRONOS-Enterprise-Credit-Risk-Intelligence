@@ -31,6 +31,7 @@ from src.reporting.report_generator import (
     generate_institutional_report,
     prepare_engine_derived_reporting_data,
 )
+from src.live_monitoring.live_intelligence import get_live_intelligence
 
 # =============================================================================
 # KRONOS GLOBAL DESIGN SYSTEM — INJECTED CSS
@@ -644,18 +645,28 @@ def render(shared_data=None):
     # The report generator enriches missing reporting metrics
     # directly from KRONOS engines.
 
+    live_context = get_live_intelligence(
+        allow_api_refresh=True
+    )
+    live_summary = live_context.get("summary", {})
+    macro_intelligence = live_context.get("macro_intelligence", {})
+    news_intelligence = live_context.get("news_intelligence", {})
+    market_intelligence = live_context.get("market_intelligence", {})
+
     # ==========================================================
     # REPORT GENERATION
     # ==========================================================
 
     report_package = (
         generate_institutional_report(
-            portfolio
+            portfolio,
+            live_context=live_context
         )
     )
 
     portfolio, _ = prepare_engine_derived_reporting_data(
-        portfolio
+        portfolio,
+        live_context=live_context
     )
 
     executive_summary = (
@@ -748,6 +759,53 @@ def render(shared_data=None):
         executive_summary[
             "risk_pulse"
         ]
+    )
+
+    # ==========================================================
+    # LIVE INTELLIGENCE REPORTING
+    # ==========================================================
+
+    st.divider()
+
+    _section("Live Intelligence Reporting", "MACRO · MARKET · NEWS")
+
+    _insight(
+        "Live intelligence context is embedded into the report package and board dashboard. "
+        "Macroeconomic, market, and news signals provide the external-risk lens for the "
+        "current reporting cycle while preserving the historical portfolio analytics base.",
+        kind="gold",
+        eyebrow="Report Generator · Live Intelligence"
+    )
+
+    li1, li2, li3, li4 = st.columns(4)
+
+    li1.metric(
+        "Enterprise Live Risk",
+        f"{live_summary.get('enterprise_live_risk_score', 0):.2f}"
+    )
+
+    li2.metric(
+        "Macro Regime",
+        macro_intelligence.get(
+            "macro_regime",
+            "UNAVAILABLE"
+        )
+    )
+
+    li3.metric(
+        "Market Regime",
+        market_intelligence.get(
+            "market_regime",
+            "UNAVAILABLE"
+        )
+    )
+
+    li4.metric(
+        "News Regime",
+        news_intelligence.get(
+            "risk_sentiment_regime",
+            "UNAVAILABLE"
+        )
     )
 
     # ==========================================================

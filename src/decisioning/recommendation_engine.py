@@ -7,6 +7,38 @@ import pandas as pd
 import numpy as np
 
 # =============================================================================
+# LIVE INTELLIGENCE CONTEXT
+# =============================================================================
+
+def _live_summary(
+    live_context
+):
+    if not live_context:
+        return {}
+
+    return live_context.get(
+        "summary",
+        {}
+    )
+
+
+def _live_score(
+    live_context,
+    key,
+    default=0
+):
+    summary = _live_summary(
+        live_context
+    )
+
+    return float(
+        summary.get(
+            key,
+            default
+        ) or default
+    )
+
+# =============================================================================
 # MITIGATION STRATEGIES
 # =============================================================================
 
@@ -294,7 +326,8 @@ def generate_recommendation_narrative(
 # =============================================================================
 
 def run_recommendation_engine(
-    portfolio_df
+    portfolio_df,
+    live_context=None
 ):
     """
     Run enterprise AI recommendation workflow.
@@ -305,6 +338,26 @@ def run_recommendation_engine(
     print("=" * 80)
 
     portfolio_df = portfolio_df.copy()
+
+    live_macro_score = _live_score(
+        live_context,
+        "macro_stress_score"
+    )
+
+    live_market_score = _live_score(
+        live_context,
+        "market_stress_score"
+    )
+
+    live_sentiment_stress = _live_score(
+        live_context,
+        "sentiment_stress_score"
+    )
+
+    live_enterprise_score = _live_score(
+        live_context,
+        "enterprise_live_risk_score"
+    )
 
     recommendation_results = []
 
@@ -320,6 +373,24 @@ def run_recommendation_engine(
             "aggregated_risk_score",
             35
         )
+
+        base_risk_score = risk_score
+
+        if live_context:
+
+            risk_score = min(
+                round(
+                    risk_score * 0.75
+                    + max(
+                        live_macro_score,
+                        live_market_score,
+                        live_sentiment_stress,
+                        live_enterprise_score
+                    ) * 0.25,
+                    2
+                ),
+                100
+            )
 
         systemic_risk_score = borrower.get(
             "systemic_risk_score",
@@ -390,6 +461,12 @@ def run_recommendation_engine(
             executive_guidance
         )
 
+        live_rationale = (
+            "Recommendation includes live macro, market, and news intelligence context."
+            if live_context
+            else "Recommendation based on portfolio and governance inputs."
+        )
+
         recommendation_results.append({
 
             "borrower_id":
@@ -397,6 +474,21 @@ def run_recommendation_engine(
 
             "mitigation_strategy":
                 mitigation,
+
+            "base_risk_score":
+                base_risk_score,
+
+            "contextual_risk_score":
+                risk_score,
+
+            "macro_stress_score":
+                live_macro_score,
+
+            "market_stress_score":
+                live_market_score,
+
+            "sentiment_stress_score":
+                live_sentiment_stress,
 
             "reserve_optimization":
                 reserve_guidance,
@@ -421,6 +513,9 @@ def run_recommendation_engine(
 
             "executive_narrative":
                 narrative,
+
+            "live_intelligence_rationale":
+                live_rationale,
         })
 
     recommendation_df = pd.DataFrame(
