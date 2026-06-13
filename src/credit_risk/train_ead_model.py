@@ -1,0 +1,454 @@
+# =============================================================================
+# KRONOS — EXPOSURE AT DEFAULT (EAD) MODEL TRAINING ENGINE
+# File: src/credit_risk/train_ead_model.py
+# =============================================================================
+
+import json
+import joblib
+import pandas as pd
+import numpy as np
+
+from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
+
+from sklearn.ensemble import VotingRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import (
+    mean_absolute_error,
+    mean_squared_error,
+    r2_score,
+)
+
+from sklearn.preprocessing import StandardScaler
+
+from src.shared.config import (
+    EAD_FEATURE_COLUMNS_FILE as EAD_FEATURE_FILE,
+    EAD_METRICS_FILE,
+    EAD_MODEL_FILE,
+    EAD_SCALER_FILE,
+    MERGED_CREDIT_DATA,
+    RANDOM_STATE,
+    TEST_SIZE,
+)
+
+# =============================================================================
+# LOAD DATASET
+# =============================================================================
+
+def load_master_dataset():
+    """
+    Load KRONOS merged dataset.
+    """
+
+    try:
+
+        df = pd.read_csv(MERGED_CREDIT_DATA)
+
+        print("\n" + "=" * 80)
+        print("[KRONOS] EAD DATASET LOADED")
+        print("=" * 80)
+
+        print(f"Shape: {df.shape}")
+
+        return df
+
+    except Exception as e:
+
+        print("[KRONOS ERROR] Failed loading dataset")
+        print(e)
+
+        return pd.DataFrame()
+
+# =============================================================================
+# SYNTHETIC EAD TARGET
+# =============================================================================
+
+def create_ead_target(df):
+    """
+    Create synthetic EAD target for modeling.
+    """
+
+    np.random.seed(RANDOM_STATE)
+
+    # Simulated credit facility limit
+    simulated_limit = np.random.uniform(
+        5000,
+        50000,
+        len(df)
+    )
+
+    # Utilization-driven exposure
+    utilization = (
+        df.get("credit_utilization", 0)
+        .fillna(0.5)
+    )
+
+    # Delinquency effect
+    delinquency_impact = (
+        df.get("total_delinquency", 0)
+        * 0.02
+    )
+
+    # Exposure multiplier
+    exposure_factor = (
+        utilization
+        + delinquency_impact
+    )
+
+    exposure_factor = np.clip(
+        exposure_factor,
+        0.10,
+        1.20
+    )
+
+    ead = simulated_limit * exposure_factor
+
+    # Add random noise
+    noise = np.random.normal(
+        0,
+        1000,
+        len(df)
+    )
+
+    ead = ead + noise
+
+    ead = np.clip(
+        ead,
+        1000,
+        None
+    )
+
+    df["ead_target"] = ead
+
+    print("[KRONOS] Synthetic EAD target created")
+
+    return df
+
+# =============================================================================
+# PREPARE TRAINING DATA
+# =============================================================================
+
+def prepare_training_data(df):
+    """
+    Prepare EAD training dataset.
+    """
+
+    print("\n[KRONOS] PREPARING EAD TRAINING DATA")
+
+    exclude_cols = [
+        "target_default",
+        "dataset_source",
+        "risk_segment",
+        "ead_target",
+    ]
+
+    feature_cols = [
+        col
+        for col in df.columns
+        if col not in exclude_cols
+    ]
+
+    X = df[feature_cols].copy()
+
+    y = df["ead_target"].copy()
+
+    # ---------------------------------------------------------
+    # Missing values
+    # ---------------------------------------------------------
+
+    X = X.fillna(0)
+
+    # ---------------------------------------------------------
+    # Encode categorical variables
+    # ---------------------------------------------------------
+
+    categorical_cols = X.select_dtypes(
+        include=["object", "string"]
+    ).columns
+
+    if len(categorical_cols) > 0:
+
+        X = pd.get_dummies(
+            X,
+            columns=categorical_cols,
+            drop_first=True
+        )
+
+    feature_cols = X.columns.tolist()
+
+    # ---------------------------------------------------------
+    # Scaling
+    # ---------------------------------------------------------
+
+    scaler = StandardScaler()
+
+    X_scaled = scaler.fit_transform(X)
+
+    print(f"[KRONOS] EAD Features: {len(feature_cols)}")
+
+    print(f"[KRONOS] Samples: {len(X)}")
+
+    return (
+        X_scaled,
+        y,
+        scaler,
+        feature_cols
+    )
+
+# =============================================================================
+# BUILD XGBOOST MODEL
+# =============================================================================
+
+def build_xgb_model():
+    """
+    Build XGBoost EAD model.
+    """
+
+    model = XGBRegressor(
+        n_estimators=300,
+        max_depth=6,
+        learning_rate=0.05,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        random_state=RANDOM_STATE,
+    )
+
+    return model
+
+# =============================================================================
+# BUILD LIGHTGBM MODEL
+# =============================================================================
+
+def build_lgbm_model():
+    """
+    Build LightGBM EAD model.
+    """
+
+    model = LGBMRegressor(
+        n_estimators=300,
+        max_depth=6,
+        learning_rate=0.05,
+        random_state=RANDOM_STATE,
+    )
+
+    return model
+
+# =============================================================================
+# BUILD ENSEMBLE MODEL
+# =============================================================================
+
+def build_ensemble_model():
+    """
+    Build enterprise EAD ensemble model.
+    """
+
+    xgb_model = build_xgb_model()
+
+    lgbm_model = build_lgbm_model()
+
+    ensemble = VotingRegressor(
+        estimators=[
+            ("xgb", xgb_model),
+            ("lgbm", lgbm_model),
+        ]
+    )
+
+    return ensemble
+
+# =============================================================================
+# TRAIN EAD MODEL
+# =============================================================================
+
+def train_ead_model():
+    """
+    Train enterprise EAD model.
+    """
+
+    df = load_master_dataset()
+
+    if df.empty:
+
+        return None
+
+    df = create_ead_target(df)
+
+    (
+        X,
+        y,
+        scaler,
+        feature_cols
+    ) = prepare_training_data(df)
+
+    (
+        X_train,
+        X_test,
+        y_train,
+        y_test
+    ) = train_test_split(
+        X,
+        y,
+        test_size=TEST_SIZE,
+        random_state=RANDOM_STATE,
+    )
+
+    print("\n" + "=" * 80)
+    print("[KRONOS] TRAINING EAD MODEL")
+    print("=" * 80)
+
+    model = build_ensemble_model()
+
+    model.fit(
+        X_train,
+        y_train
+    )
+
+    print("[KRONOS] EAD model training completed")
+
+    # -------------------------------------------------------------------------
+    # PREDICTIONS
+    # -------------------------------------------------------------------------
+
+    predictions = model.predict(
+        X_test
+    )
+
+    mae = mean_absolute_error(
+        y_test,
+        predictions
+    )
+
+    rmse = np.sqrt(
+        mean_squared_error(
+            y_test,
+            predictions
+        )
+    )
+
+    r2 = r2_score(
+        y_test,
+        predictions
+    )
+
+    metrics = {
+        "mae":
+            round(float(mae), 4),
+
+        "rmse":
+            round(float(rmse), 4),
+
+        "r2_score":
+            round(float(r2), 4),
+
+        "train_samples":
+            len(X_train),
+
+        "test_samples":
+            len(X_test),
+
+        "feature_count":
+            len(feature_cols),
+    }
+
+    print("\n[KRONOS] EAD MODEL PERFORMANCE")
+
+    for key, value in metrics.items():
+
+        print(f"{key}: {value}")
+
+    return (
+        model,
+        scaler,
+        feature_cols,
+        metrics
+    )
+
+# =============================================================================
+# SAVE MODEL ARTIFACTS
+# =============================================================================
+
+def save_artifacts(
+    model,
+    scaler,
+    feature_cols,
+    metrics
+):
+    """
+    Save EAD model artifacts.
+    """
+
+    # Save model
+    joblib.dump(
+        model,
+        EAD_MODEL_FILE
+    )
+
+    print(f"\n[KRONOS] EAD model saved:")
+    print(EAD_MODEL_FILE)
+
+    # Save scaler
+    joblib.dump(
+        scaler,
+        EAD_SCALER_FILE
+    )
+
+    print(f"\n[KRONOS] EAD scaler saved:")
+    print(EAD_SCALER_FILE)
+
+    # Save features
+    with open(
+        EAD_FEATURE_FILE,
+        "w"
+    ) as f:
+
+        json.dump(
+            feature_cols,
+            f
+        )
+
+    print(f"\n[KRONOS] EAD feature columns saved:")
+    print(EAD_FEATURE_FILE)
+
+    # Save metrics
+    with open(
+        EAD_METRICS_FILE,
+        "w"
+    ) as f:
+
+        json.dump(
+            metrics,
+            f,
+            indent=4
+        )
+
+    print(f"\n[KRONOS] EAD metrics saved:")
+    print(EAD_METRICS_FILE)
+
+# =============================================================================
+# MAIN EXECUTION
+# =============================================================================
+
+if __name__ == "__main__":
+
+    results = train_ead_model()
+
+    if results is not None:
+
+        (
+            model,
+            scaler,
+            feature_cols,
+            metrics
+        ) = results
+
+        save_artifacts(
+            model,
+            scaler,
+            feature_cols,
+            metrics
+        )
+
+        print("\n[KRONOS] EAD MODEL PIPELINE COMPLETED")
+
+# =============================================================================
+# END OF FILE
+# =============================================================================

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.pyc
+*.pyc.*
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+.env
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Logs
+logs/
+*.log
+
+# Pytest
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Outputs
+outputs/
+
+# Generated Reports
+reports/*.pdf
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build
+dist/
+build/
+
+# Model Cache
+*.tmp
+
+# Local Config
+.env.local
+
+# Local accidental executable shims
+python

@@ -1,0 +1,8 @@
+{
+    "mae": 0.0347,
+    "rmse": 0.0466,
+    "r2_score": 0.9662,
+    "train_samples": 40000,
+    "test_samples": 10000,
+    "feature_count": 62
+}
