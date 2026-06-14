@@ -186,6 +186,13 @@ def prepare_engine_derived_reporting_data(
                     "reserve_coverage_ratio",
                 ]
             ]
+            portfolio_df = portfolio_df.drop(
+                columns=[
+                    "reserve_concentration",
+                    "reserve_coverage_ratio",
+                ],
+                errors="ignore",
+            )
             portfolio_df = portfolio_df.merge(
                 reserve_results,
                 on="borrower_id",

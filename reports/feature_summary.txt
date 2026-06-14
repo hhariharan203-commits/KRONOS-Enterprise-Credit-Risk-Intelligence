@@ -1,1 +1,1 @@
-KRONOS credit risk model is primarily driven by macro signals, contributing 21.76% of total predictive importance.
+KRONOS credit risk model is primarily driven by macro signals, contributing 20.65% of total predictive importance.
