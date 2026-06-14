@@ -1,5 +1,5 @@
 
-KRONOS v1.0
+KRONOS
 
 Enterprise Credit Risk, IFRS9 & Portfolio Intelligence Platform
 
@@ -389,13 +389,13 @@ Author
 
 Hariharan B
 
-MBA – Finance & Business Analytics
+MBA – Finance
 
 Credit Risk Analytics | Financial Intelligence | Risk Technology
 
 ---
 
-KRONOS v1.0 Status
+KRONOS Status
 
 - Feature Complete
 - Portfolio Complete
