@@ -52,6 +52,29 @@ def _live_score(
     )
 
 
+def _finite_float(
+    value,
+    default=0
+):
+    try:
+        numeric_value = float(
+            value
+        )
+    except (TypeError, ValueError):
+        return float(
+            default
+        )
+
+    if not np.isfinite(
+        numeric_value
+    ):
+        return float(
+            default
+        )
+
+    return numeric_value
+
+
 def executive_cycle_regime(
     regime_score
 ):
@@ -416,28 +439,43 @@ def run_regime_detector(
 
         period = row["period"]
 
-        gdp_stress = row.get(
-            "gdp_stress",
+        gdp_stress = _finite_float(
+            row.get(
+                "gdp_stress",
+                -1.5
+            ),
             -1.5
         )
 
-        inflation_stress = row.get(
-            "inflation_stress",
+        inflation_stress = _finite_float(
+            row.get(
+                "inflation_stress",
+                2.5
+            ),
             2.5
         )
 
-        unemployment_stress = row.get(
-            "unemployment_stress",
+        unemployment_stress = _finite_float(
+            row.get(
+                "unemployment_stress",
+                3.0
+            ),
             3.0
         )
 
-        market_volatility = row.get(
-            "market_volatility",
+        market_volatility = _finite_float(
+            row.get(
+                "market_volatility",
+                25
+            ),
             25
         )
 
-        previous_regime_score = row.get(
-            "previous_regime_score",
+        previous_regime_score = _finite_float(
+            row.get(
+                "previous_regime_score",
+                35
+            ),
             35
         )
 
@@ -452,15 +490,15 @@ def run_regime_detector(
             market_volatility
         )
 
-        credit_conditions_score = float(
+        credit_conditions_score = _finite_float(
             row.get(
                 "credit_stress_score",
                 row.get(
                     "enterprise_risk_score",
                     live_enterprise_score
                 )
-            )
-            or 0
+            ),
+            live_enterprise_score
         )
 
         if live_context:

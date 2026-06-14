@@ -575,6 +575,12 @@ def render(shared_data=None):
         .str.contains("WARNING|HIGH RISK|CRITICAL|ACTION", regex=True)
         .sum()
     )
+    executive_alerts = int(
+        live_alert_df["executive_alert_level"]
+        .astype(str)
+        .str.contains("WARNING|HIGH RISK|CRITICAL|ACTION", regex=True)
+        .sum()
+    )
 
     # ── EXECUTIVE BANNER ────────────────────────────────────────────
     st.markdown(
@@ -664,8 +670,8 @@ def render(shared_data=None):
         f"{sentiment_alerts:,}"
     )
     live_cols[3].metric(
-        "Exec Action Alerts",
-        f"{live_alert_summary.get('executive_action_required_alerts', 0):,}"
+        "Executive Alerts",
+        f"{executive_alerts:,}"
     )
 
     st.dataframe(

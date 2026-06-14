@@ -65,6 +65,86 @@ def _run_engine(
         return None
 
 
+def _default_series(
+    portfolio_df,
+    default_value=0
+):
+    return pd.Series(
+        [default_value] * len(portfolio_df),
+        index=portfolio_df.index
+    )
+
+
+def _numeric_column(
+    portfolio_df,
+    column_name,
+    default_value=0
+):
+    if column_name in portfolio_df.columns:
+        return pd.to_numeric(
+            portfolio_df[column_name],
+            errors="coerce"
+        ).fillna(default_value)
+
+    return _default_series(
+        portfolio_df,
+        default_value
+    )
+
+
+def _select_engine_columns(
+    engine_df,
+    columns
+):
+    if not isinstance(engine_df, pd.DataFrame):
+        return None
+
+    available_columns = [
+        column
+        for column in columns
+        if column in engine_df.columns
+    ]
+
+    if "borrower_id" not in available_columns:
+        return None
+
+    return engine_df[
+        available_columns
+    ].copy()
+
+
+def _merge_engine_columns(
+    portfolio_df,
+    engine_df,
+    value_columns
+):
+    if "borrower_id" not in portfolio_df.columns:
+        return portfolio_df
+
+    selected = _select_engine_columns(
+        engine_df,
+        ["borrower_id"] + value_columns
+    )
+
+    portfolio_df = portfolio_df.drop(
+        columns=[
+            column
+            for column in value_columns
+            if column in portfolio_df.columns
+        ],
+        errors="ignore"
+    )
+
+    if selected is None:
+        return portfolio_df
+
+    return portfolio_df.merge(
+        selected,
+        on="borrower_id",
+        how="left",
+    )
+
+
 def _prepare_reporting_stages(
     portfolio_df
 ):
@@ -179,28 +259,24 @@ def prepare_engine_derived_reporting_data(
             context["engine_summaries"]["provisioning"] = ecl_result[
                 "summary"
             ]
-            reserve_results = ecl_result["portfolio_results"][
+            reserve_results = ecl_result.get(
+                "portfolio_results",
+                pd.DataFrame()
+            )
+            portfolio_df = _merge_engine_columns(
+                portfolio_df,
+                reserve_results,
                 [
-                    "borrower_id",
                     "reserve_concentration",
                     "reserve_coverage_ratio",
                 ]
-            ]
-            portfolio_df = portfolio_df.drop(
-                columns=[
-                    "reserve_concentration",
-                    "reserve_coverage_ratio",
-                ],
-                errors="ignore",
-            )
-            portfolio_df = portfolio_df.merge(
-                reserve_results,
-                on="borrower_id",
-                how="left",
             )
             portfolio_df["reserve_pressure_score"] = (
-                portfolio_df["reserve_concentration"]
-                .fillna(0)
+                _numeric_column(
+                    portfolio_df,
+                    "reserve_concentration",
+                    0
+                )
                 .clip(lower=0)
                 * 100
             )
@@ -221,21 +297,31 @@ def prepare_engine_derived_reporting_data(
             context["engine_summaries"]["stress_testing"] = stress_result[
                 "summary"
             ]
-            stress_results = stress_result["portfolio_results"][
+            stress_results = stress_result.get(
+                "portfolio_results",
+                pd.DataFrame()
+            )
+            portfolio_df = _merge_engine_columns(
+                portfolio_df,
+                stress_results,
                 [
-                    "borrower_id",
                     "loss_impact_pct",
                     "capital_pressure",
                 ]
-            ]
-            portfolio_df = portfolio_df.merge(
-                stress_results,
-                on="borrower_id",
-                how="left",
             )
             portfolio_df["stress_score"] = (
-                portfolio_df["loss_impact_pct"]
-                .fillna(0)
+                _numeric_column(
+                    portfolio_df,
+                    "loss_impact_pct",
+                    np.nan
+                )
+                .fillna(
+                    _numeric_column(
+                        portfolio_df,
+                        "early_warning_score",
+                        0
+                    )
+                )
                 .clip(lower=0, upper=100)
             )
 
@@ -250,21 +336,31 @@ def prepare_engine_derived_reporting_data(
             context["engine_summaries"]["contagion"] = contagion_result[
                 "summary"
             ]
-            contagion_results = contagion_result["contagion_results"][
+            contagion_results = contagion_result.get(
+                "contagion_results",
+                pd.DataFrame()
+            )
+            portfolio_df = _merge_engine_columns(
+                portfolio_df,
+                contagion_results,
                 [
-                    "borrower_id",
                     "systemic_impact_score",
                     "average_contagion_risk",
                 ]
-            ]
-            portfolio_df = portfolio_df.merge(
-                contagion_results,
-                on="borrower_id",
-                how="left",
             )
             portfolio_df["systemic_risk_score"] = (
-                portfolio_df["systemic_impact_score"]
-                .fillna(0)
+                _numeric_column(
+                    portfolio_df,
+                    "systemic_impact_score",
+                    np.nan
+                )
+                .fillna(
+                    _numeric_column(
+                        portfolio_df,
+                        "early_warning_score",
+                        0
+                    )
+                )
                 .clip(lower=0, upper=100)
             )
 
@@ -272,9 +368,10 @@ def prepare_engine_derived_reporting_data(
         portfolio_df["reserve_pressure_score"] = 20
 
     if "systemic_risk_score" not in portfolio_df.columns:
-        portfolio_df["systemic_risk_score"] = portfolio_df.get(
+        portfolio_df["systemic_risk_score"] = _numeric_column(
+            portfolio_df,
             "early_warning_score",
-            pd.Series([0] * len(portfolio_df))
+            0
         )
 
     if _has_columns(
@@ -293,39 +390,51 @@ def prepare_engine_derived_reporting_data(
             context["engine_summaries"]["decision"] = decision_result[
                 "summary"
             ]
-            decision_results = decision_result["decision_results"][
+            decision_results = decision_result.get(
+                "decision_results",
+                pd.DataFrame()
+            )
+            portfolio_df = _merge_engine_columns(
+                portfolio_df,
+                decision_results,
                 [
-                    "borrower_id",
                     "aggregated_risk_score",
                     "underwriting_decision",
                     "decision_confidence",
                 ]
-            ]
-            portfolio_df = portfolio_df.merge(
-                decision_results,
-                on="borrower_id",
-                how="left",
-                suffixes=("", "_engine"),
             )
             portfolio_df["enterprise_risk_score"] = (
-                portfolio_df["aggregated_risk_score"]
-                .fillna(0)
+                _numeric_column(
+                    portfolio_df,
+                    "aggregated_risk_score",
+                    np.nan
+                )
+                .fillna(
+                    _numeric_column(
+                        portfolio_df,
+                        "pd_score",
+                        0
+                    )
+                    * 100
+                )
                 .clip(lower=0, upper=100)
             )
 
     if "enterprise_risk_score" not in portfolio_df.columns:
         portfolio_df["enterprise_risk_score"] = (
-            portfolio_df.get(
+            _numeric_column(
+                portfolio_df,
                 "pd_score",
-                pd.Series([0] * len(portfolio_df))
+                0
             )
             * 100
         )
 
     if "stress_score" not in portfolio_df.columns:
-        portfolio_df["stress_score"] = portfolio_df.get(
+        portfolio_df["stress_score"] = _numeric_column(
+            portfolio_df,
             "early_warning_score",
-            pd.Series([0] * len(portfolio_df))
+            0
         )
 
     portfolio_df["macro_stress_score"] = live_summary.get(
@@ -375,18 +484,18 @@ def prepare_engine_derived_reporting_data(
             context["engine_summaries"]["risk_pulse"] = pulse_result[
                 "summary"
             ]
-            pulse_results = pulse_result["risk_pulse_results"][
+            pulse_results = pulse_result.get(
+                "risk_pulse_results",
+                pd.DataFrame()
+            )
+            portfolio_df = _merge_engine_columns(
+                portfolio_df,
+                pulse_results,
                 [
-                    "borrower_id",
                     "live_risk_pulse_score",
                     "portfolio_health_score",
                     "executive_risk_regime",
                 ]
-            ]
-            portfolio_df = portfolio_df.merge(
-                pulse_results,
-                on="borrower_id",
-                how="left",
             )
 
     if "live_risk_pulse_score" not in portfolio_df.columns:
@@ -405,10 +514,28 @@ def prepare_engine_derived_reporting_data(
         portfolio_df["capital_ratio"] = (
             12
             - (
-                portfolio_df["stress_score"].fillna(0).clip(0, 100)
+                _numeric_column(
+                    portfolio_df,
+                    "stress_score",
+                    0
+                ).clip(0, 100)
                 / 25
             )
         ).clip(lower=4, upper=14)
+
+    for numeric_column in [
+        "reserve_pressure_score",
+        "systemic_risk_score",
+        "enterprise_risk_score",
+        "stress_score",
+        "live_risk_pulse_score",
+        "capital_ratio",
+    ]:
+        portfolio_df[numeric_column] = _numeric_column(
+            portfolio_df,
+            numeric_column,
+            0
+        )
 
     return portfolio_df, context
 

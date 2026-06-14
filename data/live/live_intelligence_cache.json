@@ -16,16 +16,16 @@
     "macro_regime": "NORMAL"
   },
   "news_intelligence": {
-    "market_sentiment_score": 51.1,
-    "credit_sentiment_score": 38.84,
-    "economic_sentiment_score": 52.13,
-    "financial_stress_score": 61.16,
-    "sentiment_stress_score": 48.9,
+    "market_sentiment_score": 50.77,
+    "credit_sentiment_score": 55.7,
+    "economic_sentiment_score": 46.69,
+    "financial_stress_score": 53.31,
+    "sentiment_stress_score": 49.23,
     "risk_sentiment_regime": "NEUTRAL",
     "source_sentiment_regime": "NEUTRAL",
-    "bullish_headlines": 19,
-    "bearish_headlines": 13,
-    "neutral_headlines": 67
+    "bullish_headlines": 16,
+    "bearish_headlines": 8,
+    "neutral_headlines": 71
   },
   "market_intelligence": {
     "sp500_latest": 741.75,
@@ -37,63 +37,63 @@
     "bank_etf_5d_return": 4.4,
     "treasury_etf_5d_return": 0.83,
     "dollar_index_5d_return": -0.25,
-    "market_risk_score": 6.63,
-    "volatility_score": 44.2,
+    "market_risk_score": 7.29,
+    "volatility_score": 48.6,
     "liquidity_stress_score": 0,
     "market_regime": "EXPANSION"
   },
   "vix_intelligence": {
-    "latest_vix": 17.68,
-    "volatility_score": 44.2,
+    "latest_vix": 19.44,
+    "volatility_score": 48.6,
     "vix_regime": "MODERATE"
   },
   "summary": {
-    "enterprise_live_risk_score": 29.91,
+    "enterprise_live_risk_score": 28.8,
     "executive_risk_regime": "NORMAL",
     "macro_stress_score": 20,
-    "market_stress_score": 6.63,
-    "sentiment_score": 51.1,
-    "sentiment_stress_score": 61.16,
-    "volatility_score": 44.2,
+    "market_stress_score": 7.29,
+    "sentiment_score": 50.77,
+    "sentiment_stress_score": 53.31,
+    "volatility_score": 48.6,
     "liquidity_stress_score": 0,
     "portfolio_risk_context": "Live external conditions are supportive",
-    "generated_at": "2026-06-14 06:02:59 UTC"
+    "generated_at": "2026-06-14 08:30:45 UTC"
   },
   "source_freshness": {
     "fred": {
       "status": "CACHE_ONLY",
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\fred_market_data.csv",
-      "last_updated": "2026-06-14 04:26:57 UTC",
+      "last_updated": "2026-06-14 08:16:28 UTC",
       "refresh_minutes": 60,
-      "is_fresh": false
+      "is_fresh": true
     },
     "news": {
       "status": "CACHE_ONLY",
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\sentiment_data.csv",
-      "last_updated": "2026-06-14 04:27:06 UTC",
+      "last_updated": "2026-06-14 08:19:13 UTC",
       "refresh_minutes": 30,
-      "is_fresh": false
+      "is_fresh": true
     },
     "sentiment": {
       "status": "CACHE_ONLY",
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\sentiment_summary.csv",
-      "last_updated": "2026-06-14 04:27:06 UTC",
+      "last_updated": "2026-06-14 08:19:13 UTC",
       "refresh_minutes": 30,
-      "is_fresh": false
+      "is_fresh": true
     },
     "market": {
       "status": "CACHE_ONLY",
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\alpha_vantage_market_data.csv",
-      "last_updated": "2026-06-14 04:27:22 UTC",
+      "last_updated": "2026-06-14 08:14:35 UTC",
       "refresh_minutes": 15,
       "is_fresh": false
     },
     "vix": {
       "status": "CACHE_ONLY",
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\vix_data.csv",
-      "last_updated": "2026-06-14 06:00:28 UTC",
+      "last_updated": "2026-06-14 08:14:38 UTC",
       "refresh_minutes": 15,
-      "is_fresh": true
+      "is_fresh": false
     }
   }
 }
