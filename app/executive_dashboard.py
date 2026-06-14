@@ -25,7 +25,7 @@ def render(shared_data=None):
     feature_importance = shared_data.get("feature_importance", pd.DataFrame())
     category_importance = shared_data.get("category_importance", pd.DataFrame())
     live_context = get_live_intelligence(
-        allow_api_refresh=True
+        allow_api_refresh=False
     )
     macro_intelligence = live_context.get("macro_intelligence", {})
     news_intelligence = live_context.get("news_intelligence", {})
@@ -577,6 +577,85 @@ def render(shared_data=None):
     # ==================================================
     # LIVE INTELLIGENCE COMMAND LAYER
     # ==================================================
+
+    if st.button(
+        "🔄 Refresh Live Intelligence",
+        key="refresh_live_intelligence"
+    ):
+        try:
+            st.cache_data.clear()
+            st.cache_resource.clear()
+            refreshed_context = get_live_intelligence(
+                force_refresh=True,
+                allow_api_refresh=True
+            )
+            source_statuses = refreshed_context.get(
+                "source_freshness",
+                {}
+            )
+            failed_sources = [
+                source_name
+                for source_name in (
+                    "fred",
+                    "news",
+                    "market",
+                    "vix",
+                )
+                if str(
+                    source_statuses.get(
+                        source_name,
+                        {}
+                    ).get(
+                        "status",
+                        ""
+                    )
+                ).startswith("CACHE_FALLBACK")
+            ]
+
+            if failed_sources:
+                live_context = get_live_intelligence(
+                    allow_api_refresh=False
+                )
+                st.error("Refresh failed. Cached data retained.")
+            else:
+                live_context = refreshed_context
+                st.success("Live intelligence refreshed successfully.")
+
+            macro_intelligence = live_context.get("macro_intelligence", {})
+            news_intelligence = live_context.get("news_intelligence", {})
+            market_intelligence = live_context.get("market_intelligence", {})
+            vix_intelligence = live_context.get("vix_intelligence", {})
+            live_summary = live_context.get("summary", {})
+
+            market_sentiment = (
+                news_intelligence.get(
+                    "market_sentiment_score",
+                    sentiment["market_sentiment_score"].iloc[0]
+                    if not sentiment.empty
+                    else 0
+                )
+            )
+            stress_score = (
+                news_intelligence.get(
+                    "financial_stress_score",
+                    sentiment["stress_score"].iloc[0]
+                    if not sentiment.empty
+                    else 0
+                )
+            )
+            sentiment_regime = (
+                news_intelligence.get(
+                    "risk_sentiment_regime",
+                    sentiment["sentiment_regime"].iloc[0]
+                    if not sentiment.empty
+                    else "Unavailable"
+                )
+            )
+        except Exception:
+            live_context = get_live_intelligence(
+                allow_api_refresh=False
+            )
+            st.error("Refresh failed. Cached data retained.")
 
     st.markdown('<div class="kx-divider"></div>', unsafe_allow_html=True)
     st.markdown('<div class="kx-section">', unsafe_allow_html=True)

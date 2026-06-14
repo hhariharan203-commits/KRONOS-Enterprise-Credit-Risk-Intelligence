@@ -90,6 +90,19 @@ def _source_age_minutes(
     )
 
 
+def _format_source_age(
+    source
+):
+    age_minutes = _source_age_minutes(
+        source
+    )
+
+    if age_minutes is None:
+        return "UNAVAILABLE"
+
+    return f"{int(age_minutes)}m"
+
+
 def _source_currently_fresh(
     source
 ):
@@ -123,7 +136,7 @@ def _source_label(
             ""
         )
     )
-    is_fresh = _source_currently_fresh(
+    age_minutes = _source_age_minutes(
         source
     )
     has_artifact = (
@@ -135,40 +148,28 @@ def _source_label(
         }
     )
 
-    if (
-        status == "LIVE_REFRESHED"
-        and is_fresh
-        and (
-            _source_age_minutes(source) or 0
-        ) <= 1
-    ):
-        return "Connected"
-
-    if status == "LIVE_REFRESHED" and is_fresh:
-        return "Cached"
-
-    if status == "LIVE_REFRESHED" and has_artifact:
-        return "Stale"
-
-    if status in {
-        "CACHE_FRESH",
-        "CACHE_ONLY",
-    } and is_fresh:
-        return "Cached"
-
-    if status in {
-        "CACHE_FRESH",
-        "CACHE_ONLY",
-    } and has_artifact:
-        return "Stale"
-
     if status.startswith("CACHE_FALLBACK") and has_artifact:
         return "Fallback"
 
     if status.startswith("CACHE_FALLBACK"):
         return "Disconnected"
 
-    return "Disconnected"
+    if not has_artifact or age_minutes is None:
+        return "Disconnected"
+
+    age_label = _format_source_age(
+        source
+    )
+
+    if age_minutes <= 5:
+        return f"Fresh ({age_label} ago)"
+
+    if _source_currently_fresh(
+        source
+    ):
+        return f"Live Cached ({age_label} ago)"
+
+    return f"Stale ({age_label} ago)"
 
 
 def render_live_status_card(
@@ -218,6 +219,13 @@ def render_live_status_card(
         f"News: {_format_timestamp(news.get('last_updated'))} | "
         f"Market: {_format_timestamp(market.get('last_updated'))} | "
         f"VIX: {_format_timestamp(vix.get('last_updated'))}"
+    )
+    st.caption(
+        "Data Age | "
+        f"FRED: {_format_source_age(fred)} | "
+        f"News: {_format_source_age(news)} | "
+        f"Market: {_format_source_age(market)} | "
+        f"VIX: {_format_source_age(vix)}"
     )
     st.caption(
         "Current Regime: "
