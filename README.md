@@ -1,232 +1,405 @@
-\# KRONOS
 
+KRONOS v1.0
 
+Enterprise Credit Risk, IFRS9 & Portfolio Intelligence Platform
 
-Enterprise Credit Risk, Stress Testing \& Portfolio Intelligence Platform
+Live Demo
 
+https://kronos-enterprise-credit-risk-intelligence-jtborsfqydcsyfrcdus.streamlit.app/
 
+Fully Deployed Enterprise Analytics Platform
 
-\## Overview
+---
 
+Executive Summary
 
+KRONOS is an AI-powered Enterprise Credit Risk Intelligence Platform designed to simulate how modern banks, lenders, and financial institutions monitor portfolio risk, estimate credit losses, detect emerging deterioration, perform stress testing, and support executive decision-making.
 
-KRONOS is an enterprise-scale credit risk analytics platform built using Python and Streamlit.
+The platform combines machine learning, credit risk modeling, IFRS9 provisioning, early warning systems, stress testing, contagion analytics, live intelligence monitoring, explainable AI, and executive reporting into a unified institutional risk ecosystem.
 
+KRONOS transforms raw credit portfolios into actionable risk intelligence through a modular multi-engine architecture.
 
+---
 
-The platform combines:
+Platform Highlights
 
+Portfolio Scale
 
+- 50,000+ Credit Exposures
+- 60+ Risk Features
+- Multiple Machine Learning Models
+- 10 Enterprise Dashboards
+- 10 Integrated Risk Engines
+- Historical + Live Intelligence Architecture
 
-\- Probability of Default (PD) Modeling
+Model Performance
 
-\- Loss Given Default (LGD) Modeling
+Model| Performance
+Probability of Default (PD)| ROC-AUC: 0.9066
+Loss Given Default (LGD)| R²: 0.9662
+Exposure at Default (EAD)| R²: 0.9838
 
-\- Exposure at Default (EAD) Modeling
+Live Intelligence Sources
 
-\- Early Warning Systems (EWS)
+- FRED Economic Data
+- Market Volatility (VIX)
+- Alpha Vantage Market Data
+- Financial News Sentiment
+- Portfolio Risk Signals
 
-\- IFRS9 Provisioning \& Expected Credit Loss (ECL)
+---
 
-\- Stress Testing
+Enterprise Architecture
 
-\- VaR \& CVaR Analytics
+Layer 1 — Data Intelligence Layer
 
-\- Capital Adequacy Analysis
+Provides unified access to historical and live risk data.
 
-\- Contagion \& Systemic Risk Modeling
+Sources:
 
-\- Explainable AI (SHAP)
+- Credit Portfolio Data
+- Borrower Characteristics
+- FRED Macroeconomic Indicators
+- VIX Market Volatility
+- Alpha Vantage Market Data
+- Financial News Intelligence
 
-\- Decision Intelligence
+Outputs:
 
-\- Executive Reporting
+- Portfolio Risk Dataset
+- Live Risk Signals
+- Economic Stress Indicators
+- Market Intelligence Metrics
 
-\- Real-Time Risk Monitoring
+---
 
+Layer 2 — Credit Risk Analytics Layer
 
+Core borrower and portfolio risk assessment engine.
 
-\## Architecture
+Capabilities:
 
+- Probability of Default (PD)
+- Loss Given Default (LGD)
+- Exposure At Default (EAD)
+- Risk Grading
+- Risk Band Assignment
+- Underwriting Intelligence
 
+Outputs:
 
-KRONOS follows a modular enterprise architecture:
+- Default Probability
+- Risk Score
+- Risk Classification
+- Credit Recommendation
 
+---
 
+Layer 3 — IFRS9 & Provisioning Layer
 
-app/
+Enterprise loss estimation framework.
 
-src/
+Capabilities:
 
-data/
+- Stage 1 Classification
+- Stage 2 Classification
+- Stage 3 Classification
+- Expected Credit Loss (ECL)
+- Lifetime Loss Estimation
 
-models/
+Outputs:
 
-reports/
+- Portfolio Provisions
+- Expected Loss Forecasts
+- IFRS9 Analytics
 
+---
 
+Layer 4 — Risk Surveillance Layer
 
-Core domains:
+Continuous portfolio monitoring.
 
+Components:
 
+Early Warning System (EWS)
 
-\- Data Engineering
+- Deterioration Detection
+- Risk Migration Monitoring
+- Watchlist Identification
+- Escalation Signals
 
-\- Credit Risk Modeling
+Risk Pulse Engine
 
-\- Provisioning
+- Portfolio Health Monitoring
+- Market Stress Tracking
+- Sentiment Deterioration Detection
+- Enterprise Risk Regimes
 
-\- Stress Testing
+---
 
-\- Contagion Analytics
+Layer 5 — Stress & Contagion Intelligence
 
-\- Explainable AI
+Portfolio resilience assessment.
 
-\- Decision Intelligence
+Capabilities:
 
-\- Live Risk Monitoring
+Stress Testing
 
-\- Executive Reporting
+- Recession Scenarios
+- Severe Recession Scenarios
+- Inflation Shock
+- Interest Rate Shock
+- Custom Stress Frameworks
 
+Contagion Analytics
 
+- Network Risk Analysis
+- Industry Concentration Monitoring
+- Regional Concentration Monitoring
+- Cascade Risk Detection
 
-\## Technology Stack
+Outputs:
 
+- Portfolio Loss Estimates
+- Capital Impact Analysis
+- Concentration Risk Intelligence
 
+---
 
-Python
+Layer 6 — Explainability & Governance
 
+Model transparency and governance controls.
 
+Capabilities:
 
-Data \& Analytics
+- SHAP Explainability
+- Feature Attribution
+- Model Performance Monitoring
+- Governance Metrics
+- Decision Traceability
 
-\- Pandas
+---
 
-\- NumPy
+Layer 7 — Executive Decision Intelligence
 
-\- SciPy
+Transforms analytics into executive actions.
 
-\- Statsmodels
+Decision Framework:
 
+Decision| Meaning
+APPROVE| Acceptable Risk
+REVIEW| Requires Investigation
+WATCHLIST| Elevated Risk
+REJECT| Unacceptable Risk
 
+Outputs:
+
+- Executive Recommendations
+- Portfolio Actions
+- Risk Escalation Guidance
+
+---
+
+Live Intelligence Framework
+
+KRONOS integrates historical portfolio analytics with live external intelligence.
+
+Live Monitoring Includes:
+
+- Economic Regime Monitoring
+- Yield Curve Signals
+- Market Stress Monitoring
+- News Sentiment Analysis
+- Volatility Tracking
+- Executive Alert Generation
+
+Status Framework:
+
+- Connected
+- Cached
+- Stale
+- Fallback
+- Disconnected
+
+---
+
+Dashboard Suite
+
+Executive Dashboard
+
+Enterprise-wide portfolio intelligence and risk oversight.
+
+Credit Engine Dashboard
+
+PD, LGD, EAD analytics and model governance.
+
+Early Warning Monitor
+
+Portfolio deterioration and watchlist management.
+
+Stress Lab
+
+Scenario analysis and portfolio resilience testing.
+
+Provisioning Dashboard
+
+IFRS9 staging and ECL analytics.
+
+Decision Terminal
+
+Credit decision intelligence and governance.
+
+Contagion Terminal
+
+Concentration and network risk analytics.
+
+Explainability Dashboard
+
+SHAP analysis and model transparency.
+
+Risk Pulse Dashboard
+
+Live enterprise risk monitoring.
+
+Reports Dashboard
+
+Executive reporting and board-level intelligence packs.
+
+---
+
+Technology Stack
+
+Data & Analytics
+
+- Python
+- Pandas
+- NumPy
+- SciPy
+- StatsModels
 
 Machine Learning
 
-\- Scikit-Learn
-
-\- XGBoost
-
-\- LightGBM
-
-\- SHAP
-
-
+- XGBoost
+- LightGBM
+- Scikit-Learn
+- SHAP
 
 Visualization
 
-\- Streamlit
+- Streamlit
+- Plotly
+- Altair
+- Matplotlib
+- PyVis
+- Pyecharts
 
-\- Plotly
+Live Intelligence
 
-\- Altair
-
-\- Matplotlib
-
-\- Seaborn
-
-
-
-Risk Analytics
-
-\- IFRS9
-
-\- ECL
-
-\- Stress Testing
-
-\- VaR
-
-\- CVaR
-
-\- Capital Adequacy
-
-\- Contagion Risk
-
-
-
-Network Analytics
-
-\- NetworkX
-
-\- PyVis
-
-
+- FRED API
+- Alpha Vantage API
+- News API
+- Yahoo Finance
 
 Reporting
 
-\- ReportLab
+- ReportLab
+- OpenPyXL
 
+---
 
+Institutional Risk Frameworks
 
-\## Key Dashboards
+KRONOS incorporates concepts inspired by:
 
+- IFRS9 Expected Credit Loss
+- Probability of Default (PD)
+- Loss Given Default (LGD)
+- Exposure At Default (EAD)
+- Early Warning Systems (EWS)
+- Credit Portfolio Monitoring
+- Stress Testing
+- Concentration Risk Management
+- Credit Governance
 
+---
 
-\- Executive Dashboard
+Project Structure
 
-\- Credit Engine Dashboard
+KRONOS/
 
-\- EWS Monitor
+├── app/
 
-\- Stress Testing Lab
+├── src/
 
-\- Contagion Terminal
+│ ├── credit_risk/
 
-\- Provisioning Dashboard
+│ ├── explainability/
 
-\- Decision Terminal
+│ ├── ews/
 
-\- Explainability Dashboard
+│ ├── provisioning/
 
-\- Risk Pulse Dashboard
+│ ├── stress_testing/
 
-\- Reports Dashboard
+│ ├── contagion/
 
+│ ├── decisioning/
 
+│ ├── live_monitoring/
 
-\## Data Sources
+│ ├── reporting/
 
+│ └── shared/
 
+├── data/
 
-\- Internal Portfolio Dataset
+├── models/
 
-\- FRED Economic Indicators
+├── reports/
 
-\- VIX Market Volatility Data
+├── outputs/
 
-\- News Sentiment Signals
+├── tests/
 
+├── README.md
 
+├── requirements.txt
 
-\## Run Locally
+└── LICENSE
 
+---
 
+Local Installation
 
 pip install -r requirements.txt
 
-
-
 streamlit run app/main.py
 
+---
 
+Disclaimer
 
-\## Disclaimer
+KRONOS is an educational and portfolio demonstration platform created to showcase enterprise credit risk analytics, machine learning, stress testing, IFRS9 provisioning, live intelligence integration, and executive decision-support capabilities.
 
+It is not intended for production banking decisions or regulatory use.
 
+---
 
-KRONOS is an educational and portfolio project designed to demonstrate enterprise credit risk analytics, portfolio intelligence, stress testing, and decision-support capabilities.
+Author
 
+Hariharan B
 
+MBA – Finance & Business Analytics
 
-It is not intended for production banking use.
+Credit Risk Analytics | Financial Intelligence | Risk Technology
 
+---
+
+KRONOS v1.0 Status
+
+- Feature Complete
+- Portfolio Complete
+- Interview Ready
+- Enterprise Portfolio Grade
+- Live Intelligence Enabled
+- Fully Deployed
