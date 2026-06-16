@@ -1,8 +1,8 @@
 {
-    "mae": 1574.6662,
-    "rmse": 1964.989,
+    "mae": 1576.4102,
+    "rmse": 1967.5374,
     "r2_score": 0.9838,
     "train_samples": 40000,
     "test_samples": 10000,
-    "feature_count": 62
+    "feature_count": 61
 }

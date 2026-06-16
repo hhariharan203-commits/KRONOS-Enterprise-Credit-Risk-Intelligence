@@ -14,7 +14,6 @@ from lightgbm import LGBMRegressor
 
 from sklearn.ensemble import VotingRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.utils import RegressorTags
 from sklearn.metrics import (
     mean_absolute_error,
     mean_squared_error,
@@ -22,6 +21,12 @@ from sklearn.metrics import (
 )
 
 from sklearn.preprocessing import StandardScaler
+
+try:
+    from sklearn.utils import RegressorTags
+except ImportError:
+    class RegressorTags:
+        pass
 
 from src.shared.config import (
     LGD_FEATURE_COLUMNS_FILE as LGD_FEATURE_FILE,
@@ -31,6 +36,10 @@ from src.shared.config import (
     MERGED_CREDIT_DATA,
     RANDOM_STATE,
     TEST_SIZE,
+)
+from src.model_validation.feature_governance import (
+    enforce_feature_governance,
+    remove_prohibited_identifier_features,
 )
 from src.shared.utils import (
     legacy_ifrs_stage_label,
@@ -141,11 +150,18 @@ def prepare_training_data(df):
         "lgd_target",
     ]
 
-    feature_cols = [
+    candidate_feature_cols = [
         col
         for col in df.columns
         if col not in exclude_cols
     ]
+
+    (
+        feature_cols,
+        excluded_identifier_features
+    ) = remove_prohibited_identifier_features(
+        candidate_feature_cols
+    )
 
     X = df[feature_cols].copy()
 
@@ -179,6 +195,13 @@ def prepare_training_data(df):
         )
 
     feature_cols = X.columns.tolist()
+
+    feature_cols = enforce_feature_governance(
+        feature_cols,
+        model_name="LGD",
+        candidate_feature_count=len(candidate_feature_cols),
+        excluded_identifier_features=excluded_identifier_features,
+    )
 
     print(f"[KRONOS] LGD Features: {len(feature_cols)}")
 

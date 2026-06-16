@@ -57,7 +57,7 @@
     "volatility_score": 48.6,
     "liquidity_stress_score": 0,
     "portfolio_risk_context": "Live external conditions are supportive",
-    "generated_at": "2026-06-14 08:30:45 UTC"
+    "generated_at": "2026-06-15 17:32:23 UTC"
   },
   "source_freshness": {
     "fred": {
@@ -65,21 +65,21 @@
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\fred_market_data.csv",
       "last_updated": "2026-06-14 08:16:28 UTC",
       "refresh_minutes": 60,
-      "is_fresh": true
+      "is_fresh": false
     },
     "news": {
       "status": "CACHE_ONLY",
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\sentiment_data.csv",
       "last_updated": "2026-06-14 08:19:13 UTC",
       "refresh_minutes": 30,
-      "is_fresh": true
+      "is_fresh": false
     },
     "sentiment": {
       "status": "CACHE_ONLY",
       "artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\live\\sentiment_summary.csv",
       "last_updated": "2026-06-14 08:19:13 UTC",
       "refresh_minutes": 30,
-      "is_fresh": true
+      "is_fresh": false
     },
     "market": {
       "status": "CACHE_ONLY",

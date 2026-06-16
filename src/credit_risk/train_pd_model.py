@@ -14,7 +14,6 @@ from lightgbm import LGBMClassifier
 
 from sklearn.ensemble import VotingClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.utils import ClassifierTags
 from sklearn.metrics import (
     accuracy_score,
     roc_auc_score,
@@ -26,6 +25,12 @@ from sklearn.metrics import (
 )
 
 from sklearn.preprocessing import StandardScaler
+
+try:
+    from sklearn.utils import ClassifierTags
+except ImportError:
+    class ClassifierTags:
+        pass
 
 from src.shared.config import (
     MERGED_CREDIT_DATA,
@@ -41,6 +46,10 @@ from src.credit_risk.model_validation import (
     calculate_psi,
     classify_model_drift,
     detect_overfitting,
+)
+from src.model_validation.feature_governance import (
+    enforce_feature_governance,
+    remove_prohibited_identifier_features,
 )
 from src.shared.utils import (
     legacy_ifrs_stage_label,
@@ -117,10 +126,17 @@ def prepare_training_data(df):
         "risk_segment",
     ]
 
-    feature_cols = [
+    candidate_feature_cols = [
         col for col in df.columns
         if col not in exclude_cols
     ]
+
+    (
+        feature_cols,
+        excluded_identifier_features
+    ) = remove_prohibited_identifier_features(
+        candidate_feature_cols
+    )
 
     X = df[feature_cols].copy()
 
@@ -152,6 +168,13 @@ def prepare_training_data(df):
 
     # Update feature list after encoding
     feature_cols = X.columns.tolist()
+
+    feature_cols = enforce_feature_governance(
+        feature_cols,
+        model_name="PD",
+        candidate_feature_count=len(candidate_feature_cols),
+        excluded_identifier_features=excluded_identifier_features,
+    )
 
     print(f"[KRONOS] Features: {len(feature_cols)}")
 
