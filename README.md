@@ -402,7 +402,7 @@ Quick Start
 
 Clone Repository
 
-git clone https://github.com/YOUR_USERNAME/KRONOS.git
+git clone https://github.com/HARIHARAN B - Analytics/KRONOS.git
 cd KRONOS
 
 Create Environment
