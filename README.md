@@ -50,7 +50,7 @@ Core Risk Models| 3
 Warehouse Schemas| 5
 Risk Mart Views| 5
 Test Modules| 80+
-Automated Tests| 146+
+Automated Tests| 147+
 Python Modules| 170+
 SQL Assets| 30+
 
