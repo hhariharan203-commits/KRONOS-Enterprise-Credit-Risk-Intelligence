@@ -3,6 +3,11 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from uuid import uuid4
 
+from src.enterprise_data.schema_manager import (
+    ensure_reconciliation_result_schema,
+    refresh_control_views,
+)
+
 
 BATCH_STATUSES = {
     "PENDING",
@@ -43,15 +48,11 @@ def initialize_etl_control_schema(connection) -> None:
         "ALTER TABLE control.publish_status ADD COLUMN IF NOT EXISTS requested_at TIMESTAMP",
         "ALTER TABLE control.publish_status ADD COLUMN IF NOT EXISTS validated_at TIMESTAMP",
         "ALTER TABLE control.publish_status ADD COLUMN IF NOT EXISTS transition_at TIMESTAMP",
-        "ALTER TABLE control.reconciliation_result ADD COLUMN IF NOT EXISTS job_id VARCHAR",
-        "ALTER TABLE control.reconciliation_result ADD COLUMN IF NOT EXISTS source_count BIGINT",
-        "ALTER TABLE control.reconciliation_result ADD COLUMN IF NOT EXISTS staging_count BIGINT",
-        "ALTER TABLE control.reconciliation_result ADD COLUMN IF NOT EXISTS core_count BIGINT",
-        "ALTER TABLE control.reconciliation_result ADD COLUMN IF NOT EXISTS mart_count BIGINT",
-        "ALTER TABLE control.reconciliation_result ADD COLUMN IF NOT EXISTS variance DOUBLE",
     )
     for statement in alter_statements:
         connection.execute(statement)
+
+    ensure_reconciliation_result_schema(connection)
 
     connection.execute(
         """
@@ -133,6 +134,7 @@ def initialize_etl_control_schema(connection) -> None:
         )
         """
     )
+    refresh_control_views(connection)
 
 
 def start_batch(

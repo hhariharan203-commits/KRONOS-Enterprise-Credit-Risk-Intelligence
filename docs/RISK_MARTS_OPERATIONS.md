@@ -95,9 +95,9 @@ python -m pytest -q -p no:cacheprovider `
 The rollback SQL contains five `DROP VIEW IF EXISTS` statements and no table
 or schema operation.
 
-## Known Limitation
+## Control View Contract
 
-`control.vw_latest_reconciliation` is invalid because its stored view
-signature predates Phase 4B reconciliation columns. Phase 4D intentionally
-queries `control.reconciliation_result` directly. Repairing the existing view
-is outside Phase 4D scope.
+`control.vw_latest_reconciliation` and `control.vw_latest_data_quality` use
+explicit column projections. Warehouse and ETL schema initialization recreate
+these views after idempotent control-table migrations, preventing stale DuckDB
+view signatures when control columns are added.

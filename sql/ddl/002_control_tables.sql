@@ -85,7 +85,13 @@ CREATE TABLE IF NOT EXISTS control.reconciliation_result (
     absolute_difference DOUBLE,
     tolerance DOUBLE NOT NULL,
     status VARCHAR NOT NULL,
-    reconciled_at TIMESTAMP NOT NULL
+    reconciled_at TIMESTAMP NOT NULL,
+    job_id VARCHAR,
+    source_count BIGINT,
+    staging_count BIGINT,
+    core_count BIGINT,
+    mart_count BIGINT,
+    variance DOUBLE
 );
 
 CREATE TABLE IF NOT EXISTS control.rejected_record (

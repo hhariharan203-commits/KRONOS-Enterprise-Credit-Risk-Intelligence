@@ -70,9 +70,10 @@ Phase 4D does not modify:
 - `control.lineage_edge`,
 - `control.column_lineage`.
 
-The enterprise view reads `control.reconciliation_result` directly because
-`control.vw_latest_reconciliation` has a pre-existing invalid stored
-signature.
+The enterprise view reads `control.reconciliation_result` directly so it can
+aggregate all reconciliation controls for the selected published batch. The
+latest-control convenience views use explicit column projections and are
+recreated after control-schema migrations.
 
 ## Temporal Boundary
 

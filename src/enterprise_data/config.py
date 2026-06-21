@@ -65,9 +65,13 @@ SCHEMA_SQL_FILES = (
     SQL_DIR / "ddl" / "006_marts.sql",
 )
 
+CONTROL_VIEW_SQL_FILES = (
+    SQL_DIR / "views" / "reconciliation_views.sql",
+)
+
 MART_SQL_FILES = (
     SQL_DIR / "views" / "current_portfolio_views.sql",
-    SQL_DIR / "views" / "reconciliation_views.sql",
+    *CONTROL_VIEW_SQL_FILES,
     SQL_DIR / "marts" / "credit_risk_mart.sql",
     SQL_DIR / "marts" / "ifrs9_stage_mart.sql",
     SQL_DIR / "marts" / "ews_mart.sql",
