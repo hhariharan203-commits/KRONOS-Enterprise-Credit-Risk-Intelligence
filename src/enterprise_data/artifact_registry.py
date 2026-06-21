@@ -11,6 +11,7 @@ from src.enterprise_data.source_registry import file_sha256, relative_path
 STRUCTURED_SUFFIXES = {".csv", ".json"}
 BINARY_SUFFIXES = {".pkl", ".pdf", ".png"}
 DOCUMENT_SUFFIXES = {".md", ".txt"}
+SQL_SUFFIXES = {".sql"}
 
 
 def discover_artifacts() -> list[Path]:
@@ -38,6 +39,8 @@ def content_class(path: Path) -> str:
         return "BINARY_METADATA_ONLY"
     if suffix in DOCUMENT_SUFFIXES:
         return "DOCUMENT_METADATA_ONLY"
+    if suffix in SQL_SUFFIXES:
+        return "SQL_METADATA_ONLY"
     return "OTHER_METADATA_ONLY"
 
 

@@ -10,7 +10,9 @@ Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\verify.ps1
 ```
 
-The setup creates `.venv`, installs pinned dependencies, builds the warehouse, runs controlled ETL, and executes the repository integrity verifier.
+The setup creates `.venv`, installs pinned dependencies, builds the warehouse,
+runs controlled ETL, deploys the five Phase 4D mart views, and executes the
+repository integrity verifier.
 
 ## Production Entry Point
 

@@ -15,6 +15,7 @@ Push-Location $Root
 try {
     & $VirtualPython -m src.enterprise_data.pipeline
     & $VirtualPython -m src.enterprise_data.etl.scheduler
+    & $VirtualPython -m src.enterprise_data.risk_marts.runner
     & $VirtualPython scripts\verify_repository.py
 }
 finally {

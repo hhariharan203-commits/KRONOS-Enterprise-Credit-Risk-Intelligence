@@ -48,6 +48,7 @@ ARTIFACT_ROOTS = (
     ROOT_DIR / "models",
     ROOT_DIR / "outputs",
     ROOT_DIR / "reports",
+    SQL_DIR / "phase4d",
 )
 
 JSON_ROOTS = (

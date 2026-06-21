@@ -21,6 +21,14 @@ REQUIRED_PATHS = (
     "reports/model_validation_pack.pdf",
 )
 
+REQUIRED_PHASE4D_VIEWS = (
+    "vw_concentration_risk_current",
+    "vw_portfolio_quality_current",
+    "vw_watchlist_intelligence_current",
+    "vw_model_governance_current",
+    "vw_enterprise_risk_summary_current",
+)
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -116,6 +124,20 @@ def validate_warehouse() -> dict:
             WHERE status <> 'PASS'
             """
         ).fetchone()[0]
+        available_phase4d_views = {
+            str(row[0])
+            for row in connection.execute(
+                """
+                SELECT table_name
+                FROM information_schema.tables
+                WHERE table_schema = 'mart'
+                  AND table_type = 'VIEW'
+                """
+            ).fetchall()
+        }
+        missing_phase4d_views = sorted(
+            set(REQUIRED_PHASE4D_VIEWS) - available_phase4d_views
+        )
         batch_status = connection.execute(
             """
             SELECT status
@@ -131,6 +153,7 @@ def validate_warehouse() -> dict:
             and credit_rows == 50000
             and reconciliation_failures == 0
             and quality_failures == 0
+            and not missing_phase4d_views
             and batch_status
             and batch_status[0] == "SUCCESS"
             else "FAIL"
@@ -141,6 +164,7 @@ def validate_warehouse() -> dict:
             "latest_batch_status": batch_status[0] if batch_status else None,
             "reconciliation_failures": reconciliation_failures,
             "quality_failures": quality_failures,
+            "missing_phase4d_views": missing_phase4d_views,
             "source_registry": source_registry,
             "artifact_registry": artifact_registry,
         }

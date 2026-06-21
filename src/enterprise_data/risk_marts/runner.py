@@ -47,4 +47,6 @@ def run_phase4d(
 
 
 if __name__ == "__main__":
-    print(json.dumps(run_phase4d(), indent=2, default=str))
+    result = run_phase4d()
+    print(json.dumps(result, indent=2, default=str))
+    raise SystemExit(0 if result["status"] == PHASE4D_SUCCESS else 1)

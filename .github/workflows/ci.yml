@@ -32,6 +32,7 @@ jobs:
         run: |
           python -m src.enterprise_data.pipeline
           python -m src.enterprise_data.etl.scheduler
+          python -m src.enterprise_data.risk_marts.runner
 
       - name: Verify repository integrity
         env:
