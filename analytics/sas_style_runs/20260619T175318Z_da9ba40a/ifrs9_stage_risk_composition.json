@@ -1,0 +1,242 @@
+[
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 1",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 19708,
+    "total_ead": 77801669.36000009,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 1",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 5668,
+    "total_ead": 74130658.20000024,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 1",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 4134,
+    "total_ead": 66455456.769999884,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 1",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 2373,
+    "total_ead": 67907902.36,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 1",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1739,
+    "total_ead": 57133369.37000007,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 2",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 1348,
+    "total_ead": 6806450.720000002,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 2",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 2319,
+    "total_ead": 30047982.60000001,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 2",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 1740,
+    "total_ead": 29205104.860000003,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 2",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 2797,
+    "total_ead": 84178527.31000003,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 2",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 4753,
+    "total_ead": 195098094.32999986,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 3",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 3",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 3",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 14,
+    "total_ead": 382477.18000000005,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 3",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 478,
+    "total_ead": 15060420.040000008,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 3",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 2929,
+    "total_ead": 133738147.36000009,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 1",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 33622,
+    "total_ead": 343429056.0600003,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 2",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 12957,
+    "total_ead": 345336159.81999993,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "STAGE 3",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 3421,
+    "total_ead": 149181044.5800001,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 9421,
+    "total_ead": 385969611.06,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 5648,
+    "total_ead": 167146849.71000004,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 5888,
+    "total_ead": 96043038.80999988,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 7987,
+    "total_ead": 104178640.80000025,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 21056,
+    "total_ead": 84608120.08000009,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "ifrs9_stage_by_risk_band",
+    "row_dimension": "ifrs9_stage",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 50000,
+    "total_ead": 837946260.4600002,
+    "cell_type": "GRAND_TOTAL"
+  }
+]

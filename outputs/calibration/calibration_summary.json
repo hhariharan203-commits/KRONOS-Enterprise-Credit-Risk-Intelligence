@@ -1,0 +1,51 @@
+{
+    "report_name": "KRONOS PD Calibration Summary",
+    "generated_at": "2026-06-15T17:37:21Z",
+    "model_scope": "Probability of Default",
+    "model_artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\models\\pd_model.pkl",
+    "scaler_artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\models\\scaler.pkl",
+    "feature_list_artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\models\\feature_cols.json",
+    "sample_count": 50000,
+    "default_count": 11757,
+    "non_default_count": 38243,
+    "brier_score": 0.080149,
+    "predicted_default_rate": 0.234826,
+    "actual_default_rate": 0.23514,
+    "predicted_vs_actual_gap": -0.000314,
+    "absolute_predicted_vs_actual_gap": 0.000314,
+    "max_absolute_decile_gap": 0.122424,
+    "highest_observed_risk_decile": 10,
+    "highest_observed_default_rate": 0.9474,
+    "calibration_curve_points": {
+        "prob_true": [
+            0.0022,
+            0.0016,
+            0.0034,
+            0.006,
+            0.0316,
+            0.0788,
+            0.2678,
+            0.3228,
+            0.6898,
+            0.9474
+        ],
+        "prob_pred": [
+            0.003752,
+            0.006769,
+            0.010205,
+            0.01905,
+            0.068637,
+            0.131777,
+            0.2127,
+            0.409949,
+            0.567376,
+            0.91805
+        ]
+    },
+    "outputs": {
+        "calibration_curve": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\outputs\\calibration\\calibration_curve.png",
+        "reliability_diagram": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\outputs\\calibration\\reliability_diagram.png",
+        "decile_analysis": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\outputs\\calibration\\decile_analysis.csv",
+        "calibration_summary": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\outputs\\calibration\\calibration_summary.json"
+    }
+}

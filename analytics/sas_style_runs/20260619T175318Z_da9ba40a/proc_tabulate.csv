@@ -1,0 +1,187 @@
+table_name,row_dimension,row_value,column_dimension,column_value,count,total_ead,cell_type
+industry_by_risk_band,industry,Construction,risk_band,PRIME,1629,6379150.9199999925,DETAIL
+industry_by_risk_band,industry,Construction,risk_band,NEAR PRIME,653,8592338.460000003,DETAIL
+industry_by_risk_band,industry,Construction,risk_band,MODERATE RISK,486,7914166.770000001,DETAIL
+industry_by_risk_band,industry,Construction,risk_band,HIGH RISK,476,14090841.950000001,DETAIL
+industry_by_risk_band,industry,Construction,risk_band,DEFAULT RISK,736,30347306.47,DETAIL
+industry_by_risk_band,industry,Education,risk_band,PRIME,2064,8363484.450000006,DETAIL
+industry_by_risk_band,industry,Education,risk_band,NEAR PRIME,781,10061377.209999986,DETAIL
+industry_by_risk_band,industry,Education,risk_band,MODERATE RISK,610,9946905.699999994,DETAIL
+industry_by_risk_band,industry,Education,risk_band,HIGH RISK,497,14533118.700000014,DETAIL
+industry_by_risk_band,industry,Education,risk_band,DEFAULT RISK,897,36799540.94999995,DETAIL
+industry_by_risk_band,industry,Energy,risk_band,PRIME,1717,6862056.509999998,DETAIL
+industry_by_risk_band,industry,Energy,risk_band,NEAR PRIME,673,9045041.079999994,DETAIL
+industry_by_risk_band,industry,Energy,risk_band,MODERATE RISK,449,7307850.520000007,DETAIL
+industry_by_risk_band,industry,Energy,risk_band,HIGH RISK,479,14339470.479999997,DETAIL
+industry_by_risk_band,industry,Energy,risk_band,DEFAULT RISK,729,29825667.44999996,DETAIL
+industry_by_risk_band,industry,Financial Services,risk_band,PRIME,2581,10527396.480000006,DETAIL
+industry_by_risk_band,industry,Financial Services,risk_band,NEAR PRIME,970,12749905.139999999,DETAIL
+industry_by_risk_band,industry,Financial Services,risk_band,MODERATE RISK,738,12247346.530000005,DETAIL
+industry_by_risk_band,industry,Financial Services,risk_band,HIGH RISK,724,22059874.239999987,DETAIL
+industry_by_risk_band,industry,Financial Services,risk_band,DEFAULT RISK,1046,43275180.749999955,DETAIL
+industry_by_risk_band,industry,Government,risk_band,PRIME,2224,9107220.110000003,DETAIL
+industry_by_risk_band,industry,Government,risk_band,NEAR PRIME,821,10666679.30000002,DETAIL
+industry_by_risk_band,industry,Government,risk_band,MODERATE RISK,565,9530231.040000003,DETAIL
+industry_by_risk_band,industry,Government,risk_band,HIGH RISK,625,18549718.819999997,DETAIL
+industry_by_risk_band,industry,Government,risk_band,DEFAULT RISK,895,37212234.94000001,DETAIL
+industry_by_risk_band,industry,Healthcare,risk_band,PRIME,2516,10064975.500000035,DETAIL
+industry_by_risk_band,industry,Healthcare,risk_band,NEAR PRIME,963,12289543.840000007,DETAIL
+industry_by_risk_band,industry,Healthcare,risk_band,MODERATE RISK,720,11722106.47000002,DETAIL
+industry_by_risk_band,industry,Healthcare,risk_band,HIGH RISK,671,19767324.480000015,DETAIL
+industry_by_risk_band,industry,Healthcare,risk_band,DEFAULT RISK,1143,46418986.01,DETAIL
+industry_by_risk_band,industry,Manufacturing,risk_band,PRIME,2060,8226010.02,DETAIL
+industry_by_risk_band,industry,Manufacturing,risk_band,NEAR PRIME,829,10834394.350000001,DETAIL
+industry_by_risk_band,industry,Manufacturing,risk_band,MODERATE RISK,607,9515825.150000006,DETAIL
+industry_by_risk_band,industry,Manufacturing,risk_band,HIGH RISK,566,16764988.94000001,DETAIL
+industry_by_risk_band,industry,Manufacturing,risk_band,DEFAULT RISK,1017,41578457.50000002,DETAIL
+industry_by_risk_band,industry,Retail,risk_band,PRIME,2007,7977152.48,DETAIL
+industry_by_risk_band,industry,Retail,risk_band,NEAR PRIME,746,9868818.72,DETAIL
+industry_by_risk_band,industry,Retail,risk_band,MODERATE RISK,569,9252497.18,DETAIL
+industry_by_risk_band,industry,Retail,risk_band,HIGH RISK,536,15929208.169999998,DETAIL
+industry_by_risk_band,industry,Retail,risk_band,DEFAULT RISK,995,40327232.32000004,DETAIL
+industry_by_risk_band,industry,Technology,risk_band,PRIME,2517,10111693.889999997,DETAIL
+industry_by_risk_band,industry,Technology,risk_band,NEAR PRIME,918,11880513.299999986,DETAIL
+industry_by_risk_band,industry,Technology,risk_band,MODERATE RISK,705,11398614.799999991,DETAIL
+industry_by_risk_band,industry,Technology,risk_band,HIGH RISK,644,18754003.280000005,DETAIL
+industry_by_risk_band,industry,Technology,risk_band,DEFAULT RISK,1168,47982532.20000005,DETAIL
+industry_by_risk_band,industry,Transportation,risk_band,PRIME,1741,6988979.719999993,DETAIL
+industry_by_risk_band,industry,Transportation,risk_band,NEAR PRIME,633,8190029.399999999,DETAIL
+industry_by_risk_band,industry,Transportation,risk_band,MODERATE RISK,439,7207494.649999992,DETAIL
+industry_by_risk_band,industry,Transportation,risk_band,HIGH RISK,430,12358300.649999999,DETAIL
+industry_by_risk_band,industry,Transportation,risk_band,DEFAULT RISK,795,32202472.469999988,DETAIL
+industry_by_risk_band,industry,Construction,risk_band,TOTAL,3980,67323804.57,ROW_TOTAL
+industry_by_risk_band,industry,Education,risk_band,TOTAL,4849,79704427.00999996,ROW_TOTAL
+industry_by_risk_band,industry,Energy,risk_band,TOTAL,4047,67380086.03999996,ROW_TOTAL
+industry_by_risk_band,industry,Financial Services,risk_band,TOTAL,6059,100859703.13999996,ROW_TOTAL
+industry_by_risk_band,industry,Government,risk_band,TOTAL,5130,85066084.21000004,ROW_TOTAL
+industry_by_risk_band,industry,Healthcare,risk_band,TOTAL,6013,100262936.30000007,ROW_TOTAL
+industry_by_risk_band,industry,Manufacturing,risk_band,TOTAL,5079,86919675.96000004,ROW_TOTAL
+industry_by_risk_band,industry,Retail,risk_band,TOTAL,4853,83354908.87000003,ROW_TOTAL
+industry_by_risk_band,industry,Technology,risk_band,TOTAL,5952,100127357.47000003,ROW_TOTAL
+industry_by_risk_band,industry,Transportation,risk_band,TOTAL,4038,66947276.88999997,ROW_TOTAL
+industry_by_risk_band,industry,TOTAL,risk_band,DEFAULT RISK,9421,385969611.05999994,COLUMN_TOTAL
+industry_by_risk_band,industry,TOTAL,risk_band,HIGH RISK,5648,167146849.71000004,COLUMN_TOTAL
+industry_by_risk_band,industry,TOTAL,risk_band,MODERATE RISK,5888,96043038.81000002,COLUMN_TOTAL
+industry_by_risk_band,industry,TOTAL,risk_band,NEAR PRIME,7987,104178640.8,COLUMN_TOTAL
+industry_by_risk_band,industry,TOTAL,risk_band,PRIME,21056,84608120.08000003,COLUMN_TOTAL
+industry_by_risk_band,industry,TOTAL,risk_band,TOTAL,50000,837946260.4600002,GRAND_TOTAL
+industry_by_ifrs9_stage,industry,Construction,ifrs9_stage,STAGE 1,2669,27653448.309999976,DETAIL
+industry_by_ifrs9_stage,industry,Construction,ifrs9_stage,STAGE 2,1042,27877724.490000058,DETAIL
+industry_by_ifrs9_stage,industry,Construction,ifrs9_stage,STAGE 3,269,11792631.770000001,DETAIL
+industry_by_ifrs9_stage,industry,Education,ifrs9_stage,STAGE 1,3267,32795327.21000005,DETAIL
+industry_by_ifrs9_stage,industry,Education,ifrs9_stage,STAGE 2,1259,32685158.490000013,DETAIL
+industry_by_ifrs9_stage,industry,Education,ifrs9_stage,STAGE 3,323,14223941.309999993,DETAIL
+industry_by_ifrs9_stage,industry,Energy,ifrs9_stage,STAGE 1,2759,28234929.350000016,DETAIL
+industry_by_ifrs9_stage,industry,Energy,ifrs9_stage,STAGE 2,1013,27074493.05999996,DETAIL
+industry_by_ifrs9_stage,industry,Energy,ifrs9_stage,STAGE 3,275,12070663.630000008,DETAIL
+industry_by_ifrs9_stage,industry,Financial Services,ifrs9_stage,STAGE 1,4122,42681498.09999999,DETAIL
+industry_by_ifrs9_stage,industry,Financial Services,ifrs9_stage,STAGE 2,1539,40658690.61999996,DETAIL
+industry_by_ifrs9_stage,industry,Financial Services,ifrs9_stage,STAGE 3,398,17519514.419999998,DETAIL
+industry_by_ifrs9_stage,industry,Government,ifrs9_stage,STAGE 1,3414,33461960.239999928,DETAIL
+industry_by_ifrs9_stage,industry,Government,ifrs9_stage,STAGE 2,1327,34756243.83000004,DETAIL
+industry_by_ifrs9_stage,industry,Government,ifrs9_stage,STAGE 3,389,16847880.139999986,DETAIL
+industry_by_ifrs9_stage,industry,Healthcare,ifrs9_stage,STAGE 1,4105,43092277.08999981,DETAIL
+industry_by_ifrs9_stage,industry,Healthcare,ifrs9_stage,STAGE 2,1530,40996572.250000015,DETAIL
+industry_by_ifrs9_stage,industry,Healthcare,ifrs9_stage,STAGE 3,378,16174086.960000006,DETAIL
+industry_by_ifrs9_stage,industry,Manufacturing,ifrs9_stage,STAGE 1,3346,34406365.49999993,DETAIL
+industry_by_ifrs9_stage,industry,Manufacturing,ifrs9_stage,STAGE 2,1365,36439339.49000001,DETAIL
+industry_by_ifrs9_stage,industry,Manufacturing,ifrs9_stage,STAGE 3,368,16073970.969999984,DETAIL
+industry_by_ifrs9_stage,industry,Retail,ifrs9_stage,STAGE 1,3238,33658137.369999975,DETAIL
+industry_by_ifrs9_stage,industry,Retail,ifrs9_stage,STAGE 2,1249,33811655.16,DETAIL
+industry_by_ifrs9_stage,industry,Retail,ifrs9_stage,STAGE 3,366,15885116.339999989,DETAIL
+industry_by_ifrs9_stage,industry,Technology,ifrs9_stage,STAGE 1,3962,39998307.60000004,DETAIL
+industry_by_ifrs9_stage,industry,Technology,ifrs9_stage,STAGE 2,1590,42691623.77000008,DETAIL
+industry_by_ifrs9_stage,industry,Technology,ifrs9_stage,STAGE 3,400,17437426.099999994,DETAIL
+industry_by_ifrs9_stage,industry,Transportation,ifrs9_stage,STAGE 1,2740,27446805.290000025,DETAIL
+industry_by_ifrs9_stage,industry,Transportation,ifrs9_stage,STAGE 2,1043,28344658.660000037,DETAIL
+industry_by_ifrs9_stage,industry,Transportation,ifrs9_stage,STAGE 3,255,11155812.940000009,DETAIL
+industry_by_ifrs9_stage,industry,Construction,ifrs9_stage,TOTAL,3980,67323804.57000004,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Education,ifrs9_stage,TOTAL,4849,79704427.01000005,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Energy,ifrs9_stage,TOTAL,4047,67380086.03999999,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Financial Services,ifrs9_stage,TOTAL,6059,100859703.13999994,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Government,ifrs9_stage,TOTAL,5130,85066084.20999995,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Healthcare,ifrs9_stage,TOTAL,6013,100262936.29999983,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Manufacturing,ifrs9_stage,TOTAL,5079,86919675.95999992,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Retail,ifrs9_stage,TOTAL,4853,83354908.86999996,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Technology,ifrs9_stage,TOTAL,5952,100127357.47000012,ROW_TOTAL
+industry_by_ifrs9_stage,industry,Transportation,ifrs9_stage,TOTAL,4038,66947276.890000075,ROW_TOTAL
+industry_by_ifrs9_stage,industry,TOTAL,ifrs9_stage,STAGE 1,33622,343429056.05999976,COLUMN_TOTAL
+industry_by_ifrs9_stage,industry,TOTAL,ifrs9_stage,STAGE 2,12957,345336159.8200002,COLUMN_TOTAL
+industry_by_ifrs9_stage,industry,TOTAL,ifrs9_stage,STAGE 3,3421,149181044.57999998,COLUMN_TOTAL
+industry_by_ifrs9_stage,industry,TOTAL,ifrs9_stage,TOTAL,50000,837946260.46,GRAND_TOTAL
+region_by_risk_band,region,Central,risk_band,PRIME,4288,17356805.400000032,DETAIL
+region_by_risk_band,region,Central,risk_band,NEAR PRIME,1614,21339865.809999995,DETAIL
+region_by_risk_band,region,Central,risk_band,MODERATE RISK,1195,19477388.54999999,DETAIL
+region_by_risk_band,region,Central,risk_band,HIGH RISK,1189,34943718.819999985,DETAIL
+region_by_risk_band,region,Central,risk_band,DEFAULT RISK,1873,77631823.55000003,DETAIL
+region_by_risk_band,region,East,risk_band,PRIME,4237,17063167.130000073,DETAIL
+region_by_risk_band,region,East,risk_band,NEAR PRIME,1597,20755723.809999995,DETAIL
+region_by_risk_band,region,East,risk_band,MODERATE RISK,1228,20020534.269999992,DETAIL
+region_by_risk_band,region,East,risk_band,HIGH RISK,1124,33542244.03000007,DETAIL
+region_by_risk_band,region,East,risk_band,DEFAULT RISK,1932,79002593.21000005,DETAIL
+region_by_risk_band,region,North,risk_band,PRIME,4625,18658962.360000018,DETAIL
+region_by_risk_band,region,North,risk_band,NEAR PRIME,1865,24409272.449999988,DETAIL
+region_by_risk_band,region,North,risk_band,MODERATE RISK,1295,21229933.02,DETAIL
+region_by_risk_band,region,North,risk_band,HIGH RISK,1214,35888961.15999994,DETAIL
+region_by_risk_band,region,North,risk_band,DEFAULT RISK,2039,83212779.10999995,DETAIL
+region_by_risk_band,region,South,risk_band,PRIME,4159,16529053.770000046,DETAIL
+region_by_risk_band,region,South,risk_band,NEAR PRIME,1544,19843997.91000002,DETAIL
+region_by_risk_band,region,South,risk_band,MODERATE RISK,1152,18827412.149999995,DETAIL
+region_by_risk_band,region,South,risk_band,HIGH RISK,1080,32087141.83999997,DETAIL
+region_by_risk_band,region,South,risk_band,DEFAULT RISK,1812,74222182.65000026,DETAIL
+region_by_risk_band,region,West,risk_band,PRIME,3747,15000131.419999985,DETAIL
+region_by_risk_band,region,West,risk_band,NEAR PRIME,1367,17829780.820000008,DETAIL
+region_by_risk_band,region,West,risk_band,MODERATE RISK,1018,16487770.820000011,DETAIL
+region_by_risk_band,region,West,risk_band,HIGH RISK,1041,30684783.860000033,DETAIL
+region_by_risk_band,region,West,risk_band,DEFAULT RISK,1765,71900232.53999995,DETAIL
+region_by_risk_band,region,Central,risk_band,TOTAL,10159,170749602.13000003,ROW_TOTAL
+region_by_risk_band,region,East,risk_band,TOTAL,10118,170384262.45000017,ROW_TOTAL
+region_by_risk_band,region,North,risk_band,TOTAL,11038,183399908.0999999,ROW_TOTAL
+region_by_risk_band,region,South,risk_band,TOTAL,9747,161509788.3200003,ROW_TOTAL
+region_by_risk_band,region,West,risk_band,TOTAL,8938,151902699.45999998,ROW_TOTAL
+region_by_risk_band,region,TOTAL,risk_band,DEFAULT RISK,9421,385969611.06000024,COLUMN_TOTAL
+region_by_risk_band,region,TOTAL,risk_band,HIGH RISK,5648,167146849.70999998,COLUMN_TOTAL
+region_by_risk_band,region,TOTAL,risk_band,MODERATE RISK,5888,96043038.80999999,COLUMN_TOTAL
+region_by_risk_band,region,TOTAL,risk_band,NEAR PRIME,7987,104178640.80000001,COLUMN_TOTAL
+region_by_risk_band,region,TOTAL,risk_band,PRIME,21056,84608120.08000016,COLUMN_TOTAL
+region_by_risk_band,region,TOTAL,risk_band,TOTAL,50000,837946260.4600004,GRAND_TOTAL
+risk_grade_by_decision,risk_grade,AAA,decision,APPROVE,19725,73501932.92000036,DETAIL
+risk_grade_by_decision,risk_grade,AAA,decision,WATCH,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,AAA,decision,HIGH RISK REVIEW,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,AAA,decision,REJECT,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,AA,decision,APPROVE,2817,27614610.59000004,DETAIL
+risk_grade_by_decision,risk_grade,AA,decision,WATCH,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,AA,decision,HIGH RISK REVIEW,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,AA,decision,REJECT,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,A,decision,APPROVE,2501,31436860.260000054,DETAIL
+risk_grade_by_decision,risk_grade,A,decision,WATCH,4000,56233357.11000014,DETAIL
+risk_grade_by_decision,risk_grade,A,decision,HIGH RISK REVIEW,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,A,decision,REJECT,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,BBB,decision,APPROVE,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,BBB,decision,WATCH,5007,79133791.34999998,DETAIL
+risk_grade_by_decision,risk_grade,BBB,decision,HIGH RISK REVIEW,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,BBB,decision,REJECT,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,BB,decision,APPROVE,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,BB,decision,WATCH,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,BB,decision,HIGH RISK REVIEW,2939,72250386.24000004,DETAIL
+risk_grade_by_decision,risk_grade,BB,decision,REJECT,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,B,decision,APPROVE,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,B,decision,WATCH,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,B,decision,HIGH RISK REVIEW,1682,51737971.770000026,DETAIL
+risk_grade_by_decision,risk_grade,B,decision,REJECT,4914,157819847.12000036,DETAIL
+risk_grade_by_decision,risk_grade,CCC,decision,APPROVE,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,CCC,decision,WATCH,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,CCC,decision,HIGH RISK REVIEW,0,0.0,DETAIL
+risk_grade_by_decision,risk_grade,CCC,decision,REJECT,6415,288217503.1000003,DETAIL
+risk_grade_by_decision,risk_grade,A,decision,TOTAL,6501,87670217.37000018,ROW_TOTAL
+risk_grade_by_decision,risk_grade,AA,decision,TOTAL,2817,27614610.59000004,ROW_TOTAL
+risk_grade_by_decision,risk_grade,AAA,decision,TOTAL,19725,73501932.92000036,ROW_TOTAL
+risk_grade_by_decision,risk_grade,B,decision,TOTAL,6596,209557818.8900004,ROW_TOTAL
+risk_grade_by_decision,risk_grade,BB,decision,TOTAL,2939,72250386.24000004,ROW_TOTAL
+risk_grade_by_decision,risk_grade,BBB,decision,TOTAL,5007,79133791.34999998,ROW_TOTAL
+risk_grade_by_decision,risk_grade,CCC,decision,TOTAL,6415,288217503.1000003,ROW_TOTAL
+risk_grade_by_decision,risk_grade,TOTAL,decision,APPROVE,25043,132553403.77000046,COLUMN_TOTAL
+risk_grade_by_decision,risk_grade,TOTAL,decision,HIGH RISK REVIEW,4621,123988358.01000006,COLUMN_TOTAL
+risk_grade_by_decision,risk_grade,TOTAL,decision,REJECT,11329,446037350.2200007,COLUMN_TOTAL
+risk_grade_by_decision,risk_grade,TOTAL,decision,WATCH,9007,135367148.4600001,COLUMN_TOTAL
+risk_grade_by_decision,risk_grade,TOTAL,decision,TOTAL,50000,837946260.4600012,GRAND_TOTAL

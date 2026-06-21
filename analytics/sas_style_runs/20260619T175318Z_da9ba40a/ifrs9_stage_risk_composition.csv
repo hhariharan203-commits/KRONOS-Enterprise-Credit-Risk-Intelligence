@@ -1,0 +1,25 @@
+table_name,row_dimension,row_value,column_dimension,column_value,count,total_ead,cell_type
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 1,risk_band,PRIME,19708,77801669.36000009,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 1,risk_band,NEAR PRIME,5668,74130658.20000024,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 1,risk_band,MODERATE RISK,4134,66455456.769999884,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 1,risk_band,HIGH RISK,2373,67907902.36,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 1,risk_band,DEFAULT RISK,1739,57133369.37000007,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 2,risk_band,PRIME,1348,6806450.720000002,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 2,risk_band,NEAR PRIME,2319,30047982.60000001,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 2,risk_band,MODERATE RISK,1740,29205104.860000003,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 2,risk_band,HIGH RISK,2797,84178527.31000003,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 2,risk_band,DEFAULT RISK,4753,195098094.32999986,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 3,risk_band,PRIME,0,0.0,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 3,risk_band,NEAR PRIME,0,0.0,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 3,risk_band,MODERATE RISK,14,382477.18000000005,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 3,risk_band,HIGH RISK,478,15060420.040000008,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 3,risk_band,DEFAULT RISK,2929,133738147.36000009,DETAIL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 1,risk_band,TOTAL,33622,343429056.0600003,ROW_TOTAL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 2,risk_band,TOTAL,12957,345336159.81999993,ROW_TOTAL
+ifrs9_stage_by_risk_band,ifrs9_stage,STAGE 3,risk_band,TOTAL,3421,149181044.5800001,ROW_TOTAL
+ifrs9_stage_by_risk_band,ifrs9_stage,TOTAL,risk_band,DEFAULT RISK,9421,385969611.06,COLUMN_TOTAL
+ifrs9_stage_by_risk_band,ifrs9_stage,TOTAL,risk_band,HIGH RISK,5648,167146849.71000004,COLUMN_TOTAL
+ifrs9_stage_by_risk_band,ifrs9_stage,TOTAL,risk_band,MODERATE RISK,5888,96043038.80999988,COLUMN_TOTAL
+ifrs9_stage_by_risk_band,ifrs9_stage,TOTAL,risk_band,NEAR PRIME,7987,104178640.80000025,COLUMN_TOTAL
+ifrs9_stage_by_risk_band,ifrs9_stage,TOTAL,risk_band,PRIME,21056,84608120.08000009,COLUMN_TOTAL
+ifrs9_stage_by_risk_band,ifrs9_stage,TOTAL,risk_band,TOTAL,50000,837946260.4600002,GRAND_TOTAL

@@ -1,0 +1,62 @@
+[
+  {
+    "risk_band": "DEFAULT RISK",
+    "proxy_train_count": 7448,
+    "proxy_train_pct": 0.1862,
+    "proxy_oot_count": 1898,
+    "proxy_oot_pct": 0.1898,
+    "pct_point_shift": 0.0036,
+    "etl_batch_id": "a4610f7b291b4283aabbcacd4adb76fd",
+    "source_asset_id": "e26cd60bae25b03f74f0ce4e9fb75c5f",
+    "source_sha256": "e7be3728b2f447479b1389044e93eaeecf3ea1560d6e9b870bf6f7f7776d9554",
+    "loaded_at": "2026-06-19T19:12:34.587436+05:30"
+  },
+  {
+    "risk_band": "HIGH RISK",
+    "proxy_train_count": 4601,
+    "proxy_train_pct": 0.115025,
+    "proxy_oot_count": 1098,
+    "proxy_oot_pct": 0.1098,
+    "pct_point_shift": -0.005225,
+    "etl_batch_id": "a4610f7b291b4283aabbcacd4adb76fd",
+    "source_asset_id": "e26cd60bae25b03f74f0ce4e9fb75c5f",
+    "source_sha256": "e7be3728b2f447479b1389044e93eaeecf3ea1560d6e9b870bf6f7f7776d9554",
+    "loaded_at": "2026-06-19T19:12:34.587436+05:30"
+  },
+  {
+    "risk_band": "MODERATE RISK",
+    "proxy_train_count": 4789,
+    "proxy_train_pct": 0.119725,
+    "proxy_oot_count": 1220,
+    "proxy_oot_pct": 0.122,
+    "pct_point_shift": 0.002275,
+    "etl_batch_id": "a4610f7b291b4283aabbcacd4adb76fd",
+    "source_asset_id": "e26cd60bae25b03f74f0ce4e9fb75c5f",
+    "source_sha256": "e7be3728b2f447479b1389044e93eaeecf3ea1560d6e9b870bf6f7f7776d9554",
+    "loaded_at": "2026-06-19T19:12:34.587436+05:30"
+  },
+  {
+    "risk_band": "NEAR PRIME",
+    "proxy_train_count": 6374,
+    "proxy_train_pct": 0.15935,
+    "proxy_oot_count": 1503,
+    "proxy_oot_pct": 0.1503,
+    "pct_point_shift": -0.00905,
+    "etl_batch_id": "a4610f7b291b4283aabbcacd4adb76fd",
+    "source_asset_id": "e26cd60bae25b03f74f0ce4e9fb75c5f",
+    "source_sha256": "e7be3728b2f447479b1389044e93eaeecf3ea1560d6e9b870bf6f7f7776d9554",
+    "loaded_at": "2026-06-19T19:12:34.587436+05:30"
+  },
+  {
+    "risk_band": "PRIME",
+    "proxy_train_count": 16788,
+    "proxy_train_pct": 0.4197,
+    "proxy_oot_count": 4281,
+    "proxy_oot_pct": 0.4281,
+    "pct_point_shift": 0.0084,
+    "etl_batch_id": "a4610f7b291b4283aabbcacd4adb76fd",
+    "source_asset_id": "e26cd60bae25b03f74f0ce4e9fb75c5f",
+    "source_sha256": "e7be3728b2f447479b1389044e93eaeecf3ea1560d6e9b870bf6f7f7776d9554",
+    "loaded_at": "2026-06-19T19:12:34.587436+05:30"
+  }
+]

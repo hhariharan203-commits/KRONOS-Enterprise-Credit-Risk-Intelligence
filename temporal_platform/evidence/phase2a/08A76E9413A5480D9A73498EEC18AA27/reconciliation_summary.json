@@ -1,0 +1,43 @@
+{
+  "failure_count": 0,
+  "reconciliation_count": 9,
+  "results": [
+    {
+      "name": "source_rows_to_snapshot_population",
+      "status": "PASS"
+    },
+    {
+      "name": "source_columns_to_column_registry",
+      "status": "PASS"
+    },
+    {
+      "name": "source_rows_to_distinct_borrowers",
+      "status": "PASS"
+    },
+    {
+      "name": "run_id_inventory_to_baseline",
+      "status": "PASS"
+    },
+    {
+      "name": "model_version_inventory_to_baseline",
+      "status": "PASS"
+    },
+    {
+      "name": "source_hash_to_snapshot_link",
+      "status": "PASS"
+    },
+    {
+      "name": "timestamp_count_to_registry",
+      "status": "PASS"
+    },
+    {
+      "name": "source_schema_hash_to_registry",
+      "status": "PASS"
+    },
+    {
+      "name": "successful_scoring_rows_to_population",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

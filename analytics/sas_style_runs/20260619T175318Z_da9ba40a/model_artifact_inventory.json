@@ -1,0 +1,74 @@
+[
+  {
+    "model_family": "EAD",
+    "artifact_role": "FEATURE_LIST",
+    "artifact_count": 1,
+    "total_size_bytes": 1294.0
+  },
+  {
+    "model_family": "EAD",
+    "artifact_role": "METRICS",
+    "artifact_count": 1,
+    "total_size_bytes": 158.0
+  },
+  {
+    "model_family": "EAD",
+    "artifact_role": "MODEL",
+    "artifact_count": 1,
+    "total_size_bytes": 2237339.0
+  },
+  {
+    "model_family": "EAD",
+    "artifact_role": "SCALER",
+    "artifact_count": 1,
+    "total_size_bytes": 3839.0
+  },
+  {
+    "model_family": "LGD",
+    "artifact_role": "FEATURE_LIST",
+    "artifact_count": 1,
+    "total_size_bytes": 1294.0
+  },
+  {
+    "model_family": "LGD",
+    "artifact_role": "METRICS",
+    "artifact_count": 1,
+    "total_size_bytes": 152.0
+  },
+  {
+    "model_family": "LGD",
+    "artifact_role": "MODEL",
+    "artifact_count": 1,
+    "total_size_bytes": 1354971.0
+  },
+  {
+    "model_family": "LGD",
+    "artifact_role": "SCALER",
+    "artifact_count": 1,
+    "total_size_bytes": 3839.0
+  },
+  {
+    "model_family": "PD",
+    "artifact_role": "FEATURE_LIST",
+    "artifact_count": 1,
+    "total_size_bytes": 1294.0
+  },
+  {
+    "model_family": "PD",
+    "artifact_role": "METRICS",
+    "artifact_count": 1,
+    "total_size_bytes": 419.0
+  },
+  {
+    "model_family": "PD",
+    "artifact_role": "MODEL",
+    "artifact_count": 1,
+    "total_size_bytes": 2158292.0
+  },
+  {
+    "model_family": "PD",
+    "artifact_role": "SCALER",
+    "artifact_count": 1,
+    "total_size_bytes": 3839.0
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "exposure_rank": 1,
+    "borrower_key": "13853",
+    "facility_key": "13853",
+    "ead": 58516.16,
+    "exposure_share": 6.98328314847745e-05,
+    "cumulative_exposure_share": 6.98328314847745e-05
+  },
+  {
+    "exposure_rank": 2,
+    "borrower_key": "12048",
+    "facility_key": "12048",
+    "ead": 58499.78,
+    "exposure_share": 6.981328369182771e-05,
+    "cumulative_exposure_share": 0.0001396461151766022
+  },
+  {
+    "exposure_rank": 3,
+    "borrower_key": "33362",
+    "facility_key": "33362",
+    "ead": 58357.22,
+    "exposure_share": 6.96431534499173e-05,
+    "cumulative_exposure_share": 0.0002092892686265195
+  },
+  {
+    "exposure_rank": 4,
+    "borrower_key": "34245",
+    "facility_key": "34245",
+    "ead": 58346.5,
+    "exposure_share": 6.963036026674333e-05,
+    "cumulative_exposure_share": 0.00027891962889326286
+  },
+  {
+    "exposure_rank": 5,
+    "borrower_key": "662",
+    "facility_key": "662",
+    "ead": 58235.57,
+    "exposure_share": 6.94979770755598e-05,
+    "cumulative_exposure_share": 0.00034841760596882265
+  },
+  {
+    "exposure_rank": 6,
+    "borrower_key": "47978",
+    "facility_key": "47978",
+    "ead": 58188.6,
+    "exposure_share": 6.944192336159702e-05,
+    "cumulative_exposure_share": 0.0004178595293304197
+  },
+  {
+    "exposure_rank": 7,
+    "borrower_key": "36334",
+    "facility_key": "36334",
+    "ead": 58170.17,
+    "exposure_share": 6.941992911104702e-05,
+    "cumulative_exposure_share": 0.0004872794584414667
+  },
+  {
+    "exposure_rank": 8,
+    "borrower_key": "14367",
+    "facility_key": "14367",
+    "ead": 58167.22,
+    "exposure_share": 6.941640859888627e-05,
+    "cumulative_exposure_share": 0.000556695867040353
+  },
+  {
+    "exposure_rank": 9,
+    "borrower_key": "814",
+    "facility_key": "814",
+    "ead": 58135.21,
+    "exposure_share": 6.93782080584573e-05,
+    "cumulative_exposure_share": 0.0006260740750988103
+  },
+  {
+    "exposure_rank": 10,
+    "borrower_key": "2345",
+    "facility_key": "2345",
+    "ead": 58097.41,
+    "exposure_share": 6.933309776704166e-05,
+    "cumulative_exposure_share": 0.0006954071728658519
+  },
+  {
+    "exposure_rank": 11,
+    "borrower_key": "24169",
+    "facility_key": "24169",
+    "ead": 58091.87,
+    "exposure_share": 6.932648636454318e-05,
+    "cumulative_exposure_share": 0.0007647336592303952
+  },
+  {
+    "exposure_rank": 12,
+    "borrower_key": "14060",
+    "facility_key": "14060",
+    "ead": 58091.13,
+    "exposure_share": 6.932560325301811e-05,
+    "cumulative_exposure_share": 0.0008340592624834133
+  },
+  {
+    "exposure_rank": 13,
+    "borrower_key": "31942",
+    "facility_key": "31942",
+    "ead": 58068.9,
+    "exposure_share": 6.929907410544749e-05,
+    "cumulative_exposure_share": 0.0009033583365888608
+  },
+  {
+    "exposure_rank": 14,
+    "borrower_key": "22278",
+    "facility_key": "22278",
+    "ead": 58064.09,
+    "exposure_share": 6.929333388053454e-05,
+    "cumulative_exposure_share": 0.0009726516704693953
+  },
+  {
+    "exposure_rank": 15,
+    "borrower_key": "36090",
+    "facility_key": "36090",
+    "ead": 58049.79,
+    "exposure_share": 6.927626834700958e-05,
+    "cumulative_exposure_share": 0.0010419279388164048
+  },
+  {
+    "exposure_rank": 16,
+    "borrower_key": "22189",
+    "facility_key": "22189",
+    "ead": 58027.63,
+    "exposure_share": 6.924982273701564e-05,
+    "cumulative_exposure_share": 0.0011111777615534205
+  },
+  {
+    "exposure_rank": 17,
+    "borrower_key": "47950",
+    "facility_key": "47950",
+    "ead": 58025.06,
+    "exposure_share": 6.924675571455695e-05,
+    "cumulative_exposure_share": 0.0011804245172679774
+  },
+  {
+    "exposure_rank": 18,
+    "borrower_key": "25580",
+    "facility_key": "25580",
+    "ead": 58010.44,
+    "exposure_share": 6.92293082949671e-05,
+    "cumulative_exposure_share": 0.0012496538255629445
+  },
+  {
+    "exposure_rank": 19,
+    "borrower_key": "24085",
+    "facility_key": "24085",
+    "ead": 58008.24,
+    "exposure_share": 6.922668282827094e-05,
+    "cumulative_exposure_share": 0.0013188805083912153
+  },
+  {
+    "exposure_rank": 20,
+    "borrower_key": "11924",
+    "facility_key": "11924",
+    "ead": 57997.37,
+    "exposure_share": 6.921371063600407e-05,
+    "cumulative_exposure_share": 0.0013880942190272194
+  },
+  {
+    "exposure_rank": 21,
+    "borrower_key": "13486",
+    "facility_key": "13486",
+    "ead": 57995.09,
+    "exposure_share": 6.92109896977917e-05,
+    "cumulative_exposure_share": 0.0014573052087250111
+  },
+  {
+    "exposure_rank": 22,
+    "borrower_key": "34045",
+    "facility_key": "34045",
+    "ead": 57983.01,
+    "exposure_share": 6.919657349884194e-05,
+    "cumulative_exposure_share": 0.001526501782223853
+  },
+  {
+    "exposure_rank": 23,
+    "borrower_key": "4766",
+    "facility_key": "4766",
+    "ead": 57968.88,
+    "exposure_share": 6.917971084228894e-05,
+    "cumulative_exposure_share": 0.001595681493066142
+  },
+  {
+    "exposure_rank": 24,
+    "borrower_key": "28134",
+    "facility_key": "28134",
+    "ead": 57958.83,
+    "exposure_share": 6.916771723306336e-05,
+    "cumulative_exposure_share": 0.0016648492102992053
+  },
+  {
+    "exposure_rank": 25,
+    "borrower_key": "22647",
+    "facility_key": "22647",
+    "ead": 57942.95,
+    "exposure_share": 6.914876613709297e-05,
+    "cumulative_exposure_share": 0.0017339979764362983
+  }
+]

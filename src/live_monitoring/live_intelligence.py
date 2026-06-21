@@ -841,8 +841,9 @@ def get_live_intelligence(
         },
     }
 
-    _write_cache(
-        context
-    )
+    if allow_api_refresh:
+        _write_cache(
+            context
+        )
 
     return context

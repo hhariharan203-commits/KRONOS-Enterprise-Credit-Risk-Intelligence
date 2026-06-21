@@ -1,0 +1,30 @@
+{
+    "report_name": "KRONOS Institutional Model Validation Pack",
+    "generated_at": "2026-06-15T18:19:01Z",
+    "champion_model": "Current VotingClassifier",
+    "feature_count": 61,
+    "approval_status": "AMBER",
+    "approval_reasons": [
+        "OOT validation uses proxy record-order methodology because no true temporal field exists."
+    ],
+    "champion_metrics": {
+        "accuracy": 0.8593,
+        "precision": 0.7513,
+        "recall": 0.6002,
+        "f1_score": 0.6673,
+        "roc_auc": 0.9068,
+        "model_health_score": 0.8111,
+        "population_stability_index": 0.0058,
+        "psi": 0.0058,
+        "model_drift": "NO DRIFT",
+        "train_auc": 0.9534,
+        "overfitting_risk": "MODERATE OVERFITTING RISK",
+        "train_samples": 40000,
+        "test_samples": 10000,
+        "feature_count": 61
+    },
+    "calibration_status": "PASS",
+    "oot_status": "STABLE WITH PROXY LIMITATION",
+    "challenger_framework_present": true,
+    "recommended_champion": "Current VotingClassifier (Champion)"
+}

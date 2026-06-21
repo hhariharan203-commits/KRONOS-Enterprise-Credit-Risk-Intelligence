@@ -1,0 +1,3 @@
+segment,population_size,default_count,default_rate,average_pd,auc,accuracy,precision,recall,f1_score,ks_statistic,top_decile_lift,classification_threshold,etl_batch_id,source_asset_id,source_sha256,loaded_at
+Proxy Train Segment,40000,9384,0.2346,0.235066,0.944583,0.8927,0.841837,0.668159,0.74501,0.734794,4.040921,0.5,a4610f7b291b4283aabbcacd4adb76fd,3488610af9955c324cec6d633e289bbd,7faccea152a1fb2b8439e77ac68af5c962e79734f725b63f0676fb03d276cdc5,2026-06-19 19:12:34.419918+05:30
+Proxy OOT Segment,10000,2373,0.2373,0.23387,0.942631,0.8927,0.842466,0.673831,0.748771,0.739438,3.986515,0.5,a4610f7b291b4283aabbcacd4adb76fd,3488610af9955c324cec6d633e289bbd,7faccea152a1fb2b8439e77ac68af5c962e79734f725b63f0676fb03d276cdc5,2026-06-19 19:12:34.419918+05:30

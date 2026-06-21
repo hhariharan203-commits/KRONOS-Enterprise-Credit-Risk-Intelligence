@@ -1,0 +1,151 @@
+{
+  "generated_at": "2026-06-21T06:03:01.919854+00:00",
+  "artifacts": {
+    "pd_model": {
+      "path": "models/pd_model.pkl",
+      "exists": true,
+      "size_bytes": 2158292
+    },
+    "lgd_model": {
+      "path": "models/lgd_model.pkl",
+      "exists": true,
+      "size_bytes": 1354971
+    },
+    "ead_model": {
+      "path": "models/ead_model.pkl",
+      "exists": true,
+      "size_bytes": 2237339
+    },
+    "scored_portfolio": {
+      "path": "data/processed/scored_portfolio.csv",
+      "exists": true,
+      "size_bytes": 26532227
+    }
+  },
+  "model_registry": {
+    "generated_at": "2026-06-21T06:03:01.994774+00:00",
+    "active_models": [
+      "pd_model",
+      "lgd_model",
+      "ead_model"
+    ],
+    "models": {
+      "pd_model": {
+        "model_key": "pd_model",
+        "model_name": "Probability of Default Model",
+        "model_family": "PD",
+        "active": true,
+        "designation": "CHAMPION",
+        "version": "e6108eeb2342",
+        "sha256_model_hash": "e6108eeb2342c4a10e96a0406e1f4a1c84ce642cce50dd13fb3023aab4906499",
+        "model_owner": "KRONOS Model Risk Governance",
+        "approval_status": "APPROVED FOR PORTFOLIO DEMO",
+        "validation_date": "2026-06-15",
+        "promotion_date": "2026-06-15",
+        "retirement_status": "ACTIVE",
+        "champion_designation": true,
+        "challenger_designation": false,
+        "artifact": {
+          "path": "models/pd_model.pkl",
+          "exists": true,
+          "size_bytes": 2158292
+        },
+        "metrics_path": "models/model_metrics.json",
+        "performance_tracking": {
+          "metrics": {
+            "accuracy": 0.8593,
+            "precision": 0.7513,
+            "recall": 0.6002,
+            "f1_score": 0.6673,
+            "roc_auc": 0.9068,
+            "model_health_score": 0.8111,
+            "population_stability_index": 0.0058,
+            "psi": 0.0058,
+            "model_drift": "NO DRIFT",
+            "train_auc": 0.9534,
+            "overfitting_risk": "MODERATE OVERFITTING RISK",
+            "train_samples": 40000,
+            "test_samples": 10000,
+            "feature_count": 61
+          },
+          "status": "MODEL STABLE"
+        }
+      },
+      "lgd_model": {
+        "model_key": "lgd_model",
+        "model_name": "Loss Given Default Model",
+        "model_family": "LGD",
+        "active": true,
+        "designation": "CHAMPION",
+        "version": "5e926f486329",
+        "sha256_model_hash": "5e926f486329ffc1b08e5338399cf75401a0154ba54a843d7aebf9856c7588d9",
+        "model_owner": "KRONOS Model Risk Governance",
+        "approval_status": "APPROVED FOR PORTFOLIO DEMO",
+        "validation_date": "2026-06-15",
+        "promotion_date": "2026-06-15",
+        "retirement_status": "ACTIVE",
+        "champion_designation": true,
+        "challenger_designation": false,
+        "artifact": {
+          "path": "models/lgd_model.pkl",
+          "exists": true,
+          "size_bytes": 1354971
+        },
+        "metrics_path": "models/lgd_metrics.json",
+        "performance_tracking": {
+          "metrics": {
+            "mae": 0.0347,
+            "rmse": 0.0465,
+            "r2_score": 0.9662,
+            "train_samples": 40000,
+            "test_samples": 10000,
+            "feature_count": 61
+          },
+          "status": "MODEL STABLE"
+        }
+      },
+      "ead_model": {
+        "model_key": "ead_model",
+        "model_name": "Exposure at Default Model",
+        "model_family": "EAD",
+        "active": true,
+        "designation": "CHAMPION",
+        "version": "07bc6b75158c",
+        "sha256_model_hash": "07bc6b75158ce234e3de2fc8fb07dd855008314e7572e1ff25db1e9347cad52b",
+        "model_owner": "KRONOS Model Risk Governance",
+        "approval_status": "APPROVED FOR PORTFOLIO DEMO",
+        "validation_date": "2026-06-15",
+        "promotion_date": "2026-06-15",
+        "retirement_status": "ACTIVE",
+        "champion_designation": true,
+        "challenger_designation": false,
+        "artifact": {
+          "path": "models/ead_model.pkl",
+          "exists": true,
+          "size_bytes": 2237339
+        },
+        "metrics_path": "models/ead_metrics.json",
+        "performance_tracking": {
+          "metrics": {
+            "mae": 1576.4102,
+            "rmse": 1967.5374,
+            "r2_score": 0.9838,
+            "train_samples": 40000,
+            "test_samples": 10000,
+            "feature_count": 61
+          },
+          "status": "MODEL STABLE"
+        }
+      }
+    },
+    "champion_challenger": {
+      "champions": [
+        "pd_model",
+        "lgd_model",
+        "ead_model"
+      ],
+      "challengers": [],
+      "evaluation_policy": "Challenger models must outperform the active champion on validated performance and governance metrics before promotion."
+    }
+  }
+}

@@ -8,7 +8,7 @@ from src.live_monitoring.live_intelligence import get_live_intelligence
 
 
 def get_dashboard_live_context(
-    allow_api_refresh=True
+    allow_api_refresh=False
 ):
     return get_live_intelligence(
         allow_api_refresh=allow_api_refresh

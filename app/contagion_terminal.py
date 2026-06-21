@@ -63,6 +63,10 @@ from app.live_intelligence_components import (
     render_live_status_card,
     live_summary,
 )
+from app.dashboard_components import (
+    icon_section as _section,
+    narrative_panel as _narrative,
+)
 
 cached_run_contagion_analysis = timed_cache()(run_contagion_analysis)
 cached_run_network_analysis = timed_cache()(run_network_analysis)
@@ -491,40 +495,6 @@ def _apply_layout(fig):
     return fig
 
 
-def _section(icon, title, badge=None):
-    badge_html = (
-        f'<span class="section-header-badge">{badge}</span>'
-        if badge else ""
-    )
-    st.markdown(
-        f"""
-        <div class="section-header">
-            <div class="section-header-icon">{icon}</div>
-            <span class="section-header-text">{title}</span>
-            {badge_html}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
-def _narrative(content, variant="default", label="Executive Intelligence"):
-    css_class = {
-        "warn":     "kronos-narrative-warn",
-        "critical": "kronos-narrative-critical",
-        "success":  "kronos-narrative-success",
-    }.get(variant, "")
-    st.markdown(
-        f"""
-        <div class="kronos-narrative {css_class}">
-            <span class="kronos-narrative-label">{label}</span>
-            {content}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
 # =============================================================================
 # MAIN RENDER
 # =============================================================================
@@ -715,7 +685,7 @@ def render(shared_data=None):
     )
 
     live_context = get_dashboard_live_context(
-        allow_api_refresh=True
+        allow_api_refresh=False
     )
     live_data = live_summary(live_context)
     macro_data = macro_intelligence(live_context)

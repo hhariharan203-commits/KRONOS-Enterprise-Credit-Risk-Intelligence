@@ -1,0 +1,288 @@
+{
+  "captured_at": "2026-06-20",
+  "database_sha256": "BF6745634BB1EC2DD911403901E1F7AADF029DC22EB3FCC8EC274E62B57070FC",
+  "catalog": {
+    "schema_count": 5,
+    "table_count": 36,
+    "view_count": 0,
+    "mart_object_count": 0
+  },
+  "release_rows": [
+    [
+      "037B99F51A87991BEFB46DA4D59BAAF1DF10EF8D2F43937E7345C11480E77C2A",
+      "PHASE2A",
+      "2A.1",
+      "PUBLISHED",
+      5,
+      17,
+      0
+    ],
+    [
+      "BF7AA021A9C54B448FB75CB3D34AAA74D2DAAA02F003EA0B48A6E4BA99037277",
+      "PHASE2B",
+      "2B.0",
+      "PUBLISHED",
+      5,
+      36,
+      0
+    ]
+  ],
+  "protected_count": 403,
+  "protected_inventory_sha256": "1DB85084FA9609CAA463D520B61F2B00668FAD619C5816D370EFD6B7F6DD5014",
+  "current_warehouse_sha256": "0B0529F947D81FDDC049873BF40AB8360FC595314EA21F0C883F10E7F5AE4CA5",
+  "scored_portfolio_sha256": "DA9BA40AE0E29FF02D98025C9320DAD2AEB0C03CF30316983C10804086488FBB",
+  "table_inventory": {
+    "control.column_lineage": {
+      "primary_key": [
+        "column_lineage_id"
+      ],
+      "row_count": 4,
+      "canonical_sha256": "1311D16E339E708508D7437E26EDC585DCF6935F4D03CA1D13CE97A2934480E5"
+    },
+    "control.data_readiness_result": {
+      "primary_key": [
+        "readiness_result_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.deployment_run": {
+      "primary_key": [
+        "deployment_id"
+      ],
+      "row_count": 3,
+      "canonical_sha256": "D3436090E794D1C7D57BFBD91EBA189A2BEF52BDBB6DFF5CCFB329B3DBE77FEB"
+    },
+    "control.historical_column_lineage": {
+      "primary_key": [
+        "historical_column_lineage_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.historical_field_mapping": {
+      "primary_key": [
+        "field_mapping_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.historical_ingestion_batch": {
+      "primary_key": [
+        "ingestion_batch_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.historical_ingestion_file": {
+      "primary_key": [
+        "ingestion_file_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.historical_lineage_edge": {
+      "primary_key": [
+        "historical_lineage_edge_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.historical_lineage_node": {
+      "primary_key": [
+        "historical_lineage_node_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.historical_publish_status": {
+      "primary_key": [
+        "historical_publish_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.historical_reconciliation_result": {
+      "primary_key": [
+        "historical_reconciliation_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.historical_reject_record": {
+      "primary_key": [
+        "reject_record_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.lineage_edge": {
+      "primary_key": [
+        "lineage_edge_id"
+      ],
+      "row_count": 4,
+      "canonical_sha256": "B075C7699E8F06BC5D35A1A74F355A777DE5D1A4699FF7537014C75A59393E10"
+    },
+    "control.lineage_node": {
+      "primary_key": [
+        "lineage_node_id"
+      ],
+      "row_count": 5,
+      "canonical_sha256": "DC7086D98EEBCBE17D879F12F329436263C72C7748DB62392361715CF8DA53B9"
+    },
+    "control.platform_release": {
+      "primary_key": [
+        "release_id"
+      ],
+      "row_count": 2,
+      "canonical_sha256": "1E6E45F5DC0DBE5BBE374E3B899922D72BC64F4106D48E74925E8D9AA93C6D2D"
+    },
+    "control.publish_status": {
+      "primary_key": [
+        "publish_id"
+      ],
+      "row_count": 9,
+      "canonical_sha256": "26DD63DCA06C3CE66AB1DBE92A54CC6E29A89193C4B2A74B5F642EA8A1602ACF"
+    },
+    "control.reconciliation_result": {
+      "primary_key": [
+        "reconciliation_id"
+      ],
+      "row_count": 18,
+      "canonical_sha256": "7D91D6E04B0D8902988D3A603E94D4F8F9CE9254986844668417CA47A822035A"
+    },
+    "control.rollback_event": {
+      "primary_key": [
+        "rollback_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "control.snapshot_registry": {
+      "primary_key": [
+        "snapshot_id"
+      ],
+      "row_count": 1,
+      "canonical_sha256": "E311B90D8A2E37BFC17D7056B0A34AB33949980D154DF4278863DA39811628DB"
+    },
+    "control.snapshot_source_link": {
+      "primary_key": [
+        "snapshot_source_link_id"
+      ],
+      "row_count": 1,
+      "canonical_sha256": "7C9DFD1CDC5A7DC75D86CA58F85A452F8EFC9D6F8BFFDADBA19567381474CA89"
+    },
+    "control.source_asset": {
+      "primary_key": [
+        "source_asset_id"
+      ],
+      "row_count": 1,
+      "canonical_sha256": "9EFEDC69F106477F627607E8037A19ACE0D6481907594B13EFF63DAC79044D04"
+    },
+    "control.source_column": {
+      "primary_key": [
+        "source_column_id"
+      ],
+      "row_count": 63,
+      "canonical_sha256": "FDEA7AC62968D62E714F791051636433D409E77E0318AF353E5FD676782AD0D2"
+    },
+    "control.temporal_contract": {
+      "primary_key": [
+        "temporal_contract_id"
+      ],
+      "row_count": 2,
+      "canonical_sha256": "3934B5CF9F4E6D10BC753B0A196FB085ACC414969803B345CF51ECD6B9CF0105"
+    },
+    "control.temporal_quality_result": {
+      "primary_key": [
+        "quality_result_id"
+      ],
+      "row_count": 54,
+      "canonical_sha256": "29144392C82ECE0D82A9619EFED90A3529954F6A6757532DD2A17DB083B328A5"
+    },
+    "core.dim_historical_entity": {
+      "primary_key": [
+        "entity_key"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "core.dim_historical_facility": {
+      "primary_key": [
+        "facility_key"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "core.dim_historical_snapshot": {
+      "primary_key": [
+        "historical_snapshot_key"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "core.fact_historical_credit_event": {
+      "primary_key": [
+        "event_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "core.fact_historical_credit_observation": {
+      "primary_key": [
+        "observation_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "reference.dim_identity_grain": {
+      "primary_key": [
+        "identity_grain_code"
+      ],
+      "row_count": 2,
+      "canonical_sha256": "753453963E055F365660B5F4AC0E534A8BB8EDF6D45013CD8304B84F40A4ADEF"
+    },
+    "reference.dim_readiness_status": {
+      "primary_key": [
+        "readiness_status_code"
+      ],
+      "row_count": 5,
+      "canonical_sha256": "1ACA9ECDAB0CABB2177E7BAC4B9BA9AA979EF7F28A8D091AEB2CFB033D5CD404"
+    },
+    "reference.dim_snapshot_status": {
+      "primary_key": [
+        "snapshot_status_code"
+      ],
+      "row_count": 7,
+      "canonical_sha256": "8511BF2BA286007EE69FB076750BBF622501887D805346C4526A0493896A095B"
+    },
+    "reference.dim_temporal_classification": {
+      "primary_key": [
+        "classification_code"
+      ],
+      "row_count": 4,
+      "canonical_sha256": "FD94F39C6FA99C7832DEFA41E74369F55B38296BD43C8393617DC40302D10477"
+    },
+    "staging.stg_historical_event_row": {
+      "primary_key": [
+        "staging_event_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "staging.stg_historical_snapshot_row": {
+      "primary_key": [
+        "staging_row_id"
+      ],
+      "row_count": 0,
+      "canonical_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "staging.stg_snapshot_manifest": {
+      "primary_key": [
+        "manifest_row_id"
+      ],
+      "row_count": 1,
+      "canonical_sha256": "293584F08216D3485F9536269416C5949736981522235B892AE6198077BB55BE"
+    }
+  }
+}

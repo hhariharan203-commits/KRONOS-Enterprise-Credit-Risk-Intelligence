@@ -1,0 +1,94 @@
+{
+  "backup_path": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\temporal_platform\\backups\\kronos_temporal_risk_20260620T120302Z_E73E374A01ECA529.duckdb",
+  "catalog": {
+    "mart_object_count": 0,
+    "schema_count": 5,
+    "schemas": [
+      "control",
+      "core",
+      "mart",
+      "reference",
+      "staging"
+    ],
+    "table_count": 36,
+    "tables": [
+      "control.column_lineage",
+      "control.data_readiness_result",
+      "control.deployment_run",
+      "control.historical_column_lineage",
+      "control.historical_field_mapping",
+      "control.historical_ingestion_batch",
+      "control.historical_ingestion_file",
+      "control.historical_lineage_edge",
+      "control.historical_lineage_node",
+      "control.historical_publish_status",
+      "control.historical_reconciliation_result",
+      "control.historical_reject_record",
+      "control.lineage_edge",
+      "control.lineage_node",
+      "control.platform_release",
+      "control.publish_status",
+      "control.reconciliation_result",
+      "control.rollback_event",
+      "control.snapshot_registry",
+      "control.snapshot_source_link",
+      "control.source_asset",
+      "control.source_column",
+      "control.temporal_contract",
+      "control.temporal_quality_result",
+      "core.dim_historical_entity",
+      "core.dim_historical_facility",
+      "core.dim_historical_snapshot",
+      "core.fact_historical_credit_event",
+      "core.fact_historical_credit_observation",
+      "reference.dim_identity_grain",
+      "reference.dim_readiness_status",
+      "reference.dim_snapshot_status",
+      "reference.dim_temporal_classification",
+      "staging.stg_historical_event_row",
+      "staging.stg_historical_snapshot_row",
+      "staging.stg_snapshot_manifest"
+    ],
+    "view_count": 0,
+    "views": []
+  },
+  "database_path": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\temporal_platform\\warehouse\\kronos_temporal_risk.duckdb",
+  "database_sha256_after": "BF6745634BB1EC2DD911403901E1F7AADF029DC22EB3FCC8EC274E62B57070FC",
+  "database_sha256_before": "E73E374A01ECA52991D67A44DA592A1DB33FA24AE9B292ED514E0B2E016C34B0",
+  "deployment_id": "4BC3CE7352144728BEA2607664C34D39",
+  "generated_at": "2026-06-20T12:03:08.035064+00:00",
+  "phase2a_release_rows": 1,
+  "phase2a_rows": {
+    "changed_rows": [],
+    "matches": true,
+    "status": "PASS"
+  },
+  "phase2b_release_rows": 1,
+  "protected": {
+    "current_warehouse_sha256": "0B0529F947D81FDDC049873BF40AB8360FC595314EA21F0C883F10E7F5AE4CA5",
+    "external_assets_unchanged": true,
+    "protected_file_count": 404,
+    "protected_hashes_unchanged": true,
+    "scored_portfolio_sha256": "DA9BA40AE0E29FF02D98025C9320DAD2AEB0C03CF30316983C10804086488FBB",
+    "status": "PASS"
+  },
+  "release_id": "BF7AA021A9C54B448FB75CB3D34AAA74D2DAAA02F003EA0B48A6E4BA99037277",
+  "specifications": {
+    "PHASE2B_IMPLEMENTATION_PLAN.md": {
+      "relative_path": "docs/PHASE2B_IMPLEMENTATION_PLAN.md",
+      "sha256": "04D9476731AA7BF5DDCF1DFC9BC9065405664D40F5179D2D0BD6EE9D2B43AD11",
+      "status": "FILE_CONTROLLED"
+    },
+    "PHASE2B_IMPLEMENTATION_SPEC_FINAL.md": {
+      "relative_path": "docs/PHASE2B_IMPLEMENTATION_SPEC_FINAL.md",
+      "sha256": "C2D4890F7B0D42D9CAF28D25905897144887C00FF0AAEDF94AAC560CA829C238",
+      "status": "FILE_CONTROLLED"
+    },
+    "PHASE2B_PRE_IMPLEMENTATION_AUDIT.md": {
+      "relative_path": "docs/PHASE2B_PRE_IMPLEMENTATION_AUDIT.md",
+      "sha256": "338E87D6557369A340AF2A923CEE93DE1123570F7C53B1B8863D20A9F77C3046",
+      "status": "FILE_CONTROLLED"
+    }
+  },
+  "status": "PHASE2B_SCHEMA_READY"
+}

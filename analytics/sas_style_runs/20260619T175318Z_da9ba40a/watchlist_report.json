@@ -1,0 +1,22 @@
+[
+  {
+    "watchlist_status": "NON-WATCHLIST",
+    "count": 33622,
+    "total_ead": 343429056.05999964,
+    "average_pd": 0.10737267669978032,
+    "average_lgd": 0.44606145853905277,
+    "weighted_pd": 0.24415882772258185,
+    "weighted_lgd": 0.6111942412920219,
+    "current_credit_loss_proxy": 65627438.81979097
+  },
+  {
+    "watchlist_status": "WATCHLIST",
+    "count": 16378,
+    "total_ead": 494517204.39999974,
+    "average_pd": 0.4963404732568097,
+    "average_lgd": 0.7547216477591895,
+    "weighted_pd": 0.6548593574929777,
+    "weighted_lgd": 0.8543026217494925,
+    "current_credit_loss_proxy": 294916380.4193579
+  }
+]

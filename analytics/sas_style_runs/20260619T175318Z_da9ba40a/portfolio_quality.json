@@ -1,0 +1,14 @@
+[
+  {
+    "portfolio_size": 50000,
+    "scored_count": 50000.0,
+    "delinquent_count": 16378.0,
+    "average_days_past_due": 17.5248,
+    "average_total_delinquency": 1.25906,
+    "average_credit_utilization": 0.47204473663553925,
+    "average_payment_burden": 0.35345158534183857,
+    "average_loan_to_income": 0.7779035177231842,
+    "average_early_warning_score": 49.50099000000041,
+    "incomplete_risk_rows": 0.0
+  }
+]

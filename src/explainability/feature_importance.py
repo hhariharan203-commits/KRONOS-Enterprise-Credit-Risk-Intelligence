@@ -5,6 +5,8 @@
 
 import json
 import joblib
+from pathlib import Path
+
 import pandas as pd
 import numpy as np
 
@@ -644,7 +646,11 @@ def print_feature_report(
 # RUN FULL FEATURE ANALYSIS
 # =============================================================================
 
-def run_feature_analysis():
+def run_feature_analysis(
+    *,
+    persist=False,
+    output_directory="reports",
+):
     """
     Run full feature governance pipeline.
     """
@@ -712,11 +718,13 @@ def run_feature_analysis():
         summary
     )
 
-    save_feature_importance_report(
-        importance_df,
-        category_df,
-        summary
-    )
+    if persist:
+        save_feature_importance_report(
+            importance_df,
+            category_df,
+            summary,
+            output_directory=output_directory,
+        )
 
     return {
 
@@ -743,24 +751,29 @@ def run_feature_analysis():
 def save_feature_importance_report(
     importance_df,
     category_df,
-    summary
+    summary,
+    *,
+    output_directory="reports",
 ):
     """
     Save feature governance report.
     """
 
+    output_directory = Path(output_directory)
+    output_directory.mkdir(parents=True, exist_ok=True)
+
     importance_df.to_csv(
-        "reports/feature_importance.csv",
+        output_directory / "feature_importance.csv",
         index=False
     )
 
     category_df.to_csv(
-        "reports/category_importance.csv",
+        output_directory / "category_importance.csv",
         index=False
     )
 
     with open(
-        "reports/feature_summary.txt",
+        output_directory / "feature_summary.txt",
         "w"
     ) as f:
 
@@ -776,7 +789,7 @@ def save_feature_importance_report(
 
 if __name__ == "__main__":
 
-    run_feature_analysis()
+    run_feature_analysis(persist=True)
 
     print("\n[KRONOS] FEATURE IMPORTANCE ENGINE COMPLETED")
 

@@ -1,0 +1,39 @@
+{
+    "validation_type": "Proxy OOT Validation",
+    "generated_at": "2026-06-15T17:48:46Z",
+    "train_metrics": {
+        "segment": "Proxy Train Segment",
+        "population_size": 40000,
+        "default_count": 9384,
+        "default_rate": 0.2346,
+        "average_pd": 0.235066,
+        "auc": 0.944583,
+        "accuracy": 0.8927,
+        "precision": 0.841837,
+        "recall": 0.668159,
+        "f1_score": 0.74501,
+        "ks_statistic": 0.734794,
+        "top_decile_lift": 4.040921,
+        "classification_threshold": 0.5
+    },
+    "oot_metrics": {
+        "segment": "Proxy OOT Segment",
+        "population_size": 10000,
+        "default_count": 2373,
+        "default_rate": 0.2373,
+        "average_pd": 0.23387,
+        "auc": 0.942631,
+        "accuracy": 0.8927,
+        "precision": 0.842466,
+        "recall": 0.673831,
+        "f1_score": 0.748771,
+        "ks_statistic": 0.739438,
+        "top_decile_lift": 3.986515,
+        "classification_threshold": 0.5
+    },
+    "performance_degradation": {
+        "auc_delta_oot_minus_train": -0.001952,
+        "ks_delta_oot_minus_train": 0.004644,
+        "f1_delta_oot_minus_train": 0.003761
+    }
+}

@@ -1,0 +1,141 @@
+CREATE TABLE IF NOT EXISTS control.migration_readiness_run (
+    readiness_run_id VARCHAR PRIMARY KEY,
+    release_id VARCHAR NOT NULL,
+    run_type VARCHAR NOT NULL,
+    started_at TIMESTAMP NOT NULL,
+    completed_at TIMESTAMP,
+    lifecycle_status VARCHAR NOT NULL,
+    earlier_snapshot_id VARCHAR,
+    later_snapshot_id VARCHAR,
+    state_field VARCHAR,
+    readiness_contract_id VARCHAR,
+    readiness_contract_version VARCHAR,
+    readiness_contract_hash VARCHAR,
+    state_domain_contract_id VARCHAR,
+    state_domain_contract_version VARCHAR,
+    state_domain_contract_hash VARCHAR,
+    applicable_controls BIGINT,
+    passed_applicable_controls BIGINT,
+    governance_score DECIMAL(7,2),
+    quality_status VARCHAR,
+    readiness_status VARCHAR,
+    activation_status VARCHAR NOT NULL,
+    pre_operation_database_sha256 VARCHAR,
+    working_database_sha256 VARCHAR,
+    published_database_sha256 VARCHAR,
+    error_class VARCHAR,
+    error_message VARCHAR
+);
+
+CREATE TABLE IF NOT EXISTS control.migration_snapshot_pair (
+    pair_id VARCHAR PRIMARY KEY,
+    readiness_run_id VARCHAR NOT NULL,
+    earlier_snapshot_id VARCHAR NOT NULL,
+    later_snapshot_id VARCHAR NOT NULL,
+    earlier_snapshot_date DATE NOT NULL,
+    later_snapshot_date DATE NOT NULL,
+    source_system VARCHAR NOT NULL,
+    identity_grain VARCHAR NOT NULL,
+    history_mode VARCHAR NOT NULL,
+    evidence_classification VARCHAR NOT NULL,
+    state_field VARCHAR NOT NULL,
+    readiness_contract_id VARCHAR NOT NULL,
+    readiness_contract_version VARCHAR NOT NULL,
+    readiness_contract_hash VARCHAR NOT NULL,
+    state_domain_contract_id VARCHAR NOT NULL,
+    state_domain_contract_version VARCHAR NOT NULL,
+    state_domain_contract_hash VARCHAR NOT NULL,
+    earlier_source_sha256 VARCHAR NOT NULL,
+    later_source_sha256 VARCHAR NOT NULL,
+    earlier_population_count BIGINT NOT NULL,
+    later_population_count BIGINT NOT NULL,
+    overlapping_identity_count BIGINT NOT NULL,
+    earlier_state_complete_overlap_count BIGINT NOT NULL,
+    later_state_complete_overlap_count BIGINT NOT NULL,
+    earlier_state_missing_overlap_count BIGINT NOT NULL,
+    later_state_missing_overlap_count BIGINT NOT NULL,
+    identity_continuity_status VARCHAR NOT NULL,
+    state_continuity_status VARCHAR NOT NULL,
+    eligibility_status VARCHAR NOT NULL,
+    UNIQUE(earlier_snapshot_id, later_snapshot_id, state_field)
+);
+
+CREATE TABLE IF NOT EXISTS control.migration_transition_contract (
+    contract_id VARCHAR PRIMARY KEY,
+    contract_type VARCHAR NOT NULL,
+    contract_name VARCHAR NOT NULL,
+    contract_version VARCHAR NOT NULL,
+    supported_history_mode VARCHAR NOT NULL,
+    supported_evidence_classification VARCHAR NOT NULL,
+    permitted_identity_grains_json VARCHAR NOT NULL,
+    state_field VARCHAR,
+    ordered_allowed_values_json VARCHAR,
+    required_source_provenance_json VARCHAR NOT NULL,
+    prohibited_capabilities_json VARCHAR NOT NULL,
+    contract_definition_json VARCHAR NOT NULL,
+    contract_hash VARCHAR NOT NULL,
+    status VARCHAR NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    UNIQUE(contract_name, contract_version)
+);
+
+CREATE TABLE IF NOT EXISTS control.migration_quality_result (
+    quality_result_id VARCHAR PRIMARY KEY,
+    readiness_run_id VARCHAR NOT NULL,
+    pair_id VARCHAR NOT NULL,
+    control_name VARCHAR NOT NULL,
+    control_category VARCHAR NOT NULL,
+    critical_flag BOOLEAN NOT NULL,
+    applicable_flag BOOLEAN NOT NULL,
+    earlier_value VARCHAR,
+    later_value VARCHAR,
+    expected_value VARCHAR,
+    status VARCHAR NOT NULL,
+    details VARCHAR,
+    evaluated_at TIMESTAMP NOT NULL,
+    UNIQUE(readiness_run_id, control_name)
+);
+
+CREATE TABLE IF NOT EXISTS control.migration_readiness_result (
+    readiness_result_id VARCHAR PRIMARY KEY,
+    readiness_run_id VARCHAR NOT NULL,
+    pair_id VARCHAR NOT NULL,
+    capability_name VARCHAR NOT NULL,
+    data_status VARCHAR NOT NULL,
+    activation_status VARCHAR NOT NULL,
+    applicable_controls BIGINT NOT NULL,
+    passed_applicable_controls BIGINT NOT NULL,
+    governance_score DECIMAL(7,2),
+    required_evidence_json VARCHAR NOT NULL,
+    available_evidence_json VARCHAR NOT NULL,
+    missing_evidence_json VARCHAR NOT NULL,
+    reason VARCHAR NOT NULL,
+    evaluated_at TIMESTAMP NOT NULL,
+    UNIQUE(readiness_run_id, capability_name)
+);
+
+CREATE TABLE IF NOT EXISTS control.migration_reconciliation_result (
+    reconciliation_result_id VARCHAR PRIMARY KEY,
+    readiness_run_id VARCHAR NOT NULL,
+    pair_id VARCHAR NOT NULL,
+    reconciliation_name VARCHAR NOT NULL,
+    earlier_value VARCHAR,
+    later_value VARCHAR,
+    expected_value VARCHAR,
+    difference DOUBLE,
+    tolerance DOUBLE NOT NULL,
+    status VARCHAR NOT NULL,
+    details VARCHAR,
+    reconciled_at TIMESTAMP NOT NULL,
+    UNIQUE(readiness_run_id, reconciliation_name)
+);
+
+CREATE TABLE IF NOT EXISTS control.migration_publish_status (
+    publish_status_id VARCHAR PRIMARY KEY,
+    readiness_run_id VARCHAR NOT NULL,
+    target_name VARCHAR NOT NULL,
+    previous_status VARCHAR,
+    new_status VARCHAR NOT NULL,
+    transition_at TIMESTAMP NOT NULL,
+    details VARCHAR
+);

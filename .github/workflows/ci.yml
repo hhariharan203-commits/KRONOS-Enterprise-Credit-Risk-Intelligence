@@ -1,0 +1,44 @@
+name: KRONOS CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Build warehouse
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python -m src.enterprise_data.pipeline
+          python -m src.enterprise_data.etl.scheduler
+
+      - name: Verify repository integrity
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python scripts/verify_repository.py
+
+      - name: Run tests
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python -m pytest -q -p no:cacheprovider

@@ -1,0 +1,21 @@
+{
+    "approval_status": "AMBER",
+    "champion_model": "Current VotingClassifier",
+    "business_conclusion": "Phase 1 materially improves model-risk governance through feature controls, calibration, proxy OOT validation, and challenger benchmarking.",
+    "key_metrics": {
+        "champion_auc": 0.9068,
+        "champion_f1": 0.6673,
+        "brier_score": 0.080149,
+        "calibration_gap": 0.000314,
+        "oot_auc": 0.942631,
+        "oot_psi": 0.001287,
+        "best_challenger": "Logistic Regression",
+        "challenger_auc_gap": 0.002287
+    },
+    "recommended_actions": [
+        "Maintain VotingClassifier as champion.",
+        "Do not replace the production-demo PD model based on challenger results.",
+        "Add true borrower-level origination or observation date for future OOT validation.",
+        "Continue monitoring calibration decile gaps and PSI trends."
+    ]
+}

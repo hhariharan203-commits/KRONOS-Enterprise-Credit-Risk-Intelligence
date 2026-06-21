@@ -849,3 +849,61 @@ Static scan detected these as subscripted field names in engines but they are no
 | Live VIX naming | VIX columns include caret-suffixed names such as `close_^vix`, which are valid CSV headers but awkward for programmatic contracts. |
 | Dashboard module naming | `app/main.py` registers module names like `credit_engine_dashboard`, but those files are not present in this checkout. |
 
+## Phase 4A Enterprise Risk Warehouse
+
+### Database
+
+`data/warehouse/kronos_risk.duckdb`
+
+The database is an analytical mirror. It is not the operational source for dashboards or scoring.
+
+### Temporal Contract
+
+| Field | Meaning |
+| --- | --- |
+| `scoring_execution_timestamp` | Existing scoring process timestamp from `scored_portfolio.csv`. |
+| `temporal_basis` | Always `SCORING EXECUTION TIME` for the current source. |
+| `temporal_quality` | Always `PROCESS TIME ONLY` for the current source. |
+| Observation/origination/vintage fields | Not available and not fabricated. |
+
+### Core Tables
+
+| Table | Grain | Source |
+| --- | --- | --- |
+| `core.dim_borrower` | One current source borrower | Scored portfolio |
+| `core.dim_credit_facility` | One technical borrower/facility proxy | Scored portfolio |
+| `core.dim_model` | One scored model-version identifier | Scored portfolio |
+| `core.dim_model_artifact` | One current model/supporting artifact | Artifact registry |
+| `core.fact_credit_risk_snapshot` | Borrower/facility by source hash, run, and model version | Scored portfolio |
+| `core.fact_market_observation` | One source market observation | FRED, VIX, Alpha Vantage |
+| `core.fact_model_performance` | One metric per model-family artifact | Model metrics JSON |
+| `core.fact_model_validation` | One validation JSON artifact | Phase 1 outputs |
+| `core.fact_feature_importance` | One model feature | Feature importance CSV |
+| `core.fact_data_quality` | One quality result per ETL batch | Warehouse controls |
+
+### Mart Tables
+
+| Table | Description |
+| --- | --- |
+| `mart.mart_credit_risk_current` | Current credit-risk snapshot mirror |
+| `mart.mart_ifrs9_stage_current` | Current stage counts, exposure, PD, and LGD |
+| `mart.mart_ews_current` | Current persisted EWS/watchlist source fields |
+| `mart.mart_model_risk` | Model performance and Phase 1 validation evidence |
+| `mart.mart_executive_current` | Current portfolio aggregate |
+| `mart.mart_data_quality` | Warehouse quality-control history |
+
+### Unsupported Warehouse Fields
+
+The current source does not support genuine:
+
+- account or loan identifiers,
+- origination/default/cure dates,
+- observation or reporting dates,
+- vintage months,
+- roll rates,
+- historical rating or IFRS9 migrations,
+- recovery cashflows,
+- product, currency, legal-entity, or ledger dimensions.
+
+`source_account_id` remains null and `account_proxy_flag` remains true. `risk_segment`, `lgd_seed`, and `ead_seed` are development fields and are not promoted into executive marts.
+

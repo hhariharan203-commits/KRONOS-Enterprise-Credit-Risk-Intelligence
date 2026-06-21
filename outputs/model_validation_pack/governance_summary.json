@@ -1,0 +1,49 @@
+{
+    "governance_status": "PASSED",
+    "prohibited_feature_controls": [
+        "borrower_id",
+        "customer_id",
+        "account_id",
+        "loan_id",
+        "application_id"
+    ],
+    "model_governance_results": {
+        "PD": {
+            "model_name": "PD",
+            "validated_at": "2026-06-15T17:29:23Z",
+            "status": "PASSED",
+            "candidate_feature_count": 48,
+            "approved_feature_count": 61,
+            "excluded_identifier_features": [
+                "borrower_id"
+            ],
+            "violating_features": [],
+            "validation_rule": "Training features must not contain borrower_id, customer_id, account_id, loan_id, or application_id."
+        },
+        "LGD": {
+            "model_name": "LGD",
+            "validated_at": "2026-06-15T17:29:47Z",
+            "status": "PASSED",
+            "candidate_feature_count": 48,
+            "approved_feature_count": 61,
+            "excluded_identifier_features": [
+                "borrower_id"
+            ],
+            "violating_features": [],
+            "validation_rule": "Training features must not contain borrower_id, customer_id, account_id, loan_id, or application_id."
+        },
+        "EAD": {
+            "model_name": "EAD",
+            "validated_at": "2026-06-15T17:30:10Z",
+            "status": "PASSED",
+            "candidate_feature_count": 48,
+            "approved_feature_count": 61,
+            "excluded_identifier_features": [
+                "borrower_id"
+            ],
+            "violating_features": [],
+            "validation_rule": "Training features must not contain borrower_id, customer_id, account_id, loan_id, or application_id."
+        }
+    },
+    "leakage_prevention": "Identifier-like fields are excluded and training fails if borrower_id, customer_id, account_id, loan_id, or application_id enters final training features."
+}

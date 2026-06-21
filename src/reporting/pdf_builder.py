@@ -20,19 +20,15 @@ from reportlab.platypus.tables import (
 )
 from reportlab.platypus.flowables import HRFlowable
 from datetime import datetime
+from pathlib import Path
+
 import pandas as pd
-import os
 
 # =============================================================================
 # PDF REPORT DIRECTORY
 # =============================================================================
 
 REPORT_OUTPUT_DIR = "reports"
-
-os.makedirs(
-    REPORT_OUTPUT_DIR,
-    exist_ok=True
-)
 
 # =============================================================================
 # DOCUMENT STYLES
@@ -432,13 +428,13 @@ def build_pdf_report(
     print("[KRONOS] BUILDING EXECUTIVE PDF REPORT")
     print("=" * 80)
 
-    output_path = os.path.join(
-        REPORT_OUTPUT_DIR,
-        output_filename
-    )
+    output_path = Path(output_filename)
+    if not output_path.is_absolute():
+        output_path = Path(REPORT_OUTPUT_DIR) / output_path
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     doc = SimpleDocTemplate(
-        output_path,
+        str(output_path),
         pagesize=letter
     )
 

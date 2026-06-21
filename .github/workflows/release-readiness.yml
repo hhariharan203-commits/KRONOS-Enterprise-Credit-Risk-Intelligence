@@ -1,0 +1,47 @@
+name: Release Readiness
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Rebuild and validate
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python -m src.enterprise_data.pipeline
+          python -m src.enterprise_data.etl.scheduler
+          python scripts/verify_repository.py
+          python -m pytest -q -p no:cacheprovider
+
+      - name: Publish curated validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: kronos-validation-evidence
+          if-no-files-found: error
+          path: |
+            docs/POST_REMEDIATION_AUDIT.md
+            outputs/model_validation_pack/*.json
+            reports/model_validation_pack.pdf

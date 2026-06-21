@@ -1,0 +1,12 @@
+{
+    "report_name": "KRONOS PD Challenger Model Summary",
+    "generated_at": "2026-06-15T17:56:58Z",
+    "champion_model": "Current VotingClassifier (Champion)",
+    "best_challenger": "Logistic Regression",
+    "performance_gap_best_challenger_minus_champion_auc": 0.002287,
+    "champion_auc": 0.906795,
+    "best_challenger_auc": 0.909082,
+    "model_replacement": "NOT PERMITTED",
+    "recommendation": "Maintain Current VotingClassifier as champion. Challenger performance is broadly comparable and does not justify model replacement.",
+    "validation_scope": "Additive model-risk challenger comparison only. Production PD artifacts and scoring logic are not modified."
+}

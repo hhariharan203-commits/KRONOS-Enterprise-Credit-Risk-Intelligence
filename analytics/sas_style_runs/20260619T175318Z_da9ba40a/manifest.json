@@ -1,0 +1,23 @@
+{
+  "framework": "KRONOS SAS-Style Analytics",
+  "terminology": "PROC-Equivalent Analytics",
+  "run_metadata": {
+    "analytics_run_id": "20260619T175318Z_da9ba40a",
+    "execution_timestamp": "2026-06-19T17:53:18Z",
+    "source_asset_id": "6bf8b55e1b8a9f243d21440230b83853",
+    "source_hash": "da9ba40ae0e29ff02d98025c9320dad2aeb0c03cf30316983c10804086488fbb",
+    "published_batch_id": "79239c0ed5c14df793050725552e2f5c",
+    "model_version": "51a7373f45ff8b6f",
+    "portfolio_size": 50000
+  },
+  "output_count": 78,
+  "hash_inventory": {
+    "relative_path": "hash_inventory.json",
+    "sha256": "56c48f27cb5286eaab9a34c4a42fa9b18a1246589f1f4df9174809c91b898b1c",
+    "size_bytes": 13121
+  },
+  "warehouse_read_only": true,
+  "warehouse_unchanged": true,
+  "borrower_level_ranks_persisted": false,
+  "current_credit_loss_proxy_disclaimer": "Not IFRS 9 ECL, a provision, or an accounting reserve."
+}

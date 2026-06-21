@@ -1,0 +1,54 @@
+[
+  {
+    "dimension": "ifrs9_stage",
+    "category": "STAGE 1",
+    "count": 33622,
+    "total_ead": 343429056.05999964,
+    "average_pd": 0.10737267669978032,
+    "average_lgd": 0.44606145853905277,
+    "weighted_pd": 0.24415882772258185,
+    "weighted_lgd": 0.6111942412920219,
+    "current_credit_loss_proxy": 65627438.81979097,
+    "portfolio_share": 0.67244,
+    "exposure_share": 0.409846158716037
+  },
+  {
+    "dimension": "ifrs9_stage",
+    "category": "STAGE 2",
+    "count": 12957,
+    "total_ead": 345336159.8199984,
+    "average_pd": 0.4149850221501889,
+    "average_lgd": 0.7120054772709691,
+    "weighted_pd": 0.5752953341754025,
+    "weighted_lgd": 0.8232536036178649,
+    "current_credit_loss_proxy": 177858480.7193781,
+    "portfolio_share": 0.25914,
+    "exposure_share": 0.4121220848105718
+  },
+  {
+    "dimension": "ifrs9_stage",
+    "category": "STAGE 3",
+    "count": 3421,
+    "total_ead": 149181044.57999995,
+    "average_pd": 0.8044733525285018,
+    "average_lgd": 0.9165086752411585,
+    "weighted_pd": 0.8390404935728187,
+    "weighted_lgd": 0.9261773610499782,
+    "current_credit_loss_proxy": 117057899.6999787,
+    "portfolio_share": 0.06842,
+    "exposure_share": 0.17803175647338648
+  },
+  {
+    "dimension": "ifrs9_stage",
+    "category": "TOTAL",
+    "count": 50000,
+    "total_ead": 837946260.460002,
+    "average_pd": 0.23478296814000016,
+    "average_lgd": 0.5471661901199958,
+    "weighted_pd": 0.48653532298394403,
+    "weighted_lgd": 0.754665585867323,
+    "current_credit_loss_proxy": 360543819.2391487,
+    "portfolio_share": 1.0,
+    "exposure_share": 1.0
+  }
+]

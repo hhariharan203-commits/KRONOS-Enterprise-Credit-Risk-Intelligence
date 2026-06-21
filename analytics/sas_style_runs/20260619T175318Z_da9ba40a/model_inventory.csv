@@ -1,0 +1,2 @@
+model_version,model_version_source,artifact_match_status,notes,artifact_count,model_family_count
+51a7373f45ff8b6f,SCORED_PORTFOLIO,UNRESOLVED_CURRENT_ARTIFACTS_DIFFER,The scored portfolio predates the current model artifacts; no false artifact association was created.,12,3

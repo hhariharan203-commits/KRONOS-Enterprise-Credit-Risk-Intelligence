@@ -70,6 +70,11 @@ from app.live_intelligence_components import (
     render_live_status_card,
     vix_intelligence,
 )
+from app.dashboard_components import (
+    icon_section as _section,
+    narrative_panel as _narrative,
+)
+from app.stress_lab_service import SCENARIOS, build_stress_view_model
 
 cached_run_stress_pipeline = timed_cache()(run_stress_pipeline)
 cached_run_macro_pipeline = timed_cache()(run_macro_pipeline)
@@ -587,40 +592,6 @@ def _apply_layout(fig):
     return fig
 
 
-def _section(icon, title, badge=None):
-    badge_html = (
-        f'<span class="section-header-badge">{badge}</span>'
-        if badge else ""
-    )
-    st.markdown(
-        f"""
-        <div class="section-header">
-            <div class="section-header-icon">{icon}</div>
-            <span class="section-header-text">{title}</span>
-            {badge_html}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
-def _narrative(content, variant="default", label="Executive Intelligence"):
-    css_class = {
-        "warn":     "kronos-narrative-warn",
-        "critical": "kronos-narrative-critical",
-        "success":  "kronos-narrative-success",
-    }.get(variant, "")
-    st.markdown(
-        f"""
-        <div class="kronos-narrative {css_class}">
-            <span class="kronos-narrative-label">{label}</span>
-            {content}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
 # =============================================================================
 # MAIN RENDER
 # =============================================================================
@@ -719,7 +690,7 @@ def render(shared_data=None):
     portfolio = portfolio.fillna(0)
 
     live_context = get_dashboard_live_context(
-        allow_api_refresh=True
+        allow_api_refresh=False
     )
     macro_data = macro_intelligence(live_context)
     vix_data = vix_intelligence(live_context)
@@ -758,181 +729,37 @@ def render(shared_data=None):
 
     scenario = st.selectbox(
         "Stress Scenario",
-        [
-
-            "BASELINE",
-
-            "MILD RECESSION",
-
-            "SEVERE RECESSION",
-
-            "FINANCIAL CRISIS",
-        ]
+        list(SCENARIOS),
     )
 
-    # ==========================================================
-    # RUN STRESS ENGINE
-    # ==========================================================
-
-    stress_results = (
-        cached_run_stress_pipeline(
-            portfolio,
-            scenario
-        )
+    view_model = build_stress_view_model(
+        portfolio,
+        scenario,
+        run_stress=cached_run_stress_pipeline,
+        run_macro=cached_run_macro_pipeline,
+        run_var=cached_run_var_analysis,
+        run_cvar=cached_run_cvar_analysis,
+        run_capital=cached_run_capital_impact_analysis,
     )
-
-    stressed_df = (
-        stress_results[
-            "portfolio_results"
-        ]
-    )
-
-    stress_summary = (
-        stress_results[
-            "summary"
-        ]
-    )
-
-    # ==========================================================
-    # RUN MACRO ENGINE
-    # ==========================================================
-
-    macro_results = (
-        cached_run_macro_pipeline(
-            portfolio,
-            scenario
-        )
-    )
-
-    macro_df = (
-        macro_results[
-            "portfolio_results"
-        ]
-    )
-
-    macro_summary = (
-        macro_results[
-            "summary"
-        ]
-    )
-
-    # ==========================================================
-    # RUN VAR ENGINE
-    # ==========================================================
-
-    var_results = (
-        cached_run_var_analysis(
-            portfolio
-        )
-    )
-
-    # ==========================================================
-    # RUN CVAR ENGINE
-    # ==========================================================
-
-    cvar_results = (
-        cached_run_cvar_analysis(
-            portfolio
-        )
-    )
-
-    # ==========================================================
-    # CAPITAL IMPACT ENGINE
-    # ==========================================================
-
-    stressed_losses = (
-        stress_summary[
-            "stressed_portfolio_loss"
-        ]
-    )
-
-    capital_results = (
-        cached_run_capital_impact_analysis(
-            baseline_capital=750000000,
-            risk_weighted_assets=5000000000,
-            stressed_losses=stressed_losses,
-        )
-    )
-
-    baseline_loss = stress_summary["baseline_portfolio_loss"]
-    stressed_loss = stress_summary["stressed_portfolio_loss"]
-    deterioration_pct = stress_summary["portfolio_loss_deterioration_pct"]
-    avg_stressed_pd = stress_summary["average_stressed_pd"]
-    stress_grade = stress_summary["stress_grade"]
-    stress_concentration = stress_summary["stress_concentration"]
-    resilience_score = capital_results["capital_resilience_score"]
-
-    comparison_rows = []
-    scenario_list = [
-        "BASELINE",
-        "MILD RECESSION",
-        "SEVERE RECESSION",
-        "FINANCIAL CRISIS",
-    ]
-
-    for stress_scenario in scenario_list:
-        scenario_results = cached_run_stress_pipeline(
-            portfolio,
-            stress_scenario
-        )
-        scenario_summary = scenario_results["summary"]
-        comparison_rows.append(
-            {
-                "Scenario": stress_scenario,
-                "Stressed Loss": round(
-                    scenario_summary["stressed_portfolio_loss"],
-                    2
-                ),
-                "Average PD": round(
-                    scenario_summary["average_stressed_pd"] * 100,
-                    2
-                ),
-                "Deterioration %": round(
-                    scenario_summary["portfolio_loss_deterioration_pct"],
-                    2
-                ),
-                "Stress Grade": scenario_summary["stress_grade"],
-                "Concentration %": round(
-                    scenario_summary["stress_concentration"],
-                    2
-                ),
-            }
-        )
-
-    comparison_df = pd.DataFrame(comparison_rows)
-    worst_case = comparison_df.loc[
-        comparison_df["Stressed Loss"].idxmax()
-    ]
-
-    enterprise_risk_score = round(
-        (deterioration_pct * 0.35)
-        + (stress_concentration * 0.20)
-        + (macro_summary["systemic_stress_score"] * 0.25)
-        + ((100 - resilience_score) * 0.20),
-        2
-    )
-    enterprise_risk_score = min(enterprise_risk_score, 100)
-
-    if enterprise_risk_score >= 80:
-        enterprise_status = "CRITICAL RISK"
-    elif enterprise_risk_score >= 60:
-        enterprise_status = "HIGH RISK"
-    elif enterprise_risk_score >= 40:
-        enterprise_status = "MODERATE RISK"
-    else:
-        enterprise_status = "LOW RISK"
-
-    executive_recommendations = []
-    if deterioration_pct > 100:
-        executive_recommendations.append("Increase credit provisioning reserves.")
-    if stress_concentration > 25:
-        executive_recommendations.append("Reduce portfolio concentration risk.")
-    if capital_results["stressed_capital_ratio"] < 12:
-        executive_recommendations.append("Review capital adequacy planning.")
-    if enterprise_risk_score > 60:
-        executive_recommendations.append("Escalate portfolio review to CRO.")
-    if len(executive_recommendations) == 0:
-        executive_recommendations.append("Portfolio remains resilient under current scenario.")
+    stressed_df = view_model["stressed_df"]
+    stress_summary = view_model["stress_summary"]
+    macro_df = view_model["macro_df"]
+    macro_summary = view_model["macro_summary"]
+    var_results = view_model["var_results"]
+    cvar_results = view_model["cvar_results"]
+    capital_results = view_model["capital_results"]
+    comparison_df = view_model["comparison_df"]
+    worst_case = view_model["worst_case"]
+    baseline_loss = view_model["baseline_loss"]
+    stressed_loss = view_model["stressed_loss"]
+    deterioration_pct = view_model["deterioration_pct"]
+    avg_stressed_pd = view_model["avg_stressed_pd"]
+    stress_grade = view_model["stress_grade"]
+    stress_concentration = view_model["stress_concentration"]
+    resilience_score = view_model["resilience_score"]
+    enterprise_risk_score = view_model["enterprise_risk_score"]
+    enterprise_status = view_model["enterprise_status"]
+    executive_recommendations = view_model["executive_recommendations"]
 
     # ==========================================================
     # EXECUTIVE STRESS CONCLUSION

@@ -1,0 +1,50 @@
+{
+    "report_name": "KRONOS Feature Governance Report",
+    "generated_at": "2026-06-15T17:30:10Z",
+    "prohibited_identifier_features": [
+        "borrower_id",
+        "customer_id",
+        "account_id",
+        "loan_id",
+        "application_id"
+    ],
+    "models": {
+        "PD": {
+            "model_name": "PD",
+            "validated_at": "2026-06-15T17:29:23Z",
+            "status": "PASSED",
+            "candidate_feature_count": 48,
+            "approved_feature_count": 61,
+            "excluded_identifier_features": [
+                "borrower_id"
+            ],
+            "violating_features": [],
+            "validation_rule": "Training features must not contain borrower_id, customer_id, account_id, loan_id, or application_id."
+        },
+        "LGD": {
+            "model_name": "LGD",
+            "validated_at": "2026-06-15T17:29:47Z",
+            "status": "PASSED",
+            "candidate_feature_count": 48,
+            "approved_feature_count": 61,
+            "excluded_identifier_features": [
+                "borrower_id"
+            ],
+            "violating_features": [],
+            "validation_rule": "Training features must not contain borrower_id, customer_id, account_id, loan_id, or application_id."
+        },
+        "EAD": {
+            "model_name": "EAD",
+            "validated_at": "2026-06-15T17:30:10Z",
+            "status": "PASSED",
+            "candidate_feature_count": 48,
+            "approved_feature_count": 61,
+            "excluded_identifier_features": [
+                "borrower_id"
+            ],
+            "violating_features": [],
+            "validation_rule": "Training features must not contain borrower_id, customer_id, account_id, loan_id, or application_id."
+        }
+    },
+    "overall_status": "PASSED"
+}

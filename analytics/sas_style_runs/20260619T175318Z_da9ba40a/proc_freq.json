@@ -1,0 +1,282 @@
+[
+  {
+    "variable": "risk_band",
+    "category": "PRIME",
+    "count": 21056,
+    "percentage": 42.112,
+    "cumulative_percentage": 42.112
+  },
+  {
+    "variable": "risk_band",
+    "category": "NEAR PRIME",
+    "count": 7987,
+    "percentage": 15.974,
+    "cumulative_percentage": 58.086
+  },
+  {
+    "variable": "risk_band",
+    "category": "MODERATE RISK",
+    "count": 5888,
+    "percentage": 11.776,
+    "cumulative_percentage": 69.862
+  },
+  {
+    "variable": "risk_band",
+    "category": "HIGH RISK",
+    "count": 5648,
+    "percentage": 11.296000000000001,
+    "cumulative_percentage": 81.158
+  },
+  {
+    "variable": "risk_band",
+    "category": "DEFAULT RISK",
+    "count": 9421,
+    "percentage": 18.842,
+    "cumulative_percentage": 100.0
+  },
+  {
+    "variable": "risk_grade",
+    "category": "AAA",
+    "count": 19725,
+    "percentage": 39.45,
+    "cumulative_percentage": 39.45
+  },
+  {
+    "variable": "risk_grade",
+    "category": "AA",
+    "count": 2817,
+    "percentage": 5.634,
+    "cumulative_percentage": 45.084
+  },
+  {
+    "variable": "risk_grade",
+    "category": "A",
+    "count": 6501,
+    "percentage": 13.001999999999999,
+    "cumulative_percentage": 58.086
+  },
+  {
+    "variable": "risk_grade",
+    "category": "BBB",
+    "count": 5007,
+    "percentage": 10.014000000000001,
+    "cumulative_percentage": 68.1
+  },
+  {
+    "variable": "risk_grade",
+    "category": "BB",
+    "count": 2939,
+    "percentage": 5.878,
+    "cumulative_percentage": 73.978
+  },
+  {
+    "variable": "risk_grade",
+    "category": "B",
+    "count": 6596,
+    "percentage": 13.192,
+    "cumulative_percentage": 87.16999999999999
+  },
+  {
+    "variable": "risk_grade",
+    "category": "CCC",
+    "count": 6415,
+    "percentage": 12.83,
+    "cumulative_percentage": 99.99999999999999
+  },
+  {
+    "variable": "industry",
+    "category": "Construction",
+    "count": 3980,
+    "percentage": 7.960000000000001,
+    "cumulative_percentage": 7.960000000000001
+  },
+  {
+    "variable": "industry",
+    "category": "Education",
+    "count": 4849,
+    "percentage": 9.698,
+    "cumulative_percentage": 17.658
+  },
+  {
+    "variable": "industry",
+    "category": "Energy",
+    "count": 4047,
+    "percentage": 8.094,
+    "cumulative_percentage": 25.752000000000002
+  },
+  {
+    "variable": "industry",
+    "category": "Financial Services",
+    "count": 6059,
+    "percentage": 12.118,
+    "cumulative_percentage": 37.870000000000005
+  },
+  {
+    "variable": "industry",
+    "category": "Government",
+    "count": 5130,
+    "percentage": 10.26,
+    "cumulative_percentage": 48.13
+  },
+  {
+    "variable": "industry",
+    "category": "Healthcare",
+    "count": 6013,
+    "percentage": 12.026,
+    "cumulative_percentage": 60.156000000000006
+  },
+  {
+    "variable": "industry",
+    "category": "Manufacturing",
+    "count": 5079,
+    "percentage": 10.158000000000001,
+    "cumulative_percentage": 70.31400000000001
+  },
+  {
+    "variable": "industry",
+    "category": "Retail",
+    "count": 4853,
+    "percentage": 9.706,
+    "cumulative_percentage": 80.02000000000001
+  },
+  {
+    "variable": "industry",
+    "category": "Technology",
+    "count": 5952,
+    "percentage": 11.904,
+    "cumulative_percentage": 91.924
+  },
+  {
+    "variable": "industry",
+    "category": "Transportation",
+    "count": 4038,
+    "percentage": 8.076,
+    "cumulative_percentage": 100.0
+  },
+  {
+    "variable": "region",
+    "category": "Central",
+    "count": 10159,
+    "percentage": 20.318,
+    "cumulative_percentage": 20.318
+  },
+  {
+    "variable": "region",
+    "category": "East",
+    "count": 10118,
+    "percentage": 20.236,
+    "cumulative_percentage": 40.554
+  },
+  {
+    "variable": "region",
+    "category": "North",
+    "count": 11038,
+    "percentage": 22.076,
+    "cumulative_percentage": 62.63
+  },
+  {
+    "variable": "region",
+    "category": "South",
+    "count": 9747,
+    "percentage": 19.494,
+    "cumulative_percentage": 82.124
+  },
+  {
+    "variable": "region",
+    "category": "West",
+    "count": 8938,
+    "percentage": 17.876,
+    "cumulative_percentage": 100.0
+  },
+  {
+    "variable": "ifrs9_stage",
+    "category": "STAGE 1",
+    "count": 33622,
+    "percentage": 67.244,
+    "cumulative_percentage": 67.244
+  },
+  {
+    "variable": "ifrs9_stage",
+    "category": "STAGE 2",
+    "count": 12957,
+    "percentage": 25.913999999999998,
+    "cumulative_percentage": 93.158
+  },
+  {
+    "variable": "ifrs9_stage",
+    "category": "STAGE 3",
+    "count": 3421,
+    "percentage": 6.842,
+    "cumulative_percentage": 100.0
+  },
+  {
+    "variable": "watchlist_status",
+    "category": "NON-WATCHLIST",
+    "count": 33622,
+    "percentage": 67.244,
+    "cumulative_percentage": 67.244
+  },
+  {
+    "variable": "watchlist_status",
+    "category": "WATCHLIST",
+    "count": 16378,
+    "percentage": 32.756,
+    "cumulative_percentage": 100.0
+  },
+  {
+    "variable": "underwriting_decision",
+    "category": "APPROVE",
+    "count": 25043,
+    "percentage": 50.086,
+    "cumulative_percentage": 50.086
+  },
+  {
+    "variable": "underwriting_decision",
+    "category": "WATCH",
+    "count": 9007,
+    "percentage": 18.014,
+    "cumulative_percentage": 68.1
+  },
+  {
+    "variable": "underwriting_decision",
+    "category": "HIGH RISK REVIEW",
+    "count": 4621,
+    "percentage": 9.242,
+    "cumulative_percentage": 77.342
+  },
+  {
+    "variable": "underwriting_decision",
+    "category": "REJECT",
+    "count": 11329,
+    "percentage": 22.658,
+    "cumulative_percentage": 100.0
+  },
+  {
+    "variable": "risk_profile",
+    "category": "PRIME",
+    "count": 20083,
+    "percentage": 40.166000000000004,
+    "cumulative_percentage": 40.166000000000004
+  },
+  {
+    "variable": "risk_profile",
+    "category": "NEAR_PRIME",
+    "count": 15072,
+    "percentage": 30.144,
+    "cumulative_percentage": 70.31
+  },
+  {
+    "variable": "risk_profile",
+    "category": "HIGH_RISK",
+    "count": 4977,
+    "percentage": 9.954,
+    "cumulative_percentage": 80.26400000000001
+  },
+  {
+    "variable": "risk_profile",
+    "category": "SUBPRIME",
+    "count": 9868,
+    "percentage": 19.736,
+    "cumulative_percentage": 100.00000000000001
+  }
+]

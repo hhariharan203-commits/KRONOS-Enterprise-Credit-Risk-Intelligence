@@ -1,0 +1,60 @@
+{
+    "validation_type": "Proxy OOT Validation",
+    "generated_at": "2026-06-15T17:48:46Z",
+    "psi": 0.001287,
+    "psi_status": "NO MATERIAL DRIFT",
+    "feature_drift_summary": {
+        "scope": "PD score distribution only",
+        "reason": "Task 3 requested proxy OOT validation without modifying feature engineering or existing datasets.",
+        "feature_count": 61
+    },
+    "score_drift_summary": {
+        "proxy_train_mean_pd": 0.235066,
+        "proxy_oot_mean_pd": 0.23387,
+        "mean_pd_shift": -0.001196,
+        "proxy_train_median_pd": 0.100095,
+        "proxy_oot_median_pd": 0.099234
+    },
+    "risk_band_distribution_comparison": [
+        {
+            "risk_band": "DEFAULT RISK",
+            "proxy_train_count": 7448,
+            "proxy_train_pct": 0.1862,
+            "proxy_oot_count": 1898,
+            "proxy_oot_pct": 0.1898,
+            "pct_point_shift": 0.0036
+        },
+        {
+            "risk_band": "HIGH RISK",
+            "proxy_train_count": 4601,
+            "proxy_train_pct": 0.115025,
+            "proxy_oot_count": 1098,
+            "proxy_oot_pct": 0.1098,
+            "pct_point_shift": -0.005225
+        },
+        {
+            "risk_band": "MODERATE RISK",
+            "proxy_train_count": 4789,
+            "proxy_train_pct": 0.119725,
+            "proxy_oot_count": 1220,
+            "proxy_oot_pct": 0.122,
+            "pct_point_shift": 0.002275
+        },
+        {
+            "risk_band": "NEAR PRIME",
+            "proxy_train_count": 6374,
+            "proxy_train_pct": 0.15935,
+            "proxy_oot_count": 1503,
+            "proxy_oot_pct": 0.1503,
+            "pct_point_shift": -0.00905
+        },
+        {
+            "risk_band": "PRIME",
+            "proxy_train_count": 16788,
+            "proxy_train_pct": 0.4197,
+            "proxy_oot_count": 4281,
+            "proxy_oot_pct": 0.4281,
+            "pct_point_shift": 0.0084
+        }
+    ]
+}

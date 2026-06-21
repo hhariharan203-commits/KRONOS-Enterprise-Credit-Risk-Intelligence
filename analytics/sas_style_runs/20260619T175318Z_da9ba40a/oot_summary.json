@@ -1,0 +1,40 @@
+[
+  {
+    "segment": "Proxy Train Segment",
+    "population_size": 40000,
+    "default_count": 9384,
+    "default_rate": 0.2346,
+    "average_pd": 0.235066,
+    "auc": 0.944583,
+    "accuracy": 0.8927,
+    "precision": 0.841837,
+    "recall": 0.668159,
+    "f1_score": 0.74501,
+    "ks_statistic": 0.734794,
+    "top_decile_lift": 4.040921,
+    "classification_threshold": 0.5,
+    "etl_batch_id": "a4610f7b291b4283aabbcacd4adb76fd",
+    "source_asset_id": "3488610af9955c324cec6d633e289bbd",
+    "source_sha256": "7faccea152a1fb2b8439e77ac68af5c962e79734f725b63f0676fb03d276cdc5",
+    "loaded_at": "2026-06-19T19:12:34.419918+05:30"
+  },
+  {
+    "segment": "Proxy OOT Segment",
+    "population_size": 10000,
+    "default_count": 2373,
+    "default_rate": 0.2373,
+    "average_pd": 0.23387,
+    "auc": 0.942631,
+    "accuracy": 0.8927,
+    "precision": 0.842466,
+    "recall": 0.673831,
+    "f1_score": 0.748771,
+    "ks_statistic": 0.739438,
+    "top_decile_lift": 3.986515,
+    "classification_threshold": 0.5,
+    "etl_batch_id": "a4610f7b291b4283aabbcacd4adb76fd",
+    "source_asset_id": "3488610af9955c324cec6d633e289bbd",
+    "source_sha256": "7faccea152a1fb2b8439e77ac68af5c962e79734f725b63f0676fb03d276cdc5",
+    "loaded_at": "2026-06-19T19:12:34.419918+05:30"
+  }
+]

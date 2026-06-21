@@ -16,6 +16,7 @@ from src.shared.config import (
     OUTPUTS_DIR,
     PD_MODEL_FILE,
     SCORED_PORTFOLIO_DATA,
+    ROOT_DIR,
 )
 
 
@@ -23,6 +24,13 @@ from src.shared.config import (
 class GovernanceContext:
     dashboard_name: str
     created_at: str
+
+
+def _portable_path(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(ROOT_DIR.resolve()).as_posix()
+    except ValueError:
+        return path.as_posix()
 
 
 def create_governance_context(dashboard_name: str) -> GovernanceContext:
@@ -34,7 +42,7 @@ def create_governance_context(dashboard_name: str) -> GovernanceContext:
 
 def _artifact_record(path: Path) -> dict[str, Any]:
     return {
-        "path": str(path),
+        "path": _portable_path(path),
         "exists": path.exists(),
         "size_bytes": path.stat().st_size if path.exists() else 0,
     }
@@ -143,7 +151,7 @@ def _model_registry_entry(
         "champion_designation": designation == "CHAMPION",
         "challenger_designation": designation == "CHALLENGER",
         "artifact": _artifact_record(artifact_path),
-        "metrics_path": str(metrics_path),
+        "metrics_path": _portable_path(metrics_path),
         "performance_tracking": {
             "metrics": metrics,
             "status": _performance_status(metrics, model_family),
@@ -241,9 +249,13 @@ def model_performance_tracking() -> dict[str, Any]:
     }
 
 
-def write_model_registry() -> Path:
-    OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
-    registry_path = OUTPUTS_DIR / "model_registry.json"
+def write_model_registry(output_path: Path | str | None = None) -> Path:
+    registry_path = (
+        Path(output_path)
+        if output_path is not None
+        else OUTPUTS_DIR / "model_registry.json"
+    )
+    registry_path.parent.mkdir(parents=True, exist_ok=True)
     registry_path.write_text(
         json.dumps(model_registry(), indent=2),
         encoding="utf-8",
@@ -251,9 +263,13 @@ def write_model_registry() -> Path:
     return registry_path
 
 
-def write_artifact_lineage() -> Path:
-    OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
-    manifest_path = OUTPUTS_DIR / "artifact_lineage.json"
+def write_artifact_lineage(output_path: Path | str | None = None) -> Path:
+    manifest_path = (
+        Path(output_path)
+        if output_path is not None
+        else OUTPUTS_DIR / "artifact_lineage.json"
+    )
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
     manifest = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "artifacts": artifact_lineage(),

@@ -1,0 +1,32 @@
+[
+  {
+    "dimension": "risk_band",
+    "measure": "count",
+    "DEFAULT RISK": 9421.0,
+    "HIGH RISK": 5648.0,
+    "MODERATE RISK": 5888.0,
+    "NEAR PRIME": 7987.0,
+    "PRIME": 21056.0,
+    "TOTAL": 50000.0
+  },
+  {
+    "dimension": "risk_band",
+    "measure": "total_ead",
+    "DEFAULT RISK": 385969611.059999,
+    "HIGH RISK": 167146849.70999962,
+    "MODERATE RISK": 96043038.81000002,
+    "NEAR PRIME": 104178640.80000012,
+    "PRIME": 84608120.0800001,
+    "TOTAL": 837946260.460002
+  },
+  {
+    "dimension": "risk_band",
+    "measure": "current_credit_loss_proxy",
+    "DEFAULT RISK": 285213677.15566146,
+    "HIGH RISK": 57162468.849553674,
+    "MODERATE RISK": 12286396.236577244,
+    "NEAR PRIME": 5419387.395225915,
+    "PRIME": 461889.6021304703,
+    "TOTAL": 360543819.2391487
+  }
+]

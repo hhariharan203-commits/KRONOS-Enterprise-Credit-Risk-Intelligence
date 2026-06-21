@@ -1,0 +1,61 @@
+{
+  "after": {
+    "scored_portfolio": {
+      "canonical_schema_hash": "77D87AA84CBBF7A85B0683ABAD2F4BB56577B34A8A4DFDFDBF24E04F5EBDD212",
+      "column_count": 63,
+      "distinct_borrower_count": 50000,
+      "model_versions": [
+        "51a7373f45ff8b6f"
+      ],
+      "row_count": 50000,
+      "run_ids": [
+        "577ce0b983f74477a2ddb6e515c44331"
+      ],
+      "scoring_status": {
+        "SCORED": 50000
+      },
+      "sha256": "DA9BA40AE0E29FF02D98025C9320DAD2AEB0C03CF30316983C10804086488FBB",
+      "timestamps": [
+        "2026-06-07T04:31:04+00:00"
+      ]
+    },
+    "warehouse": {
+      "artifact_registry_count": 53,
+      "database_path": "C:/Users/Hhari/OneDrive/Documents/KRONOS/data/warehouse/kronos_risk.duckdb",
+      "schema_count": 5,
+      "sha256": "0B0529F947D81FDDC049873BF40AB8360FC595314EA21F0C883F10E7F5AE4CA5",
+      "table_count": 58,
+      "view_count": 10
+    }
+  },
+  "before": {
+    "scored_portfolio": {
+      "canonical_schema_hash": "77D87AA84CBBF7A85B0683ABAD2F4BB56577B34A8A4DFDFDBF24E04F5EBDD212",
+      "column_count": 63,
+      "distinct_borrower_count": 50000,
+      "model_versions": [
+        "51a7373f45ff8b6f"
+      ],
+      "row_count": 50000,
+      "run_ids": [
+        "577ce0b983f74477a2ddb6e515c44331"
+      ],
+      "scoring_status": {
+        "SCORED": 50000
+      },
+      "sha256": "DA9BA40AE0E29FF02D98025C9320DAD2AEB0C03CF30316983C10804086488FBB",
+      "timestamps": [
+        "2026-06-07T04:31:04+00:00"
+      ]
+    },
+    "warehouse": {
+      "artifact_registry_count": 53,
+      "database_path": "C:/Users/Hhari/OneDrive/Documents/KRONOS/data/warehouse/kronos_risk.duckdb",
+      "schema_count": 5,
+      "sha256": "0B0529F947D81FDDC049873BF40AB8360FC595314EA21F0C883F10E7F5AE4CA5",
+      "table_count": 58,
+      "view_count": 10
+    }
+  },
+  "comparison": "PASS"
+}

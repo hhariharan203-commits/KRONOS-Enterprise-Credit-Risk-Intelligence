@@ -1,0 +1,92 @@
+{
+  "backup_path": "C:/Users/Hhari/OneDrive/Documents/KRONOS/temporal_platform/backups/kronos_temporal_risk_20260620T174927Z_BF6745634BB1EC2D.duckdb",
+  "catalog": {
+    "mart_object_count": 0,
+    "schema_count": 5,
+    "schemas": [
+      "control",
+      "core",
+      "mart",
+      "reference",
+      "staging"
+    ],
+    "table_count": 46,
+    "tables": [
+      "control.column_lineage",
+      "control.data_readiness_result",
+      "control.deployment_run",
+      "control.historical_column_lineage",
+      "control.historical_field_mapping",
+      "control.historical_ingestion_batch",
+      "control.historical_ingestion_file",
+      "control.historical_lineage_edge",
+      "control.historical_lineage_node",
+      "control.historical_publish_status",
+      "control.historical_reconciliation_result",
+      "control.historical_reject_record",
+      "control.lineage_edge",
+      "control.lineage_node",
+      "control.migration_column_lineage",
+      "control.migration_lineage_edge",
+      "control.migration_lineage_node",
+      "control.migration_publish_status",
+      "control.migration_quality_result",
+      "control.migration_readiness_result",
+      "control.migration_readiness_run",
+      "control.migration_reconciliation_result",
+      "control.migration_snapshot_pair",
+      "control.migration_transition_contract",
+      "control.platform_release",
+      "control.publish_status",
+      "control.reconciliation_result",
+      "control.rollback_event",
+      "control.snapshot_registry",
+      "control.snapshot_source_link",
+      "control.source_asset",
+      "control.source_column",
+      "control.temporal_contract",
+      "control.temporal_quality_result",
+      "core.dim_historical_entity",
+      "core.dim_historical_facility",
+      "core.dim_historical_snapshot",
+      "core.fact_historical_credit_event",
+      "core.fact_historical_credit_observation",
+      "reference.dim_identity_grain",
+      "reference.dim_readiness_status",
+      "reference.dim_snapshot_status",
+      "reference.dim_temporal_classification",
+      "staging.stg_historical_event_row",
+      "staging.stg_historical_snapshot_row",
+      "staging.stg_snapshot_manifest"
+    ],
+    "view_count": 0,
+    "views": []
+  },
+  "database_path": "C:/Users/Hhari/OneDrive/Documents/KRONOS/temporal_platform/warehouse/kronos_temporal_risk.duckdb",
+  "database_sha256_after": "550E8244D269B570BB7F6B18CC6223FAAA4D38A5ABFF932E0F07D372355FB4BD",
+  "database_sha256_before": "BF6745634BB1EC2DD911403901E1F7AADF029DC22EB3FCC8EC274E62B57070FC",
+  "generated_at": "2026-06-20T17:49:35.175780+00:00",
+  "preservation": {
+    "changed_rows": [],
+    "matches": true,
+    "status": "PASS"
+  },
+  "protected": {
+    "current_warehouse_sha256": "0B0529F947D81FDDC049873BF40AB8360FC595314EA21F0C883F10E7F5AE4CA5",
+    "external_assets_unchanged": true,
+    "protected_file_count": 448,
+    "protected_hashes_unchanged": true,
+    "scored_portfolio_sha256": "DA9BA40AE0E29FF02D98025C9320DAD2AEB0C03CF30316983C10804086488FBB",
+    "status": "PASS"
+  },
+  "readiness_run_id": "EE59F6E4B1C849958E588B656C8380B9",
+  "release_id": "A68F63F4EFD815EE57C2B763C33FF887AEEEB3CB042BD1C34044514A05195AC6",
+  "specifications": {
+    "PHASE2C_IMPLEMENTATION_SPEC_FINAL.md": {
+      "relative_path": "docs/PHASE2C_IMPLEMENTATION_SPEC_FINAL.md",
+      "sha256": "C2E90E4014C5DD7345B0BF0B5E339EB4339B28E976C0A6698B7CDB5D0F5DC5F6",
+      "status": "FILE_CONTROLLED"
+    }
+  },
+  "status": "PHASE2C_SCHEMA_READY"
+}

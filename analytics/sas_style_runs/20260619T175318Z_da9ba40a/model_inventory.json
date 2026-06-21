@@ -1,0 +1,10 @@
+[
+  {
+    "model_version": "51a7373f45ff8b6f",
+    "model_version_source": "SCORED_PORTFOLIO",
+    "artifact_match_status": "UNRESOLVED_CURRENT_ARTIFACTS_DIFFER",
+    "notes": "The scored portfolio predates the current model artifacts; no false artifact association was created.",
+    "artifact_count": 12,
+    "model_family_count": 3
+  }
+]

@@ -1,0 +1,210 @@
+[
+  {
+    "model_family": "EAD",
+    "metric_name": "mae",
+    "metric_value": "1576.4102",
+    "source_generated_at": null,
+    "numeric_value": 1576.4102,
+    "text_value": null
+  },
+  {
+    "model_family": "EAD",
+    "metric_name": "rmse",
+    "metric_value": "1967.5374",
+    "source_generated_at": null,
+    "numeric_value": 1967.5374,
+    "text_value": null
+  },
+  {
+    "model_family": "EAD",
+    "metric_name": "r2_score",
+    "metric_value": "0.9838",
+    "source_generated_at": null,
+    "numeric_value": 0.9838,
+    "text_value": null
+  },
+  {
+    "model_family": "EAD",
+    "metric_name": "train_samples",
+    "metric_value": "40000",
+    "source_generated_at": null,
+    "numeric_value": 40000.0,
+    "text_value": null
+  },
+  {
+    "model_family": "EAD",
+    "metric_name": "test_samples",
+    "metric_value": "10000",
+    "source_generated_at": null,
+    "numeric_value": 10000.0,
+    "text_value": null
+  },
+  {
+    "model_family": "EAD",
+    "metric_name": "feature_count",
+    "metric_value": "61",
+    "source_generated_at": null,
+    "numeric_value": 61.0,
+    "text_value": null
+  },
+  {
+    "model_family": "LGD",
+    "metric_name": "mae",
+    "metric_value": "0.0347",
+    "source_generated_at": null,
+    "numeric_value": 0.0347,
+    "text_value": null
+  },
+  {
+    "model_family": "LGD",
+    "metric_name": "rmse",
+    "metric_value": "0.0465",
+    "source_generated_at": null,
+    "numeric_value": 0.0465,
+    "text_value": null
+  },
+  {
+    "model_family": "LGD",
+    "metric_name": "r2_score",
+    "metric_value": "0.9662",
+    "source_generated_at": null,
+    "numeric_value": 0.9662,
+    "text_value": null
+  },
+  {
+    "model_family": "LGD",
+    "metric_name": "train_samples",
+    "metric_value": "40000",
+    "source_generated_at": null,
+    "numeric_value": 40000.0,
+    "text_value": null
+  },
+  {
+    "model_family": "LGD",
+    "metric_name": "test_samples",
+    "metric_value": "10000",
+    "source_generated_at": null,
+    "numeric_value": 10000.0,
+    "text_value": null
+  },
+  {
+    "model_family": "LGD",
+    "metric_name": "feature_count",
+    "metric_value": "61",
+    "source_generated_at": null,
+    "numeric_value": 61.0,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "accuracy",
+    "metric_value": "0.8593",
+    "source_generated_at": null,
+    "numeric_value": 0.8593,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "precision",
+    "metric_value": "0.7513",
+    "source_generated_at": null,
+    "numeric_value": 0.7513,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "recall",
+    "metric_value": "0.6002",
+    "source_generated_at": null,
+    "numeric_value": 0.6002,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "f1_score",
+    "metric_value": "0.6673",
+    "source_generated_at": null,
+    "numeric_value": 0.6673,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "roc_auc",
+    "metric_value": "0.9068",
+    "source_generated_at": null,
+    "numeric_value": 0.9068,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "model_health_score",
+    "metric_value": "0.8111",
+    "source_generated_at": null,
+    "numeric_value": 0.8111,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "population_stability_index",
+    "metric_value": "0.0058",
+    "source_generated_at": null,
+    "numeric_value": 0.0058,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "psi",
+    "metric_value": "0.0058",
+    "source_generated_at": null,
+    "numeric_value": 0.0058,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "model_drift",
+    "metric_value": "\"NO DRIFT\"",
+    "source_generated_at": null,
+    "numeric_value": NaN,
+    "text_value": "NO DRIFT"
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "train_auc",
+    "metric_value": "0.9534",
+    "source_generated_at": null,
+    "numeric_value": 0.9534,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "overfitting_risk",
+    "metric_value": "\"MODERATE OVERFITTING RISK\"",
+    "source_generated_at": null,
+    "numeric_value": NaN,
+    "text_value": "MODERATE OVERFITTING RISK"
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "train_samples",
+    "metric_value": "40000",
+    "source_generated_at": null,
+    "numeric_value": 40000.0,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "test_samples",
+    "metric_value": "10000",
+    "source_generated_at": null,
+    "numeric_value": 10000.0,
+    "text_value": null
+  },
+  {
+    "model_family": "PD",
+    "metric_name": "feature_count",
+    "metric_value": "61",
+    "source_generated_at": null,
+    "numeric_value": 61.0,
+    "text_value": null
+  }
+]

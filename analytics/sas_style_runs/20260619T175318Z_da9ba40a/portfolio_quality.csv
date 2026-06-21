@@ -1,0 +1,2 @@
+portfolio_size,scored_count,delinquent_count,average_days_past_due,average_total_delinquency,average_credit_utilization,average_payment_burden,average_loan_to_income,average_early_warning_score,incomplete_risk_rows
+50000,50000.0,16378.0,17.5248,1.25906,0.47204473663553925,0.35345158534183857,0.7779035177231842,49.50099000000041,0.0

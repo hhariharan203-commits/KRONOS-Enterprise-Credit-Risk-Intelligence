@@ -1,0 +1,27 @@
+{
+    "validation_type": "Proxy OOT Validation",
+    "true_temporal_field_found": false,
+    "selected_time_field": null,
+    "split_method": "chronological_record_ordering_fallback",
+    "fallback_field": "_proxy_record_order_index",
+    "train_period": {
+        "label": "Proxy Train Segment",
+        "record_order_start": 0,
+        "record_order_end": 39999,
+        "population_size": 40000
+    },
+    "test_period": {
+        "label": "Proxy OOT Segment",
+        "record_order_start": 40000,
+        "record_order_end": 49999,
+        "population_size": 10000
+    },
+    "limitations": [
+        "Dataset does not contain origination, vintage, reporting, or observation dates. Validation uses chronological record-order fallback and should not be interpreted as true future-period model validation."
+    ],
+    "generated_at": "2026-06-15T17:48:46Z",
+    "model_artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\models\\pd_model.pkl",
+    "scaler_artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\models\\scaler.pkl",
+    "feature_list_artifact": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\models\\feature_cols.json",
+    "source_dataset": "C:\\Users\\Hhari\\OneDrive\\Documents\\KRONOS\\data\\processed\\merged_credit_dataset.csv"
+}

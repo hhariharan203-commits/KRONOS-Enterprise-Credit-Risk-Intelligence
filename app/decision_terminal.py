@@ -47,6 +47,10 @@ from src.decisioning.recommendation_engine import (
 )
 from src.live_monitoring.live_intelligence import get_live_intelligence
 from app.live_intelligence_components import render_live_status_card
+from app.dashboard_components import (
+    insight_panel as _insight,
+    section_line as _section,
+)
 
 from src.shared.cache_manager import timed_cache
 
@@ -641,39 +645,6 @@ _PIE_COLORS = [
     "#e02442", "#c9a84c", "#8294ae"
 ]
 
-# =============================================================================
-# UI COMPONENT HELPERS
-# =============================================================================
-
-def _section(title: str, badge: str = "") -> None:
-    badge_html = (
-        f'<span class="section-badge">{badge}</span>'
-        if badge else ""
-    )
-    st.markdown(
-        f"""
-        <div class="section-header">
-            <div class="section-header-line"></div>
-            <span class="section-header-text">{title}</span>
-            {badge_html}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
-def _insight(body: str, kind: str = "", eyebrow: str = "Executive Intelligence") -> None:
-    st.markdown(
-        f"""
-        <div class="insight-panel {kind}">
-            <div class="insight-eyebrow">{eyebrow}</div>
-            <div class="insight-body">{body}</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
 def _governance_panel(title: str, rows: list) -> None:
     rows_html = "".join(
         f'<div class="governance-row">'
@@ -780,7 +751,7 @@ def render(shared_data=None):
     portfolio = portfolio.fillna(0)
 
     live_context = get_live_intelligence(
-        allow_api_refresh=True
+        allow_api_refresh=False
     )
     live_summary = live_context.get("summary", {})
 

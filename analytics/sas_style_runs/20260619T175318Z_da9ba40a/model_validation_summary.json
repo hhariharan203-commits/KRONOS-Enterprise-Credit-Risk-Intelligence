@@ -1,0 +1,80 @@
+[
+  {
+    "validation_type": "outputs/artifact_lineage.json",
+    "validation_status": "NOT EXPLICITLY STATED",
+    "source_generated_at": "2026-06-15T21:43:45.675762",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.247644"
+  },
+  {
+    "validation_type": "outputs/calibration/calibration_summary.json",
+    "validation_status": "NOT EXPLICITLY STATED",
+    "source_generated_at": "2026-06-15T23:07:21",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.291313"
+  },
+  {
+    "validation_type": "outputs/challenger_models/challenger_summary.json",
+    "validation_status": "NOT PERMITTED",
+    "source_generated_at": "2026-06-15T23:26:58",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.321840"
+  },
+  {
+    "validation_type": "outputs/challenger_models/model_rankings.json",
+    "validation_status": "NOT EXPLICITLY STATED",
+    "source_generated_at": "2026-06-15T23:26:57",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.357450"
+  },
+  {
+    "validation_type": "outputs/feature_governance_report.json",
+    "validation_status": "PASSED",
+    "source_generated_at": "2026-06-15T23:00:10",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.388345"
+  },
+  {
+    "validation_type": "outputs/model_validation_pack/executive_briefing.json",
+    "validation_status": "AMBER",
+    "source_generated_at": null,
+    "warehouse_loaded_at": "2026-06-19T19:12:35.419298"
+  },
+  {
+    "validation_type": "outputs/model_validation_pack/governance_summary.json",
+    "validation_status": "NOT EXPLICITLY STATED",
+    "source_generated_at": null,
+    "warehouse_loaded_at": "2026-06-19T19:12:35.451463"
+  },
+  {
+    "validation_type": "outputs/model_validation_pack/model_risk_summary.json",
+    "validation_status": "NOT EXPLICITLY STATED",
+    "source_generated_at": null,
+    "warehouse_loaded_at": "2026-06-19T19:12:35.485025"
+  },
+  {
+    "validation_type": "outputs/model_validation_pack/validation_summary.json",
+    "validation_status": "AMBER",
+    "source_generated_at": "2026-06-15T23:49:01",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.515446"
+  },
+  {
+    "validation_type": "outputs/oot_validation/executive_summary.json",
+    "validation_status": "PASSED",
+    "source_generated_at": null,
+    "warehouse_loaded_at": "2026-06-19T19:12:35.549119"
+  },
+  {
+    "validation_type": "outputs/oot_validation/methodology.json",
+    "validation_status": "NOT EXPLICITLY STATED",
+    "source_generated_at": "2026-06-15T23:18:46",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.582795"
+  },
+  {
+    "validation_type": "outputs/oot_validation/oot_metrics.json",
+    "validation_status": "NOT EXPLICITLY STATED",
+    "source_generated_at": "2026-06-15T23:18:46",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.614864"
+  },
+  {
+    "validation_type": "outputs/oot_validation/psi_report.json",
+    "validation_status": "NO MATERIAL DRIFT",
+    "source_generated_at": "2026-06-15T23:18:46",
+    "warehouse_loaded_at": "2026-06-19T19:12:35.650156"
+  }
+]

@@ -1,0 +1,56 @@
+{
+    "generated_at": "2026-06-15T17:56:57Z",
+    "ranking_metric": "AUC, then KS Statistic, then F1 Score",
+    "champion_model": "Current VotingClassifier (Champion)",
+    "recommended_champion": "Current VotingClassifier (Champion)",
+    "best_challenger": "Logistic Regression",
+    "performance_gap_best_challenger_minus_champion_auc": 0.002287,
+    "production_replacement_allowed": false,
+    "model_rankings": [
+        {
+            "rank": 1,
+            "model_name": "Logistic Regression",
+            "model_role": "Challenger",
+            "auc": 0.909082,
+            "ks_statistic": 0.658498,
+            "f1_score": 0.675418,
+            "brier_score": 0.095236
+        },
+        {
+            "rank": 2,
+            "model_name": "Random Forest",
+            "model_role": "Challenger",
+            "auc": 0.908391,
+            "ks_statistic": 0.656136,
+            "f1_score": 0.675801,
+            "brier_score": 0.095666
+        },
+        {
+            "rank": 3,
+            "model_name": "LightGBM",
+            "model_role": "Challenger",
+            "auc": 0.906865,
+            "ks_statistic": 0.650967,
+            "f1_score": 0.665881,
+            "brier_score": 0.096578
+        },
+        {
+            "rank": 4,
+            "model_name": "Current VotingClassifier (Champion)",
+            "model_role": "Champion",
+            "auc": 0.906795,
+            "ks_statistic": 0.653167,
+            "f1_score": 0.667297,
+            "brier_score": 0.096455
+        },
+        {
+            "rank": 5,
+            "model_name": "XGBoost",
+            "model_role": "Challenger",
+            "auc": 0.905931,
+            "ks_statistic": 0.652736,
+            "f1_score": 0.668712,
+            "brier_score": 0.096845
+        }
+    ]
+}

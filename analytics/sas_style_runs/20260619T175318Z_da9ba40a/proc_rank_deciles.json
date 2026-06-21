@@ -1,0 +1,402 @@
+[
+  {
+    "metric": "pd",
+    "decile": 1,
+    "count": 5000,
+    "minimum": 0.000862,
+    "maximum": 0.005611,
+    "mean": 0.0038612405999999856,
+    "total_ead": 15501715.290000033,
+    "current_credit_loss_proxy": 16480.109171448763
+  },
+  {
+    "metric": "pd",
+    "decile": 2,
+    "count": 5000,
+    "minimum": 0.005611,
+    "maximum": 0.008503,
+    "mean": 0.0070103905999999985,
+    "total_ead": 17084828.629999958,
+    "current_credit_loss_proxy": 37888.409155074405
+  },
+  {
+    "metric": "pd",
+    "decile": 3,
+    "count": 5000,
+    "minimum": 0.008503,
+    "maximum": 0.012784,
+    "mean": 0.010404420599999995,
+    "total_ead": 19035786.820000038,
+    "current_credit_loss_proxy": 69667.28981412969
+  },
+  {
+    "metric": "pd",
+    "decile": 4,
+    "count": 5000,
+    "minimum": 0.012784,
+    "maximum": 0.033399,
+    "mean": 0.019009697000000006,
+    "total_ead": 23806199.270000003,
+    "current_credit_loss_proxy": 185017.88128365274
+  },
+  {
+    "metric": "pd",
+    "decile": 5,
+    "count": 5000,
+    "minimum": 0.033413,
+    "maximum": 0.099453,
+    "mean": 0.068344949,
+    "total_ead": 56526772.450000025,
+    "current_credit_loss_proxy": 1792410.795930676
+  },
+  {
+    "metric": "pd",
+    "decile": 6,
+    "count": 5000,
+    "minimum": 0.099507,
+    "maximum": 0.163122,
+    "mean": 0.13089416039999985,
+    "total_ead": 71054211.84000023,
+    "current_credit_loss_proxy": 5052937.904506597
+  },
+  {
+    "metric": "pd",
+    "decile": 7,
+    "count": 5000,
+    "minimum": 0.163132,
+    "maximum": 0.304347,
+    "mean": 0.21260057079999953,
+    "total_ead": 83338780.71999985,
+    "current_credit_loss_proxy": 11329546.350833869
+  },
+  {
+    "metric": "pd",
+    "decile": 8,
+    "count": 5000,
+    "minimum": 0.304575,
+    "maximum": 0.484366,
+    "mean": 0.40959815399999977,
+    "total_ead": 147079958.43999982,
+    "current_credit_loss_proxy": 49035618.45364356
+  },
+  {
+    "metric": "pd",
+    "decile": 9,
+    "count": 5000,
+    "minimum": 0.484415,
+    "maximum": 0.723571,
+    "mean": 0.5682653787999999,
+    "total_ead": 164979277.67000034,
+    "current_credit_loss_proxy": 84220902.29299854
+  },
+  {
+    "metric": "pd",
+    "decile": 10,
+    "count": 5000,
+    "minimum": 0.72361,
+    "maximum": 0.989547,
+    "mean": 0.9178407195999991,
+    "total_ead": 239538729.33000016,
+    "current_credit_loss_proxy": 208803349.75181064
+  },
+  {
+    "metric": "lgd",
+    "decile": 1,
+    "count": 5000,
+    "minimum": 0.11164,
+    "maximum": 0.253143,
+    "mean": 0.2061713869999998,
+    "total_ead": 13963890.240000036,
+    "current_credit_loss_proxy": 27371.72942878086
+  },
+  {
+    "metric": "lgd",
+    "decile": 2,
+    "count": 5000,
+    "minimum": 0.253164,
+    "maximum": 0.315873,
+    "mean": 0.28761209040000046,
+    "total_ead": 19513982.60000001,
+    "current_credit_loss_proxy": 79030.01809109404
+  },
+  {
+    "metric": "lgd",
+    "decile": 3,
+    "count": 5000,
+    "minimum": 0.315922,
+    "maximum": 0.371234,
+    "mean": 0.34446453900000057,
+    "total_ead": 24283298.92999999,
+    "current_credit_loss_proxy": 268160.0475710791
+  },
+  {
+    "metric": "lgd",
+    "decile": 4,
+    "count": 5000,
+    "minimum": 0.371242,
+    "maximum": 0.424036,
+    "mean": 0.3969651359999995,
+    "total_ead": 31782900.93000003,
+    "current_credit_loss_proxy": 694479.5117288319
+  },
+  {
+    "metric": "lgd",
+    "decile": 5,
+    "count": 5000,
+    "minimum": 0.424052,
+    "maximum": 0.483582,
+    "mean": 0.45240813939999897,
+    "total_ead": 46124578.469999984,
+    "current_credit_loss_proxy": 1753655.7392475503
+  },
+  {
+    "metric": "lgd",
+    "decile": 6,
+    "count": 5000,
+    "minimum": 0.483659,
+    "maximum": 0.563841,
+    "mean": 0.5213950627999998,
+    "total_ead": 64088877.019999936,
+    "current_credit_loss_proxy": 4760203.073659584
+  },
+  {
+    "metric": "lgd",
+    "decile": 7,
+    "count": 5000,
+    "minimum": 0.56386,
+    "maximum": 0.683966,
+    "mean": 0.6192778871999998,
+    "total_ead": 88313732.93000013,
+    "current_credit_loss_proxy": 13166231.12244881
+  },
+  {
+    "metric": "lgd",
+    "decile": 8,
+    "count": 5000,
+    "minimum": 0.683986,
+    "maximum": 0.864059,
+    "mean": 0.7729081720000016,
+    "total_ead": 141504308.10000032,
+    "current_credit_loss_proxy": 47195137.29802764
+  },
+  {
+    "metric": "lgd",
+    "decile": 9,
+    "count": 5000,
+    "minimum": 0.864088,
+    "maximum": 0.94737,
+    "mean": 0.9200675463999997,
+    "total_ead": 177847757.45000002,
+    "current_credit_loss_proxy": 103734383.65025418
+  },
+  {
+    "metric": "lgd",
+    "decile": 10,
+    "count": 5000,
+    "minimum": 0.947374,
+    "maximum": 0.960808,
+    "mean": 0.950391941,
+    "total_ead": 230522933.7900002,
+    "current_credit_loss_proxy": 188865167.04869127
+  },
+  {
+    "metric": "ead",
+    "decile": 1,
+    "count": 5000,
+    "minimum": 1414.69,
+    "maximum": 2295.76,
+    "mean": 1839.2960959999994,
+    "total_ead": 9196480.479999997,
+    "current_credit_loss_proxy": 24118.23656640348
+  },
+  {
+    "metric": "ead",
+    "decile": 2,
+    "count": 5000,
+    "minimum": 2296.1,
+    "maximum": 3618.61,
+    "mean": 2902.458081999999,
+    "total_ead": 14512290.409999996,
+    "current_credit_loss_proxy": 52106.3292238101
+  },
+  {
+    "metric": "ead",
+    "decile": 3,
+    "count": 5000,
+    "minimum": 3618.8,
+    "maximum": 4916.51,
+    "mean": 4264.099238000016,
+    "total_ead": 21320496.19000008,
+    "current_credit_loss_proxy": 102133.42660431714
+  },
+  {
+    "metric": "ead",
+    "decile": 4,
+    "count": 5000,
+    "minimum": 4916.59,
+    "maximum": 6528.19,
+    "mean": 5649.964465999994,
+    "total_ead": 28249822.329999972,
+    "current_credit_loss_proxy": 195885.2294217614
+  },
+  {
+    "metric": "ead",
+    "decile": 5,
+    "count": 5000,
+    "minimum": 6529.05,
+    "maximum": 11361.45,
+    "mean": 8979.261530000022,
+    "total_ead": 44896307.65000011,
+    "current_credit_loss_proxy": 2344503.5051186923
+  },
+  {
+    "metric": "ead",
+    "decile": 6,
+    "count": 5000,
+    "minimum": 11363.32,
+    "maximum": 16059.49,
+    "mean": 13738.690858000004,
+    "total_ead": 68693454.29000002,
+    "current_credit_loss_proxy": 5358022.9901535865
+  },
+  {
+    "metric": "ead",
+    "decile": 7,
+    "count": 5000,
+    "minimum": 16063.26,
+    "maximum": 21520.81,
+    "mean": 18715.397564000028,
+    "total_ead": 93576987.82000014,
+    "current_credit_loss_proxy": 9998966.859489858
+  },
+  {
+    "metric": "ead",
+    "decile": 8,
+    "count": 5000,
+    "minimum": 21521.62,
+    "maximum": 31523.67,
+    "mean": 26844.909147999948,
+    "total_ead": 134224545.73999974,
+    "current_credit_loss_proxy": 50967724.6771742
+  },
+  {
+    "metric": "ead",
+    "decile": 9,
+    "count": 5000,
+    "minimum": 31524.55,
+    "maximum": 39991.72,
+    "mean": 35946.64011400001,
+    "total_ead": 179733200.57000005,
+    "current_credit_loss_proxy": 89351011.4470951
+  },
+  {
+    "metric": "ead",
+    "decile": 10,
+    "count": 5000,
+    "minimum": 39991.94,
+    "maximum": 58516.16,
+    "mean": 48708.53499599994,
+    "total_ead": 243542674.9799997,
+    "current_credit_loss_proxy": 202149346.53830048
+  },
+  {
+    "metric": "credit_score",
+    "decile": 1,
+    "count": 5000,
+    "minimum": 306.0,
+    "maximum": 452.0,
+    "mean": 345.1892,
+    "total_ead": 239542396.69999954,
+    "current_credit_loss_proxy": 208805751.21700826
+  },
+  {
+    "metric": "credit_score",
+    "decile": 2,
+    "count": 5000,
+    "minimum": 452.0,
+    "maximum": 584.0,
+    "mean": 537.4526,
+    "total_ead": 164979214.5200001,
+    "current_credit_loss_proxy": 84218123.95108253
+  },
+  {
+    "metric": "credit_score",
+    "decile": 3,
+    "count": 5000,
+    "minimum": 584.0,
+    "maximum": 682.0,
+    "mean": 624.7242,
+    "total_ead": 147076354.2200001,
+    "current_credit_loss_proxy": 49035995.330361255
+  },
+  {
+    "metric": "credit_score",
+    "decile": 4,
+    "count": 5000,
+    "minimum": 683.0,
+    "maximum": 760.0,
+    "mean": 733.07,
+    "total_ead": 83328451.99000011,
+    "current_credit_loss_proxy": 11327323.995470345
+  },
+  {
+    "metric": "credit_score",
+    "decile": 5,
+    "count": 5000,
+    "minimum": 760.0,
+    "maximum": 795.0,
+    "mean": 778.0152,
+    "total_ead": 71029069.94000007,
+    "current_credit_loss_proxy": 5052761.007213872
+  },
+  {
+    "metric": "credit_score",
+    "decile": 6,
+    "count": 5000,
+    "minimum": 795.0,
+    "maximum": 832.0,
+    "mean": 812.4018,
+    "total_ead": 56555204.84999996,
+    "current_credit_loss_proxy": 1794789.58138909
+  },
+  {
+    "metric": "credit_score",
+    "decile": 7,
+    "count": 5000,
+    "minimum": 832.0,
+    "maximum": 843.0,
+    "mean": 839.5592,
+    "total_ead": 23752323.759999946,
+    "current_credit_loss_proxy": 184137.0437154261
+  },
+  {
+    "metric": "credit_score",
+    "decile": 8,
+    "count": 5000,
+    "minimum": 843.0,
+    "maximum": 845.0,
+    "mean": 844.2604,
+    "total_ead": 19078400.580000006,
+    "current_credit_loss_proxy": 69884.0855465676
+  },
+  {
+    "metric": "credit_score",
+    "decile": 9,
+    "count": 5000,
+    "minimum": 845.0,
+    "maximum": 847.0,
+    "mean": 846.1802,
+    "total_ead": 16925121.649999984,
+    "current_credit_loss_proxy": 37328.69904223441
+  },
+  {
+    "metric": "credit_score",
+    "decile": 10,
+    "count": 5000,
+    "minimum": 847.0,
+    "maximum": 850.0,
+    "mean": 847.8548,
+    "total_ead": 15679722.24999998,
+    "current_credit_loss_proxy": 17724.32831787977
+  }
+]

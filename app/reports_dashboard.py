@@ -35,6 +35,16 @@ from src.reporting.report_generator import (
 from src.live_monitoring.live_intelligence import get_live_intelligence
 from src.shared.cache_manager import timed_cache
 from app.live_intelligence_components import render_live_status_card
+from app.enterprise_visibility import (
+    load_download_artifact,
+    load_sas_analytics_evidence,
+    load_warehouse_evidence,
+)
+from app.dashboard_components import (
+    insight_panel as _insight,
+    load_json_artifact as _load_json_artifact,
+    section_line as _section,
+)
 
 
 def _generate_report_quiet(
@@ -549,37 +559,359 @@ def _apply_plotly_theme(fig):
     return fig
 
 
-# =============================================================================
-# UI HELPERS
-# =============================================================================
+def _render_validation_pack_section():
+    st.divider()
+    _section("INSTITUTIONAL VALIDATION PACK", "MODEL RISK · SECURE DISTRIBUTION")
 
-def _section(title: str, badge: str = "") -> None:
-    badge_html = (
-        f'<span class="section-badge">{badge}</span>'
-        if badge else ""
-    )
-    st.markdown(
-        f"""
-        <div class="section-header">
-            <div class="section-header-line"></div>
-            <span class="section-header-text">{title}</span>
-            {badge_html}
-        </div>
-        """,
-        unsafe_allow_html=True
+    _insight(
+        "The Phase 1 institutional validation pack consolidates feature governance, calibration, "
+        "proxy OOT validation, PSI monitoring, challenger benchmarking, limitations, and approval "
+        "status. All content below is read from existing artifacts and is not regenerated.",
+        kind="gold",
+        eyebrow="Model Validation Pack · Existing Artifact"
     )
 
-
-def _insight(body: str, kind: str = "", eyebrow: str = "Executive Intelligence") -> None:
-    st.markdown(
-        f"""
-        <div class="insight-panel {kind}">
-            <div class="insight-eyebrow">{eyebrow}</div>
-            <div class="insight-body">{body}</div>
-        </div>
-        """,
-        unsafe_allow_html=True
+    validation_summary = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "validation_summary.json"
     )
+    governance_summary = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "governance_summary.json"
+    )
+    model_risk_summary = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "model_risk_summary.json"
+    )
+    executive_briefing = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "executive_briefing.json"
+    )
+
+    if any([
+        validation_summary,
+        governance_summary,
+        model_risk_summary,
+        executive_briefing,
+    ]):
+        approval_status = (validation_summary or {}).get(
+            "approval_status",
+            "Artifact not available"
+        )
+        status_cols = st.columns(3)
+        status_cols[0].metric("Validation Status", approval_status)
+        status_cols[1].metric(
+            "Governance Status",
+            (governance_summary or {}).get(
+                "governance_status",
+                "Artifact not available"
+            )
+        )
+        status_cols[2].metric("Model Risk Status", approval_status)
+
+        briefing_summary = (executive_briefing or {}).get("business_conclusion")
+        if briefing_summary:
+            st.info(briefing_summary)
+        else:
+            st.warning("Artifact not available")
+
+        limitations = (model_risk_summary or {}).get("limitations", [])
+        if limitations:
+            with st.expander("Model Risk Limitations"):
+                for limitation in limitations:
+                    st.write(f"- {limitation}")
+    else:
+        st.warning("Artifact not available")
+
+    validation_pack_path = ROOT_DIR / "reports" / "model_validation_pack.pdf"
+    if validation_pack_path.is_file():
+        try:
+            validation_pack_bytes = validation_pack_path.read_bytes()
+            st.download_button(
+                label="Download Validation Pack PDF",
+                data=validation_pack_bytes,
+                file_name="KRONOS_Model_Validation_Pack.pdf",
+                mime="application/pdf"
+            )
+        except OSError:
+            st.warning("Artifact not available")
+    else:
+        st.warning("Artifact not available")
+
+
+def _download_existing_artifact(
+    label,
+    relative_path,
+    mime,
+):
+    artifact = load_download_artifact(relative_path)
+    if artifact.get("status") == "AVAILABLE":
+        st.download_button(
+            label=label,
+            data=artifact["data"],
+            file_name=artifact["file_name"],
+            mime=mime,
+            key=f"phase4e_{relative_path}",
+        )
+    else:
+        st.warning("Artifact not available")
+
+
+def _render_enterprise_visibility_sections():
+    sas_evidence = load_sas_analytics_evidence()
+    warehouse_evidence = load_warehouse_evidence()
+
+    st.divider()
+    _section(
+        "SAS-STYLE ANALYTICS PACK",
+        "PHASE 4C · EXISTING ANALYTICAL ARTIFACTS",
+    )
+    if sas_evidence.get("status") == "AVAILABLE":
+        metadata = sas_evidence.get("run_metadata", {})
+        sas_row_1 = st.columns(5)
+        sas_row_1[0].metric(
+            "Run ID",
+            metadata.get("analytics_run_id", "Artifact not available"),
+        )
+        sas_row_1[1].metric(
+            "Run Timestamp",
+            metadata.get("execution_timestamp", "Artifact not available"),
+        )
+        sas_row_1[2].metric(
+            "Portfolio Size",
+            metadata.get("portfolio_size", "Artifact not available"),
+        )
+        sas_row_1[3].metric(
+            "Model Version",
+            metadata.get("model_version", "Artifact not available"),
+        )
+        sas_row_1[4].metric(
+            "Published Batch",
+            metadata.get("published_batch_id", "Artifact not available"),
+        )
+        sas_row_2 = st.columns(2)
+        sas_row_2[0].metric(
+            "Hashed Artifacts",
+            sas_evidence.get("output_count", "Artifact not available"),
+        )
+        read_only_status = (
+            "TRUE"
+            if sas_evidence.get("warehouse_read_only") is True
+            else "Artifact not available"
+        )
+        sas_row_2[1].metric("Warehouse Read-Only", read_only_status)
+
+        sas_downloads = sas_evidence.get("downloads", {})
+        sas_download_columns = st.columns(3)
+        sas_download_specs = (
+            ("manifest.json", "Download Analytics Manifest", "application/json"),
+            (
+                "hash_inventory.json",
+                "Download Hash Inventory",
+                "application/json",
+            ),
+            (
+                "institutional_report_pack.md",
+                "Download Analytics Report Pack",
+                "text/markdown",
+            ),
+        )
+        for column, (name, label, mime) in zip(
+            sas_download_columns,
+            sas_download_specs,
+        ):
+            with column:
+                data = sas_downloads.get(name)
+                if data is not None:
+                    st.download_button(
+                        label=label,
+                        data=data,
+                        file_name=name,
+                        mime=mime,
+                        key=f"phase4e_sas_{name}",
+                    )
+                else:
+                    st.warning("Artifact not available")
+    else:
+        st.warning("Artifact not available")
+
+    st.divider()
+    _section(
+        "WAREHOUSE EVIDENCE PACK",
+        "PHASE 4A–4B · CONTROL EVIDENCE",
+    )
+    if warehouse_evidence.get("status") == "AVAILABLE":
+        warehouse = warehouse_evidence.get("warehouse", {})
+        quality = warehouse_evidence.get("quality", {})
+        reconciliation = warehouse_evidence.get("reconciliation", {})
+        publication = warehouse_evidence.get("publication", {})
+        warehouse_row_1 = st.columns(6)
+        warehouse_row_1[0].metric(
+            "Warehouse",
+            warehouse.get("availability", "Artifact not available"),
+        )
+        warehouse_row_1[1].metric(
+            "Source Assets",
+            warehouse.get("source_asset_count", "Artifact not available"),
+        )
+        warehouse_row_1[2].metric(
+            "Artifact Registry",
+            warehouse.get("artifact_count", "Artifact not available"),
+        )
+        quality_score = quality.get("quality_score")
+        warehouse_row_1[3].metric(
+            "DQ Score",
+            f"{quality_score:.1f}"
+            if isinstance(quality_score, (int, float))
+            else "Artifact not available",
+        )
+        warehouse_row_1[4].metric(
+            "DQ Status",
+            quality.get("quality_status", "Artifact not available"),
+        )
+        warehouse_row_1[5].metric(
+            "Reconciliation",
+            reconciliation.get(
+                "reconciliation_status",
+                "Artifact not available",
+            ),
+        )
+        warehouse_row_2 = st.columns(4)
+        warehouse_row_2[0].metric(
+            "Publish Status",
+            publication.get("publish_status", "Artifact not available"),
+        )
+        warehouse_row_2[1].metric(
+            "Schemas",
+            warehouse.get("schema_count", "Artifact not available"),
+        )
+        warehouse_row_2[2].metric(
+            "Tables",
+            warehouse.get("table_count", "Artifact not available"),
+        )
+        warehouse_row_2[3].metric(
+            "Views",
+            warehouse.get("view_count", "Artifact not available"),
+        )
+    else:
+        st.warning("Artifact not available")
+
+    warehouse_docs = st.columns(3)
+    with warehouse_docs[0]:
+        _download_existing_artifact(
+            "Download Warehouse Architecture",
+            "docs/RISK_WAREHOUSE_ARCHITECTURE.md",
+            "text/markdown",
+        )
+    with warehouse_docs[1]:
+        _download_existing_artifact(
+            "Download Warehouse Operations",
+            "docs/RISK_WAREHOUSE_OPERATIONS.md",
+            "text/markdown",
+        )
+    with warehouse_docs[2]:
+        _download_existing_artifact(
+            "Download Warehouse Data Dictionary",
+            "docs/RISK_WAREHOUSE_DATA_DICTIONARY.md",
+            "text/markdown",
+        )
+
+    st.divider()
+    _section(
+        "RISK MART EVIDENCE PACK",
+        "PHASE 4D · CURRENT-STATE MARTS",
+    )
+    if warehouse_evidence.get("status") == "AVAILABLE":
+        concentration = pd.DataFrame(
+            warehouse_evidence.get("concentration", [])
+        )
+        portfolio_quality = warehouse_evidence.get("portfolio_quality", {})
+        model_governance = pd.DataFrame(
+            warehouse_evidence.get("model_governance", [])
+        )
+        enterprise_summary = warehouse_evidence.get(
+            "enterprise_summary",
+            {},
+        )
+
+        if not concentration.empty:
+            st.markdown("**Concentration Summary**")
+            st.dataframe(
+                concentration[
+                    [
+                        "dimension_type",
+                        "category",
+                        "account_count",
+                        "total_ead",
+                        "exposure_share",
+                        "hhi",
+                    ]
+                ],
+                width="stretch",
+                hide_index=True,
+            )
+        else:
+            st.warning("Artifact not available")
+
+        summary_columns = st.columns(2)
+        with summary_columns[0]:
+            st.markdown("**Portfolio Quality Summary**")
+            if portfolio_quality:
+                st.dataframe(
+                    pd.DataFrame([portfolio_quality]),
+                    width="stretch",
+                    hide_index=True,
+                )
+            else:
+                st.warning("Artifact not available")
+        with summary_columns[1]:
+            st.markdown("**Enterprise Summary**")
+            if enterprise_summary:
+                st.dataframe(
+                    pd.DataFrame([enterprise_summary]),
+                    width="stretch",
+                    hide_index=True,
+                )
+            else:
+                st.warning("Artifact not available")
+
+        st.markdown("**Model Governance Summary**")
+        if not model_governance.empty:
+            st.dataframe(
+                model_governance,
+                width="stretch",
+                hide_index=True,
+            )
+        else:
+            st.warning("Artifact not available")
+    else:
+        st.warning("Artifact not available")
+
+    risk_mart_docs = st.columns(4)
+    phase4d_documents = (
+        (
+            "Download Risk Marts Architecture",
+            "docs/RISK_MARTS_ARCHITECTURE.md",
+        ),
+        (
+            "Download Risk Marts Operations",
+            "docs/RISK_MARTS_OPERATIONS.md",
+        ),
+        (
+            "Download Risk Marts Dictionary",
+            "docs/RISK_MARTS_DATA_DICTIONARY.md",
+        ),
+        (
+            "Download Phase 4D Report",
+            "docs/PHASE4D_COMPLETION_REPORT.md",
+        ),
+    )
+    for column, (label, relative_path) in zip(
+        risk_mart_docs,
+        phase4d_documents,
+    ):
+        with column:
+            _download_existing_artifact(
+                label,
+                relative_path,
+                "text/markdown",
+            )
 
 
 # =============================================================================
@@ -668,7 +1000,7 @@ def render(shared_data=None):
     # directly from KRONOS engines.
 
     live_context = get_live_intelligence(
-        allow_api_refresh=True
+        allow_api_refresh=False
     )
     live_summary = live_context.get("summary", {})
     macro_intelligence = live_context.get("macro_intelligence", {})
@@ -678,6 +1010,9 @@ def render(shared_data=None):
         Path("reports") / "kronos_enterprise_report.pdf"
     )
     report_cache_key = "kronos_enterprise_report_package"
+
+    _render_validation_pack_section()
+    _render_enterprise_visibility_sections()
 
     generate_report = st.button(
         "Generate / Refresh Enterprise Report"

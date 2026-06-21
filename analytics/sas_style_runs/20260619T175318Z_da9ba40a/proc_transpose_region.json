@@ -1,0 +1,32 @@
+[
+  {
+    "dimension": "region",
+    "measure": "count",
+    "Central": 10159.0,
+    "East": 10118.0,
+    "North": 11038.0,
+    "South": 9747.0,
+    "West": 8938.0,
+    "TOTAL": 50000.0
+  },
+  {
+    "dimension": "region",
+    "measure": "total_ead",
+    "Central": 170749602.1300003,
+    "East": 170384262.44999984,
+    "North": 183399908.09999987,
+    "South": 161509788.31999987,
+    "West": 151902699.45999885,
+    "TOTAL": 837946260.460002
+  },
+  {
+    "dimension": "region",
+    "measure": "current_credit_loss_proxy",
+    "Central": 73290619.8698353,
+    "East": 73876261.05068785,
+    "North": 77448186.16649096,
+    "South": 69315493.21020706,
+    "West": 66613258.94192716,
+    "TOTAL": 360543819.2391487
+  }
+]

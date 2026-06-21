@@ -1,0 +1,152 @@
+[
+  {
+    "dimension": "industry",
+    "category": "Financial Services",
+    "count": 6059,
+    "total_ead": 100859703.13999988,
+    "exposure_share": 0.1203653598079568,
+    "hhi_contribution": 0.014487819841698902,
+    "average_pd": 0.22754474137646424,
+    "average_lgd": 0.5455338882653912
+  },
+  {
+    "dimension": "industry",
+    "category": "Healthcare",
+    "count": 6013,
+    "total_ead": 100262936.29999991,
+    "exposure_share": 0.11965318186987237,
+    "hhi_contribution": 0.014316883931584753,
+    "average_pd": 0.23443785015799165,
+    "average_lgd": 0.5467114305671061
+  },
+  {
+    "dimension": "industry",
+    "category": "Technology",
+    "count": 5952,
+    "total_ead": 100127357.47000019,
+    "exposure_share": 0.11949138291402371,
+    "hhi_contribution": 0.014278190590705838,
+    "average_pd": 0.23893960147849538,
+    "average_lgd": 0.5480678891129052
+  },
+  {
+    "dimension": "industry",
+    "category": "Manufacturing",
+    "count": 5079,
+    "total_ead": 86919675.9600001,
+    "exposure_share": 0.1037294156695496,
+    "hhi_contribution": 0.010759791675146202,
+    "average_pd": 0.2431212185469578,
+    "average_lgd": 0.5512058377633402
+  },
+  {
+    "dimension": "industry",
+    "category": "Government",
+    "count": 5130,
+    "total_ead": 85066084.21000019,
+    "exposure_share": 0.10151735048414934,
+    "hhi_contribution": 0.010305772449321616,
+    "average_pd": 0.22787808323586725,
+    "average_lgd": 0.5445575021442505
+  },
+  {
+    "dimension": "industry",
+    "category": "Retail",
+    "count": 4853,
+    "total_ead": 83354908.87000018,
+    "exposure_share": 0.09947524418122171,
+    "hhi_contribution": 0.009895324204913684,
+    "average_pd": 0.24335728147537697,
+    "average_lgd": 0.5546314636307419
+  },
+  {
+    "dimension": "industry",
+    "category": "Education",
+    "count": 4849,
+    "total_ead": 79704427.0100001,
+    "exposure_share": 0.09511878120471041,
+    "hhi_contribution": 0.009047582537869572,
+    "average_pd": 0.2300722790266036,
+    "average_lgd": 0.5429482462363376
+  },
+  {
+    "dimension": "industry",
+    "category": "Energy",
+    "count": 4047,
+    "total_ead": 67380086.04000022,
+    "exposure_share": 0.08041098721893108,
+    "hhi_contribution": 0.006465926865523098,
+    "average_pd": 0.22990622164566382,
+    "average_lgd": 0.5453165774647896
+  },
+  {
+    "dimension": "industry",
+    "category": "Construction",
+    "count": 3980,
+    "total_ead": 67323804.57000002,
+    "exposure_share": 0.08034382125297845,
+    "hhi_contribution": 0.006455129613530552,
+    "average_pd": 0.23717312889447248,
+    "average_lgd": 0.5508314555276386
+  },
+  {
+    "dimension": "industry",
+    "category": "Transportation",
+    "count": 4038,
+    "total_ead": 66947276.88999993,
+    "exposure_share": 0.07989447539660648,
+    "hhi_contribution": 0.006383127198898958,
+    "average_pd": 0.23619895542347646,
+    "average_lgd": 0.5415308103021291
+  },
+  {
+    "dimension": "region",
+    "category": "North",
+    "count": 11038,
+    "total_ead": 183399908.09999987,
+    "exposure_share": 0.21886834126966656,
+    "hhi_contribution": 0.04790335081013523,
+    "average_pd": 0.23076314259829767,
+    "average_lgd": 0.5462237634535253
+  },
+  {
+    "dimension": "region",
+    "category": "Central",
+    "count": 10159,
+    "total_ead": 170749602.1300003,
+    "exposure_share": 0.20377154262406477,
+    "hhi_contribution": 0.04152284158339105,
+    "average_pd": 0.23387715257407163,
+    "average_lgd": 0.5470605150113169
+  },
+  {
+    "dimension": "region",
+    "category": "East",
+    "count": 10118,
+    "total_ead": 170384262.44999984,
+    "exposure_share": 0.20333554845923624,
+    "hhi_contribution": 0.041345345267218406,
+    "average_pd": 0.2368698245700731,
+    "average_lgd": 0.5490472185214466
+  },
+  {
+    "dimension": "region",
+    "category": "South",
+    "count": 9747,
+    "total_ead": 161509788.31999987,
+    "exposure_share": 0.19274480469826016,
+    "hhi_contribution": 0.037150559738170455,
+    "average_pd": 0.23190422755719683,
+    "average_lgd": 0.5436834427003177
+  },
+  {
+    "dimension": "region",
+    "category": "West",
+    "count": 8938,
+    "total_ead": 151902699.45999885,
+    "exposure_share": 0.1812797629487724,
+    "hhi_contribution": 0.032862352454763114,
+    "average_pd": 0.24155375419556946,
+    "average_lgd": 0.5501187692996204
+  }
+]

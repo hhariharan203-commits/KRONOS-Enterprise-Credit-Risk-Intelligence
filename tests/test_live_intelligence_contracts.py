@@ -3,6 +3,7 @@ from __future__ import annotations
 import pandas as pd
 
 from src.live_monitoring.live_alerts import run_live_alert_engine
+from src.live_monitoring import live_intelligence
 from src.live_monitoring.live_intelligence import get_live_intelligence
 from src.live_monitoring.regime_detector import run_regime_detector
 from src.live_monitoring.risk_pulse import run_risk_pulse_engine
@@ -42,6 +43,22 @@ def test_live_intelligence_cache_contract() -> None:
         "source_freshness",
     }.issubset(context)
     assert "enterprise_live_risk_score" in context["summary"]
+
+
+def test_cache_only_live_intelligence_is_read_only(
+    tmp_path,
+    monkeypatch,
+) -> None:
+    cache_path = tmp_path / "live_intelligence_cache.json"
+    monkeypatch.setattr(
+        live_intelligence,
+        "LIVE_INTELLIGENCE_CACHE",
+        cache_path,
+    )
+
+    get_live_intelligence(allow_api_refresh=False)
+
+    assert not cache_path.exists()
 
 
 def test_live_monitoring_engines_accept_live_context() -> None:
@@ -92,4 +109,3 @@ def test_live_monitoring_engines_accept_live_context() -> None:
         "negative_news_sentiment_alert",
         "executive_alert_level",
     }.issubset(alerts["live_alert_results"].columns)
-

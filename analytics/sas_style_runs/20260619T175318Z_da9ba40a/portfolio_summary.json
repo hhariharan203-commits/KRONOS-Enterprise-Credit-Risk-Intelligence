@@ -1,0 +1,15 @@
+[
+  {
+    "portfolio_size": 50000,
+    "total_ead": 837946260.460002,
+    "average_pd": 0.23478296814000016,
+    "average_lgd": 0.5471661901199958,
+    "weighted_pd": 0.48653532298394403,
+    "weighted_lgd": 0.754665585867323,
+    "current_credit_loss_proxy": 360543819.2391487,
+    "watchlist_count": 16378.0,
+    "stage_2_count": 12957.0,
+    "stage_3_count": 3421.0,
+    "high_risk_count": 15069.0
+  }
+]

@@ -1,0 +1,13 @@
+[
+  {
+    "published_batch_id": "79239c0ed5c14df793050725552e2f5c",
+    "quality_score": 100.0,
+    "quality_status": "PASS",
+    "reconciliation_count": 15,
+    "reconciliation_failures": 0.0,
+    "performance_metric_count": 26,
+    "validation_record_count": 13,
+    "feature_importance_count": 61,
+    "validation_records": 13
+  }
+]

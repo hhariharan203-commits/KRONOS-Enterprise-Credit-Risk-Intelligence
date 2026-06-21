@@ -1,0 +1,143 @@
+{
+  "check_count": 27,
+  "failure_count": 0,
+  "results": [
+    {
+      "actual": true,
+      "rule_name": "source_exists",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "source_readable_regular_file",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "sha256_generated",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "source_hash_stable",
+      "status": "PASS"
+    },
+    {
+      "actual": 50000,
+      "rule_name": "row_count_baseline",
+      "status": "PASS"
+    },
+    {
+      "actual": 63,
+      "rule_name": "column_count_baseline",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "borrower_id_exists",
+      "status": "PASS"
+    },
+    {
+      "actual": 0,
+      "rule_name": "borrower_id_not_null",
+      "status": "PASS"
+    },
+    {
+      "actual": 50000,
+      "rule_name": "borrower_id_unique_within_source",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "run_id_exists",
+      "status": "PASS"
+    },
+    {
+      "actual": 1,
+      "rule_name": "run_id_baseline_count",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "model_version_exists",
+      "status": "PASS"
+    },
+    {
+      "actual": 1,
+      "rule_name": "model_version_baseline_count",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "timestamp_exists",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "timestamp_parseable",
+      "status": "PASS"
+    },
+    {
+      "actual": null,
+      "rule_name": "observation_date_unavailable",
+      "status": "WARNING"
+    },
+    {
+      "actual": null,
+      "rule_name": "reporting_date_unavailable",
+      "status": "WARNING"
+    },
+    {
+      "actual": null,
+      "rule_name": "origination_date_unavailable",
+      "status": "WARNING"
+    },
+    {
+      "actual": "PROCESS_TIME_ONLY",
+      "rule_name": "classification_process_time_only",
+      "status": "PASS"
+    },
+    {
+      "actual": false,
+      "rule_name": "historical_eligibility_false",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "source_path_allowlisted",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "schema_fingerprint_registered",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "rule_name": "timestamp_timezone_present",
+      "status": "PASS"
+    },
+    {
+      "actual": 1,
+      "rule_name": "timestamp_cardinality_baseline",
+      "status": "PASS"
+    },
+    {
+      "actual": 50000,
+      "rule_name": "all_rows_scored",
+      "status": "PASS"
+    },
+    {
+      "actual": "SYNTHETIC_BASELINE",
+      "rule_name": "synthetic_evidence_classification",
+      "status": "PASS"
+    },
+    {
+      "actual": "NOT_ESTABLISHED",
+      "rule_name": "identity_continuity_not_established",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS_WITH_LIMITATIONS",
+  "warning_count": 3
+}

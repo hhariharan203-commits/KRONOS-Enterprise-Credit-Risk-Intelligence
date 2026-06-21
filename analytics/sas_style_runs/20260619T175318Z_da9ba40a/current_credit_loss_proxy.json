@@ -1,0 +1,44 @@
+[
+  {
+    "dimension": "risk_band",
+    "category": "DEFAULT RISK",
+    "count": 9421,
+    "total_ead": 385969611.059999,
+    "current_credit_loss_proxy": 285213677.15566146
+  },
+  {
+    "dimension": "risk_band",
+    "category": "HIGH RISK",
+    "count": 5648,
+    "total_ead": 167146849.70999962,
+    "current_credit_loss_proxy": 57162468.849553674
+  },
+  {
+    "dimension": "risk_band",
+    "category": "MODERATE RISK",
+    "count": 5888,
+    "total_ead": 96043038.81000002,
+    "current_credit_loss_proxy": 12286396.236577244
+  },
+  {
+    "dimension": "risk_band",
+    "category": "NEAR PRIME",
+    "count": 7987,
+    "total_ead": 104178640.80000012,
+    "current_credit_loss_proxy": 5419387.395225915
+  },
+  {
+    "dimension": "risk_band",
+    "category": "PRIME",
+    "count": 21056,
+    "total_ead": 84608120.0800001,
+    "current_credit_loss_proxy": 461889.6021304703
+  },
+  {
+    "dimension": "risk_band",
+    "category": "TOTAL",
+    "count": 50000,
+    "total_ead": 837946260.460002,
+    "current_credit_loss_proxy": 360543819.2391487
+  }
+]

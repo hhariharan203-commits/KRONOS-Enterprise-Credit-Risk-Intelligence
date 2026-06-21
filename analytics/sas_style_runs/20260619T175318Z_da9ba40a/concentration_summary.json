@@ -1,0 +1,18 @@
+[
+  {
+    "dimension": "industry",
+    "category_count": 10,
+    "hhi": 0.10239554890919317,
+    "largest_exposure_share": 0.1203653598079568,
+    "top_3_exposure_share": 0.3595099245918529,
+    "total_ead": 837946260.4600009
+  },
+  {
+    "dimension": "region",
+    "category_count": 5,
+    "hhi": 0.20078444985367822,
+    "largest_exposure_share": 0.21886834126966656,
+    "top_3_exposure_share": 0.6259754323529676,
+    "total_ead": 837946260.4599986
+  }
+]

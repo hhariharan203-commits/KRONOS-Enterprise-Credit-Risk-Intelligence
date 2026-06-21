@@ -47,6 +47,13 @@ from src.live_monitoring.live_alerts import (
 )
 from src.live_monitoring.live_intelligence import get_live_intelligence
 from app.live_intelligence_components import render_live_status_card
+from app.dashboard_components import (
+    alert_ticker as _alert_ticker,
+    governance_panel as _governance_panel,
+    insight_panel as _insight,
+    section_line as _section,
+)
+from app.risk_pulse_service import build_risk_pulse_view_model
 
 from src.shared.cache_manager import timed_cache
 
@@ -581,71 +588,6 @@ def _apply_plotly_theme(fig):
 
 
 # =============================================================================
-# UI HELPERS
-# =============================================================================
-
-def _section(title: str, badge: str = "", live: bool = False) -> None:
-    live_class = " live" if live else ""
-    badge_html = (
-        f'<span class="section-badge{live_class}">{badge}</span>'
-        if badge else ""
-    )
-    st.markdown(
-        f"""
-        <div class="section-header">
-            <div class="section-header-line"></div>
-            <span class="section-header-text">{title}</span>
-            {badge_html}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
-def _insight(body: str, kind: str = "", eyebrow: str = "Executive Intelligence") -> None:
-    st.markdown(
-        f"""
-        <div class="insight-panel {kind}">
-            <div class="insight-eyebrow">{eyebrow}</div>
-            <div class="insight-body">{body}</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
-def _governance_panel(title: str, rows: list) -> None:
-    rows_html = "".join(
-        f'<div class="governance-row">'
-        f'<span class="governance-key">{k}</span>'
-        f'<span class="governance-val {cls}">{v}</span>'
-        f'</div>'
-        for k, v, cls in rows
-    )
-    st.markdown(
-        f"""
-        <div class="governance-panel">
-            <div class="governance-panel-title">{title}</div>
-            {rows_html}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
-def _alert_ticker(message: str) -> None:
-    st.markdown(
-        f"""
-        <div class="alert-ticker">
-            <div class="ticker-dot"></div>
-            {message}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
-# =============================================================================
 # MAIN RENDER
 # =============================================================================
 
@@ -730,69 +672,26 @@ def render(shared_data=None):
     portfolio = portfolio.fillna(0)
 
     live_context = get_live_intelligence(
-        allow_api_refresh=True
+        allow_api_refresh=False
     )
-    live_summary = live_context.get("summary", {})
-    macro_intelligence = live_context.get("macro_intelligence", {})
-    market_intelligence = live_context.get("market_intelligence", {})
-    news_intelligence = live_context.get("news_intelligence", {})
-
-    # =========================================================================
-    # LIVE MONITORING FEATURES
-    # =========================================================================
-
-    portfolio["systemic_risk_score"] = (
-
-        portfolio["pd_score"] * 100
-
+    view_model = build_risk_pulse_view_model(
+        portfolio,
+        live_context,
+        run_pulse=cached_run_risk_pulse_engine,
+        run_regime=cached_run_regime_detector,
+        run_alerts=cached_run_live_alert_engine,
     )
-
-    portfolio["reserve_pressure_score"] = (
-
-        portfolio["early_warning_score"]
-
-    )
-
-    portfolio["stress_score"] = (
-
-        portfolio["early_warning_score"]
-
-    )
-
-    portfolio["macro_stress_score"] = live_summary.get(
-        "macro_stress_score",
-        0
-    )
-
-    portfolio["market_stress_score"] = live_summary.get(
-        "market_stress_score",
-        0
-    )
-
-    portfolio["sentiment_stress_score"] = live_summary.get(
-        "sentiment_stress_score",
-        0
-    )
-
-    portfolio["enterprise_live_risk_score"] = live_summary.get(
-        "enterprise_live_risk_score",
-        0
-    )
-
-    portfolio["stress_score"] = np.maximum(
-        portfolio["stress_score"],
-        (
-            portfolio["macro_stress_score"]
-            + portfolio["market_stress_score"]
-            + portfolio["sentiment_stress_score"]
-        ) / 3
-    )
-
-    portfolio["previous_pulse_score"] = (
-
-        portfolio["risk_migration_score"]
-
-    )
+    portfolio = view_model["portfolio"]
+    live_summary = view_model["live_summary"]
+    macro_intelligence = view_model["macro_intelligence"]
+    market_intelligence = view_model["market_intelligence"]
+    news_intelligence = view_model["news_intelligence"]
+    pulse_df = view_model["pulse_df"]
+    pulse_summary = view_model["pulse_summary"]
+    regime_df = view_model["regime_df"]
+    regime_summary = view_model["regime_summary"]
+    alert_df = view_model["alert_df"]
+    alert_summary = view_model["alert_summary"]
 
     _section("Live Intelligence Overlay", "MACRO · MARKET · NEWS", live=True)
 
@@ -829,218 +728,6 @@ def render(shared_data=None):
             "risk_sentiment_regime",
             "UNAVAILABLE"
         )
-    )
-
-    # =========================================================================
-    # RISK PULSE ENGINE
-    # =========================================================================
-
-    pulse_results = (
-        cached_run_risk_pulse_engine(
-            portfolio,
-            live_context=live_context
-        )
-    )
-
-    pulse_df = (
-        pulse_results[
-            "risk_pulse_results"
-        ]
-    )
-
-    pulse_summary = (
-        pulse_results[
-            "summary"
-        ]
-    )
-
-    # =========================================================================
-    # MACRO REGIME DATA
-    # =========================================================================
-
-    macro_df = pd.DataFrame([
-
-        {
-            "period": "2025-Q1",
-
-            "gdp_stress": -1.2,
-
-            "inflation_stress": 2.5,
-
-            "unemployment_stress": 3.0,
-
-            "market_volatility": 18,
-
-            "previous_regime_score": 20,
-        },
-
-        {
-            "period": "2025-Q2",
-
-            "gdp_stress": -2.0,
-
-            "inflation_stress": 3.5,
-
-            "unemployment_stress": 4.0,
-
-            "market_volatility": 25,
-
-            "previous_regime_score": 25,
-        },
-
-        {
-            "period": "2025-Q3",
-
-            "gdp_stress": -3.5,
-
-            "inflation_stress": 5.2,
-
-            "unemployment_stress": 5.8,
-
-            "market_volatility": 45,
-
-            "previous_regime_score": 40,
-        },
-
-        {
-            "period": "2025-Q4",
-
-            "gdp_stress": -4.5,
-
-            "inflation_stress": 6.8,
-
-            "unemployment_stress": 7.2,
-
-            "market_volatility": 60,
-
-            "previous_regime_score": 55,
-        },
-
-        {
-            "period": "2026-Q1",
-
-            "gdp_stress": -2.0,
-
-            "inflation_stress": 4.0,
-
-            "unemployment_stress": 5.0,
-
-            "market_volatility": 35,
-
-            "previous_regime_score": 40,
-        }
-
-    ])
-
-    live_macro_row = pd.DataFrame([
-        {
-            "period": "LIVE-CURRENT",
-            "gdp_stress": -(
-                live_summary.get(
-                    "macro_stress_score",
-                    0
-                ) / 10
-            ),
-            "inflation_stress": macro_intelligence.get(
-                "inflation_rate",
-                0
-            ) or 0,
-            "unemployment_stress": macro_intelligence.get(
-                "unemployment_rate",
-                0
-            ) or 0,
-            "market_volatility": market_intelligence.get(
-                "volatility_score",
-                0
-            ),
-            "previous_regime_score": live_summary.get(
-                "enterprise_live_risk_score",
-                0
-            ),
-            "credit_stress_score": live_summary.get(
-                "enterprise_live_risk_score",
-                0
-            ),
-        }
-    ])
-
-    macro_df = pd.concat(
-        [
-            macro_df,
-            live_macro_row
-        ],
-        ignore_index=True
-    )
-
-    # =========================================================================
-    # REGIME DETECTOR
-    # =========================================================================
-
-    regime_results = (
-        cached_run_regime_detector(
-            macro_df,
-            live_context=live_context
-        )
-    )
-
-    regime_df = (
-        regime_results[
-            "regime_results"
-        ]
-    )
-
-    regime_summary = (
-        regime_results[
-            "summary"
-        ]
-    )
-
-    # =========================================================================
-    # LIVE ALERT INPUT
-    # =========================================================================
-
-    alert_input = (
-        portfolio.merge(
-            pulse_df[
-                [
-                    "borrower_id",
-                    "live_risk_pulse_score"
-                ]
-            ],
-            on="borrower_id",
-            how="left"
-        )
-    )
-
-    alert_input["previous_risk_score"] = (
-
-        alert_input[
-            "previous_pulse_score"
-        ]
-
-    )
-
-    # =========================================================================
-    # LIVE ALERT ENGINE
-    # =========================================================================
-
-    alert_results = (
-        cached_run_live_alert_engine(
-            alert_input,
-            live_context=live_context
-        )
-    )
-
-    alert_df = (
-        alert_results[
-            "live_alert_results"
-        ]
-    )
-
-    alert_summary = (
-        alert_results[
-            "summary"
-        ]
     )
 
     # =========================================================================

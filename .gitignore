@@ -27,11 +27,31 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Outputs
-outputs/
+# Generated outputs: retain only curated portfolio evidence
+outputs/*
+!outputs/calibration/
+outputs/calibration/*
+!outputs/calibration/calibration_summary.json
+!outputs/calibration/decile_analysis.csv
+!outputs/challenger_models/
+outputs/challenger_models/*
+!outputs/challenger_models/challenger_summary.json
+!outputs/challenger_models/model_comparison.csv
+!outputs/challenger_models/model_performance_table.csv
+!outputs/challenger_models/model_rankings.json
+!outputs/model_validation_pack/
+outputs/model_validation_pack/*
+!outputs/model_validation_pack/*.json
+!outputs/oot_validation/
+outputs/oot_validation/*
+!outputs/oot_validation/*.json
+!outputs/oot_validation/*.csv
+!outputs/feature_governance_report.json
+!outputs/artifact_lineage.json
 
-# Generated Reports
+# Generated reports: retain the validation pack as curated evidence
 reports/*.pdf
+!reports/model_validation_pack.pdf
 
 # Jupyter
 .ipynb_checkpoints/
@@ -48,3 +68,13 @@ build/
 
 # Local accidental executable shims
 python
+
+# Phase 4A Enterprise Risk Warehouse
+data/warehouse/*.duckdb
+data/warehouse/*.duckdb.wal
+data/warehouse/*.tmp
+
+# Temporal platform runtime databases and backups
+temporal_platform/warehouse/
+temporal_platform/backups/
+temporal_platform/inbound/

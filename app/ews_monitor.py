@@ -529,7 +529,7 @@ def render(shared_data=None):
     )
 
     live_context = get_dashboard_live_context(
-        allow_api_refresh=True
+        allow_api_refresh=False
     )
     alert_cache_context = {
         "summary": {

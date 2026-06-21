@@ -1,0 +1,14 @@
+validation_type,validation_status,source_generated_at,warehouse_loaded_at
+outputs/artifact_lineage.json,NOT EXPLICITLY STATED,2026-06-15 21:43:45.675762,2026-06-19 19:12:35.247644
+outputs/calibration/calibration_summary.json,NOT EXPLICITLY STATED,2026-06-15 23:07:21.000000,2026-06-19 19:12:35.291313
+outputs/challenger_models/challenger_summary.json,NOT PERMITTED,2026-06-15 23:26:58.000000,2026-06-19 19:12:35.321840
+outputs/challenger_models/model_rankings.json,NOT EXPLICITLY STATED,2026-06-15 23:26:57.000000,2026-06-19 19:12:35.357450
+outputs/feature_governance_report.json,PASSED,2026-06-15 23:00:10.000000,2026-06-19 19:12:35.388345
+outputs/model_validation_pack/executive_briefing.json,AMBER,,2026-06-19 19:12:35.419298
+outputs/model_validation_pack/governance_summary.json,NOT EXPLICITLY STATED,,2026-06-19 19:12:35.451463
+outputs/model_validation_pack/model_risk_summary.json,NOT EXPLICITLY STATED,,2026-06-19 19:12:35.485025
+outputs/model_validation_pack/validation_summary.json,AMBER,2026-06-15 23:49:01.000000,2026-06-19 19:12:35.515446
+outputs/oot_validation/executive_summary.json,PASSED,,2026-06-19 19:12:35.549119
+outputs/oot_validation/methodology.json,NOT EXPLICITLY STATED,2026-06-15 23:18:46.000000,2026-06-19 19:12:35.582795
+outputs/oot_validation/oot_metrics.json,NOT EXPLICITLY STATED,2026-06-15 23:18:46.000000,2026-06-19 19:12:35.614864
+outputs/oot_validation/psi_report.json,NO MATERIAL DRIFT,2026-06-15 23:18:46.000000,2026-06-19 19:12:35.650156

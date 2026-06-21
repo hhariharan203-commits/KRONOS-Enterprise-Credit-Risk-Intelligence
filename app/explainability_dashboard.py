@@ -55,6 +55,12 @@ from app.live_intelligence_components import (
     render_live_status_card,
     live_summary,
 )
+from app.enterprise_visibility import load_warehouse_evidence
+from app.dashboard_components import (
+    insight_panel as _insight,
+    load_json_artifact as _load_json_artifact,
+    section_line as _section,
+)
 
 cached_explain_borrower = timed_cache()(explain_borrower)
 cached_run_shap_pipeline = timed_cache()(run_shap_pipeline)
@@ -664,37 +670,20 @@ _PIE_COLORS = [
     "#f0a500", "#e02442", "#c9a84c"
 ]
 
-# =============================================================================
-# UI COMPONENT HELPERS
-# =============================================================================
-
-def _section(title: str, badge: str = "") -> None:
-    badge_html = (
-        f'<span class="section-badge">{badge}</span>'
-        if badge else ""
-    )
-    st.markdown(
-        f"""
-        <div class="section-header">
-            <div class="section-header-line"></div>
-            <span class="section-header-text">{title}</span>
-            {badge_html}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+def _artifact_metric(data, key, fallback="Artifact not available"):
+    if not isinstance(data, dict):
+        return fallback
+    value = data.get(key)
+    return fallback if value is None else value
 
 
-def _insight(body: str, kind: str = "", eyebrow: str = "Executive Intelligence") -> None:
-    st.markdown(
-        f"""
-        <div class="insight-panel {kind}">
-            <div class="insight-eyebrow">{eyebrow}</div>
-            <div class="insight-body">{body}</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+def _render_validation_image(column, relative_path, caption):
+    image_path = ROOT_DIR / relative_path
+    with column:
+        if image_path.is_file():
+            st.image(str(image_path), caption=caption, width="stretch")
+        else:
+            st.warning("Artifact not available")
 
 
 def _governance_block(items: list) -> None:
@@ -798,7 +787,7 @@ def render(shared_data=None):
         return
 
     live_context = get_dashboard_live_context(
-        allow_api_refresh=True
+        allow_api_refresh=False
     )
     live_data = live_summary(live_context)
     macro_data = macro_intelligence(live_context)
@@ -1296,6 +1285,210 @@ def render(shared_data=None):
         "Risk Driver Attribution Available",
         "Portfolio Explainability Complete",
     ])
+
+    # ==========================================================
+    # MODEL VALIDATION & GOVERNANCE
+    # ==========================================================
+
+    st.divider()
+
+    _section("MODEL VALIDATION & GOVERNANCE", "PHASE 1 · VALIDATION EVIDENCE")
+
+    _insight(
+        "This section presents the existing Phase 1 model-risk evidence without recalculation. "
+        "Calibration, proxy OOT stability, feature governance, and challenger results are read "
+        "directly from the approved validation artifacts.",
+        kind="violet",
+        eyebrow="Model Validation Pack · Read-Only Evidence"
+    )
+
+    validation_summary = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "validation_summary.json"
+    )
+    executive_briefing = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "executive_briefing.json"
+    )
+    governance_summary = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "governance_summary.json"
+    )
+    calibration_summary = _load_json_artifact(
+        Path("outputs") / "calibration" / "calibration_summary.json"
+    )
+    oot_summary = _load_json_artifact(
+        Path("outputs") / "oot_validation" / "executive_summary.json"
+    )
+    psi_report = _load_json_artifact(
+        Path("outputs") / "oot_validation" / "psi_report.json"
+    )
+    challenger_summary = _load_json_artifact(
+        Path("outputs") / "challenger_models" / "challenger_summary.json"
+    )
+
+    champion_metrics = (validation_summary or {}).get("champion_metrics", {})
+    briefing_metrics = (executive_briefing or {}).get("key_metrics", {})
+    champion_name = _artifact_metric(validation_summary, "champion_model")
+    if isinstance(champion_name, str):
+        champion_name = champion_name.replace("Current ", "")
+    oot_status = _artifact_metric(validation_summary, "oot_status")
+    if oot_status == "STABLE WITH PROXY LIMITATION":
+        oot_status = "STABLE / PROXY"
+
+    validation_row_1 = st.columns(6)
+    validation_row_1[0].metric(
+        "Champion Model",
+        champion_name
+    )
+    auc_value = champion_metrics.get("roc_auc", briefing_metrics.get("champion_auc"))
+    validation_row_1[1].metric(
+        "AUC",
+        f"{auc_value:.4f}" if isinstance(auc_value, (int, float)) else "Artifact not available"
+    )
+    f1_value = champion_metrics.get("f1_score", briefing_metrics.get("champion_f1"))
+    validation_row_1[2].metric(
+        "F1",
+        f"{f1_value:.4f}" if isinstance(f1_value, (int, float)) else "Artifact not available"
+    )
+    brier_value = (calibration_summary or {}).get(
+        "brier_score",
+        briefing_metrics.get("brier_score")
+    )
+    validation_row_1[3].metric(
+        "Brier Score",
+        f"{brier_value:.6f}" if isinstance(brier_value, (int, float)) else "Artifact not available"
+    )
+    validation_row_1[4].metric(
+        "Calibration",
+        _artifact_metric(validation_summary, "calibration_status")
+    )
+    validation_row_1[5].metric(
+        "Feature Governance",
+        _artifact_metric(governance_summary, "governance_status")
+    )
+
+    validation_row_2 = st.columns(5)
+    validation_row_2[0].metric(
+        "OOT Status",
+        oot_status
+        if validation_summary
+        else _artifact_metric(oot_summary, "validation_status")
+    )
+    psi_value = (psi_report or {}).get("psi", briefing_metrics.get("oot_psi"))
+    validation_row_2[1].metric(
+        "PSI",
+        f"{psi_value:.6f}" if isinstance(psi_value, (int, float)) else "Artifact not available"
+    )
+    validation_row_2[2].metric(
+        "Best Challenger",
+        _artifact_metric(challenger_summary, "best_challenger")
+    )
+    challenger_gap = (challenger_summary or {}).get(
+        "performance_gap_best_challenger_minus_champion_auc",
+        briefing_metrics.get("challenger_auc_gap")
+    )
+    validation_row_2[3].metric(
+        "Challenger AUC Gap",
+        f"{challenger_gap:.6f}"
+        if isinstance(challenger_gap, (int, float))
+        else "Artifact not available"
+    )
+    validation_row_2[4].metric(
+        "Approval Status",
+        _artifact_metric(validation_summary, "approval_status")
+    )
+
+    if not any([
+        validation_summary,
+        executive_briefing,
+        governance_summary,
+        calibration_summary,
+        oot_summary,
+        psi_report,
+        challenger_summary,
+    ]):
+        st.warning("Artifact not available")
+
+    validation_images = st.columns(3)
+    _render_validation_image(
+        validation_images[0],
+        Path("outputs") / "calibration" / "calibration_curve.png",
+        "Calibration Curve"
+    )
+    _render_validation_image(
+        validation_images[1],
+        Path("outputs") / "calibration" / "reliability_diagram.png",
+        "Reliability Diagram"
+    )
+    _render_validation_image(
+        validation_images[2],
+        Path("outputs") / "challenger_models" / "roc_comparison.png",
+        "ROC Comparison"
+    )
+
+    # ==========================================================
+    # ENTERPRISE MODEL GOVERNANCE MART
+    # ==========================================================
+
+    st.divider()
+
+    _section(
+        "ENTERPRISE MODEL GOVERNANCE MART",
+        "PHASE 4D · READ-ONLY MART EVIDENCE"
+    )
+
+    _insight(
+        "PD, LGD, and EAD governance evidence is displayed exactly as persisted in the "
+        "Phase 4D model-governance mart. Missing validation, non-applicable calibration, "
+        "and unresolved artifact relationships remain visible without inference.",
+        kind="violet",
+        eyebrow="Enterprise Risk Warehouse · Model Governance"
+    )
+
+    enterprise_evidence = load_warehouse_evidence()
+    governance_rows = enterprise_evidence.get("model_governance", [])
+    if (
+        enterprise_evidence.get("status") == "AVAILABLE"
+        and governance_rows
+    ):
+        governance_frame = pd.DataFrame(governance_rows)[
+            [
+                "model_family",
+                "approval_status",
+                "governance_status",
+                "calibration_status",
+                "validation_status",
+                "artifact_count",
+                "model_version",
+                "artifact_match_status",
+                "roc_auc",
+                "f1_score",
+                "mae",
+                "rmse",
+                "r2_score",
+            ]
+        ].rename(
+            columns={
+                "model_family": "Model Family",
+                "approval_status": "Approval Status",
+                "governance_status": "Governance Status",
+                "calibration_status": "Calibration Status",
+                "validation_status": "Validation Status",
+                "artifact_count": "Artifact Count",
+                "model_version": "Model Version",
+                "artifact_match_status": "Artifact Relationship Status",
+                "roc_auc": "AUC",
+                "f1_score": "F1",
+                "mae": "MAE",
+                "rmse": "RMSE",
+                "r2_score": "R²",
+            }
+        )
+        st.dataframe(
+            governance_frame,
+            width="stretch",
+            hide_index=True,
+        )
+    else:
+        st.warning("Artifact not available")
 
     # ==========================================================
     # EXPLAINABILITY EXPLORER

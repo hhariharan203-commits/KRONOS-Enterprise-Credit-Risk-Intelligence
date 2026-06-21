@@ -1,0 +1,26 @@
+[
+  {
+    "dimension": "ifrs9_stage",
+    "measure": "count",
+    "STAGE 1": 33622.0,
+    "STAGE 2": 12957.0,
+    "STAGE 3": 3421.0,
+    "TOTAL": 50000.0
+  },
+  {
+    "dimension": "ifrs9_stage",
+    "measure": "total_ead",
+    "STAGE 1": 343429056.05999964,
+    "STAGE 2": 345336159.8199984,
+    "STAGE 3": 149181044.57999995,
+    "TOTAL": 837946260.460002
+  },
+  {
+    "dimension": "ifrs9_stage",
+    "measure": "current_credit_loss_proxy",
+    "STAGE 1": 65627438.81979097,
+    "STAGE 2": 177858480.7193781,
+    "STAGE 3": 117057899.6999787,
+    "TOTAL": 360543819.2391487
+  }
+]

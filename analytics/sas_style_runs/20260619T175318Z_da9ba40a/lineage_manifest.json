@@ -1,0 +1,993 @@
+{
+  "framework": "KRONOS SAS-Style Analytics",
+  "execution_timestamp": "2026-06-19T17:53:18Z",
+  "analytics_run_id": "20260619T175318Z_da9ba40a",
+  "source_asset": {
+    "source_asset_id": "6bf8b55e1b8a9f243d21440230b83853",
+    "source_hash": "da9ba40ae0e29ff02d98025c9320dad2aeb0c03cf30316983c10804086488fbb",
+    "published_batch_id": "79239c0ed5c14df793050725552e2f5c",
+    "model_version": "51a7373f45ff8b6f"
+  },
+  "lineage_entries": [
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_freq",
+      "output_artifact": "proc_freq.csv",
+      "file_hash": "124c72a438c5fa12cfb591bd6d42e55c242dfb5db00d4a627a9770e0167afac6",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_freq",
+      "output_artifact": "proc_freq.json",
+      "file_hash": "6fcad36cd0d21b4b23ac4c8d129da9bc8b06bd870de9bb2f1a38453e97d8606b",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_means",
+      "output_artifact": "proc_means.csv",
+      "file_hash": "9b743251d55bbe37c9fa20e9292fec32848b9ec0886c74afc4af21ab3fabb577",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_means",
+      "output_artifact": "proc_means.json",
+      "file_hash": "74dd6edae0ee8961389ecd9ad03372295e66656c712c6e2b5b6276f789105625",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_summary",
+      "output_artifact": "proc_summary.csv",
+      "file_hash": "932e907b76d5d76dc8911b840e9eca641b94004654d31a358b8d73128be3c670",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_summary",
+      "output_artifact": "proc_summary.json",
+      "file_hash": "8ed02c8cb0b219f8d59d64608478079ffd0b1898fe430ac6de5fb549fb667d18",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_tabulate",
+      "output_artifact": "proc_tabulate.csv",
+      "file_hash": "9896048430622716a1f614df8ca0274d588e8bc14b5729a01c51db73a731849b",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_tabulate",
+      "output_artifact": "proc_tabulate.json",
+      "file_hash": "937948f38e75f3bd0bdd05f2912652e8bd033889091d35702a98405f796d863b",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_rank",
+      "output_artifact": "proc_rank_deciles.csv",
+      "file_hash": "7c6c861abca69d295acdea7b777509302ad75c6ced5811ab38f3acf7e79fac62",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_rank",
+      "output_artifact": "proc_rank_deciles.json",
+      "file_hash": "ed3cd57ede343b0ba660d0ec8988fd33882b61bd70fd8daf338933f1e61a806c",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_risk_band.csv",
+      "file_hash": "2d3bf1e27704caae768569f977df1647a52e42f75ba92639321f1c40e552a71d",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_risk_band.json",
+      "file_hash": "5e0b9e9060aed04a26a4b3be21cd1c4e75ce0cb543a7309d237692e66c05ec49",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_ifrs9_stage.csv",
+      "file_hash": "b941df141b9a149f78c1eadc0bf9ee03fb232f2431c19496ff73724bdd86c96e",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_ifrs9_stage.json",
+      "file_hash": "aa0f2801b92dc01e290b18712e690ec5c77cbdd571013458f803d8c277f6a9b1",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_industry.csv",
+      "file_hash": "48e3cae5b7d6268df9f433af92ba9a2497c6caa9b3aa6ad98ded496cafa5f010",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_industry.json",
+      "file_hash": "4aff91f9f68bc8a140f6803465d6d647878e2e6329e4a111caeaee1cc996e5e2",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_region.csv",
+      "file_hash": "fd53a25239036990d5eeb04e2686ff9b7a0f68a24539bc04b62a553500cb4922",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_region.json",
+      "file_hash": "3b51cdb6e6b63fb695c64bb9f91e4675704d26370c98578d9f32cfd61921ec17",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_underwriting_decision.csv",
+      "file_hash": "f7d246de78a01e2505b023138f1b63d4ed07b6beaa39fd2286f36b7a3221f7e0",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_transpose",
+      "output_artifact": "proc_transpose_underwriting_decision.json",
+      "file_hash": "6926fa4bcabdc6079c42ff590ccc5915ad47915428a254e95c6ee21a6909da75",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "portfolio_summary.csv",
+      "file_hash": "2cfda79787b628ef9423517cee516f979ece808e3bf3ceb5322a2e383acd102d",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "portfolio_summary.json",
+      "file_hash": "8280982c41b5dda0a18c6e00861df78e646184782143937a1b4477d41430de75",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "watchlist_analytics.csv",
+      "file_hash": "11075911df929d43c5d0d658c24e46fd857c6a7bcc7ea31721485f32e3f6954f",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "watchlist_analytics.json",
+      "file_hash": "1a991962e0b26f47e25a928bf5a36e535c218fddebf34cd0f29802ff84f9c666",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "top_exposure_analytics.csv",
+      "file_hash": "bfa7babca7d13597dd8588ae10aaa4b9b48c36f69297cc032b184130ba8f8ca0",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "top_exposure_analytics.json",
+      "file_hash": "cbeb02b2c2ac058f7fd4eaba58c7a78e22a237d2535ecb46d5d8a9fadf85bde4",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "current_credit_loss_proxy.csv",
+      "file_hash": "ffdaa653edbc23ac57aef86973242f980a8f78d1deadd4fcb5f7fad064e722d7",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "current_credit_loss_proxy.json",
+      "file_hash": "9c2eb3df9d324e926825caeee308b6aa6d79fda803d3df990a7704b74f655ef2",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "portfolio_quality.csv",
+      "file_hash": "04275a0d9006ef554a7880d7b43af00fa1a23db2a8357e12057fa07988946584",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "portfolio_analytics",
+      "output_artifact": "portfolio_quality.json",
+      "file_hash": "dcedcd9027a113cb5c7804eec9c337a50640c5e58ac6302a953ea8f1ddeee7ad",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "concentration_analytics",
+      "output_artifact": "concentration_detail.csv",
+      "file_hash": "3d11cffc751b194f56c914c3901a166b3e0c8325c2fde8cebb64f00e47b90d25",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "concentration_analytics",
+      "output_artifact": "concentration_detail.json",
+      "file_hash": "fc30e107f26e1a28e23c0f6c17abdd0e647052f2fa9236a06db1be2b430689c6",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "concentration_analytics",
+      "output_artifact": "concentration_summary.csv",
+      "file_hash": "6f13914358c9361d6fd8ec9f962fa32f9ab8030a989dedd6c1c1ab1f9e006147",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "concentration_analytics",
+      "output_artifact": "concentration_summary.json",
+      "file_hash": "aea4a0d660fbfedc0495eca1d39ad5734e7dacd6c7d482d5607a7fc0ef63e8ad",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "concentration_analytics",
+      "output_artifact": "top_exposure_concentration.csv",
+      "file_hash": "ef9d4ed6bb166e72453e4b2c3cb7d5e618531b9727fdef0dc3e6b6e67512ae25",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "concentration_analytics",
+      "output_artifact": "top_exposure_concentration.json",
+      "file_hash": "2bfe242cfd06149b65cb02915d497321f640ab98892edc7a58120071c7a08371",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current",
+        "mart.mart_ifrs9_stage_current"
+      ],
+      "analytics_module": "stage_analytics",
+      "output_artifact": "ifrs9_stage_distribution.csv",
+      "file_hash": "32e0f3e340e9bc675c7b15336cafd5ebdb3e3ccadc78c6265e86b470f1d682cb",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current",
+        "mart.mart_ifrs9_stage_current"
+      ],
+      "analytics_module": "stage_analytics",
+      "output_artifact": "ifrs9_stage_distribution.json",
+      "file_hash": "91d72221094c9aedf069794cc03e63c36d4884dc185a1645152595ba6b2fd6d6",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current",
+        "mart.mart_ifrs9_stage_current"
+      ],
+      "analytics_module": "stage_analytics",
+      "output_artifact": "ifrs9_stage_risk_composition.csv",
+      "file_hash": "ee36b0181e7223dbfdbab5a1ce6e6d4f65a7501bd992d1fa9365133de0edc73d",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current",
+        "mart.mart_ifrs9_stage_current"
+      ],
+      "analytics_module": "stage_analytics",
+      "output_artifact": "ifrs9_stage_risk_composition.json",
+      "file_hash": "8f27f1c2beda856cf4033f2982ce71a3b4c3a8879a648710748ad2695576e3a7",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current",
+        "mart.mart_ifrs9_stage_current"
+      ],
+      "analytics_module": "stage_analytics",
+      "output_artifact": "ifrs9_stage_concentration.csv",
+      "file_hash": "9d7282986edda559c2246b9ae26f4bc7bcc73a7b580cf0e6235f38241dcf8f65",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current",
+        "mart.mart_ifrs9_stage_current"
+      ],
+      "analytics_module": "stage_analytics",
+      "output_artifact": "ifrs9_stage_concentration.json",
+      "file_hash": "4f77f77da5a67a78abfe0b8d791c329bfd860cbe8380d938be1f7c5f778685ba",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_inventory.csv",
+      "file_hash": "285c55809ff416ce2c4a7a9228c0f672b8885f18b792eab98972fcbc837bdb64",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_inventory.json",
+      "file_hash": "9ff020c5f41bed9f7cc1c093ba103920022ad091fe42ebd9d0df4855a100a2d3",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_artifact_inventory.csv",
+      "file_hash": "19073aa688fff5893023a874158e9a0e763881eefacbf4c25ffdfc53d9fbdad9",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_artifact_inventory.json",
+      "file_hash": "58a2bf36dd9c6dc78c941498df8a464da3fb6eeed63d312d8534ae3cbb8f8e81",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_performance_summary.csv",
+      "file_hash": "75da78c7129d2e61d3ea552b6afe89e9645aa37e4383b2a79d9da728a3b2ad50",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_performance_summary.json",
+      "file_hash": "46d5ae0a431a4a0496b805754554715b0b85916a771c76c7ef6e684225fc921c",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_validation_summary.csv",
+      "file_hash": "27ba3a471f3871a9de3727c3e8336720ac9e480124cb0dfd0d720de70b1c34f6",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_validation_summary.json",
+      "file_hash": "feac7da77d4feac8c78e7ffd321cc9c61f11ab8e588a58226a0c35fd83672cef",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_governance_summary.csv",
+      "file_hash": "171c860a6cec6bffb5b7dbe82c8526116c6bed32608b6223c882e4806cfe5c7e",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "model_governance_summary.json",
+      "file_hash": "689b05a4ebed8c64e3a2661f58cdb108ed09f9524a9dd363c85fe981aa8ae99e",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "calibration_deciles.csv",
+      "file_hash": "39cafe5848177a4673176009f4027ca07ce823740fee6ecdc3c628a73f5d91db",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "calibration_deciles.json",
+      "file_hash": "5c7296472d95bdfd9b4f1b5e3bf4e1916c293ab8f14c4bcd207bad977721548a",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "challenger_comparison.csv",
+      "file_hash": "56b0f011eb7708709de6a1a7a10869da97c16912228abe47b2ea5ca0407850d4",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "challenger_comparison.json",
+      "file_hash": "31ff3eba126892353500d05ce870b91656b0cceea8bde188d864bf912e047990",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "challenger_performance.csv",
+      "file_hash": "27f363d668ca4939e286306c8802c7c01fa5ad34528b73c3b4ae2b81a3a0ee83",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "challenger_performance.json",
+      "file_hash": "d84dcbec16171305c453aeb920726221acf34ef32c3c8bd500c7eb5f1c58c284",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "oot_summary.csv",
+      "file_hash": "8502416cacad04fb2ddf5c5ee3b271f52236265e7722d00c4cac03b5e06b664c",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "oot_summary.json",
+      "file_hash": "ba043b7f3bec5e24760527eec5b50f988186187f46510b520f32ad69e8d62de0",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "oot_risk_band_shift.csv",
+      "file_hash": "fda61f8bf99a53b646f8a993e5a1718932b413f540ff288227150f922e54b1db",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "oot_risk_band_shift.json",
+      "file_hash": "8b75cf5ee3488bf24525526f672d93183e16a424936a6522e6a1aa843dce5b3a",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "oot_score_shift.csv",
+      "file_hash": "83a025558b6fff15dc34fb22ddfb7bddebae3d279f5527beadcaaad10271fa2e",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "oot_score_shift.json",
+      "file_hash": "4c8caadb7e45f030e64f028fecb2a97284d032cc74d1e5ddcb20f080790000cb",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "psi_summary.csv",
+      "file_hash": "add400d38984dd3a9c60204dd63d8c278578017717c381d72d0f6614da95f7f3",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "model_risk_analytics",
+      "output_artifact": "psi_summary.json",
+      "file_hash": "cf0f73335b12e52c0917ec161049fdf2bacebfdf94d09f934f3e3aa065399b7d",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "portfolio_summary_report.csv",
+      "file_hash": "2cfda79787b628ef9423517cee516f979ece808e3bf3ceb5322a2e383acd102d",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "portfolio_summary_report.json",
+      "file_hash": "8280982c41b5dda0a18c6e00861df78e646184782143937a1b4477d41430de75",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "risk_concentration_report.csv",
+      "file_hash": "6f13914358c9361d6fd8ec9f962fa32f9ab8030a989dedd6c1c1ab1f9e006147",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "risk_concentration_report.json",
+      "file_hash": "aea4a0d660fbfedc0495eca1d39ad5734e7dacd6c7d482d5607a7fc0ef63e8ad",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "ifrs9_stage_report.csv",
+      "file_hash": "32e0f3e340e9bc675c7b15336cafd5ebdb3e3ccadc78c6265e86b470f1d682cb",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "ifrs9_stage_report.json",
+      "file_hash": "91d72221094c9aedf069794cc03e63c36d4884dc185a1645152595ba6b2fd6d6",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "watchlist_report.csv",
+      "file_hash": "11075911df929d43c5d0d658c24e46fd857c6a7bcc7ea31721485f32e3f6954f",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "watchlist_report.json",
+      "file_hash": "1a991962e0b26f47e25a928bf5a36e535c218fddebf34cd0f29802ff84f9c666",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "model_risk_report.csv",
+      "file_hash": "73996aa427ea88f54377d15a9514b1df51d240d3d38f961800d8d5d618605e91",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "model_risk_report.json",
+      "file_hash": "e53895929f51965ef42370e989294dc96a119ddd953176ff90b27fc4c29a198a",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    },
+    {
+      "warehouse_objects": [
+        "mart.mart_credit_risk_current",
+        "core.dim_model",
+        "core.dim_model_artifact",
+        "core.fact_model_performance",
+        "core.fact_model_validation",
+        "core.fact_feature_importance",
+        "staging.stg_calibration_decile",
+        "staging.stg_challenger_comparison",
+        "staging.stg_challenger_performance",
+        "staging.stg_oot_summary",
+        "staging.stg_oot_risk_band_shift",
+        "staging.stg_oot_score_shift"
+      ],
+      "analytics_module": "proc_report",
+      "output_artifact": "institutional_report_pack.md",
+      "file_hash": "5548efafab24e04ceee55e76a6e44f98ef473ace187e5d3c2321a3a036139b18",
+      "execution_timestamp": "2026-06-19T17:53:18Z"
+    }
+  ],
+  "run_metadata": {
+    "analytics_run_id": "20260619T175318Z_da9ba40a",
+    "execution_timestamp": "2026-06-19T17:53:18Z",
+    "source_asset_id": "6bf8b55e1b8a9f243d21440230b83853",
+    "source_hash": "da9ba40ae0e29ff02d98025c9320dad2aeb0c03cf30316983c10804086488fbb",
+    "published_batch_id": "79239c0ed5c14df793050725552e2f5c",
+    "model_version": "51a7373f45ff8b6f",
+    "portfolio_size": 50000
+  },
+  "warehouse_lineage_modified": false
+}

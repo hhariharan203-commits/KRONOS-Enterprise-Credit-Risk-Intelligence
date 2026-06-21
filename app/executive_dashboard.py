@@ -8,10 +8,19 @@ import plotly.express as px
 import streamlit as st
 
 from app.live_intelligence_components import render_live_status_card
+from app.enterprise_visibility import load_warehouse_evidence
 from src.live_monitoring.live_intelligence import get_live_intelligence
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+def _load_json_artifact(relative_path):
+    try:
+        with (BASE_DIR / relative_path).open("r", encoding="utf-8") as file:
+            return json.load(file)
+    except (OSError, ValueError, TypeError):
+        return None
 
 
 def render(shared_data=None):
@@ -575,6 +584,120 @@ def render(shared_data=None):
     st.markdown('</div>', unsafe_allow_html=True)
 
     # ==================================================
+    # ENTERPRISE DATA & RISK CONTROL
+    # ==================================================
+
+    st.markdown('<div class="kx-divider"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="kx-section">', unsafe_allow_html=True)
+    section_header(
+        "🏛️",
+        "ENTERPRISE DATA & RISK CONTROL",
+        "Phase 4A–4D governed evidence · read-only visibility"
+    )
+
+    enterprise_evidence = load_warehouse_evidence()
+    if enterprise_evidence.get("status") == "AVAILABLE":
+        warehouse = enterprise_evidence.get("warehouse", {})
+        batch = enterprise_evidence.get("batch", {})
+        quality = enterprise_evidence.get("quality", {})
+        reconciliation = enterprise_evidence.get("reconciliation", {})
+        publication = enterprise_evidence.get("publication", {})
+        enterprise_summary = enterprise_evidence.get(
+            "enterprise_summary",
+            {},
+        )
+
+        control_row_1 = st.columns(7)
+        control_row_1[0].metric(
+            "Warehouse Health",
+            warehouse.get("availability", "Artifact not available"),
+        )
+        control_row_1[1].metric(
+            "Published Batch",
+            batch.get("published_batch_id", "Artifact not available"),
+        )
+        dq_score = quality.get("quality_score")
+        control_row_1[2].metric(
+            "DQ Score",
+            f"{dq_score:.1f}"
+            if isinstance(dq_score, (int, float))
+            else "Artifact not available",
+        )
+        control_row_1[3].metric(
+            "DQ Status",
+            quality.get("quality_status", "Artifact not available"),
+        )
+        control_row_1[4].metric(
+            "Reconciliation",
+            reconciliation.get(
+                "reconciliation_status",
+                "Artifact not available",
+            ),
+        )
+        control_row_1[5].metric(
+            "Publish Status",
+            publication.get(
+                "publish_status",
+                "Artifact not available",
+            ),
+        )
+        control_row_1[6].metric(
+            "Source Assets",
+            warehouse.get("source_asset_count", "Artifact not available"),
+        )
+
+        st.markdown(
+            "<div style='height:0.75rem'></div>",
+            unsafe_allow_html=True,
+        )
+        control_row_2 = st.columns(6)
+        control_row_2[0].metric(
+            "Registered Artifacts",
+            warehouse.get("artifact_count", "Artifact not available"),
+        )
+        industry_hhi = enterprise_summary.get("industry_hhi")
+        control_row_2[1].metric(
+            "Industry HHI",
+            f"{industry_hhi:.4f}"
+            if isinstance(industry_hhi, (int, float))
+            else "Artifact not available",
+        )
+        region_hhi = enterprise_summary.get("region_hhi")
+        control_row_2[2].metric(
+            "Region HHI",
+            f"{region_hhi:.4f}"
+            if isinstance(region_hhi, (int, float))
+            else "Artifact not available",
+        )
+        watchlist_share = enterprise_summary.get(
+            "watchlist_exposure_share"
+        )
+        control_row_2[3].metric(
+            "Watchlist Exposure",
+            f"{watchlist_share:.2%}"
+            if isinstance(watchlist_share, (int, float))
+            else "Artifact not available",
+        )
+        control_row_2[4].metric(
+            "Model Approval",
+            enterprise_summary.get(
+                "approval_status",
+                "Artifact not available",
+            ),
+        )
+        control_row_2[5].metric(
+            "Temporal Quality",
+            enterprise_summary.get(
+                "temporal_quality",
+                "Artifact not available",
+            ),
+        )
+    else:
+        st.warning("Artifact not available")
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # ==================================================
     # LIVE INTELLIGENCE COMMAND LAYER
     # ==================================================
 
@@ -1099,6 +1222,59 @@ def render(shared_data=None):
 
     except Exception:
         st.warning("model_metrics.json unavailable")
+
+    st.markdown("<div style='height:0.6rem'></div>", unsafe_allow_html=True)
+    section_header(
+        "✅",
+        "MODEL GOVERNANCE STATUS",
+        "Phase 1 validation evidence from approved read-only artifacts"
+    )
+
+    validation_summary = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "validation_summary.json"
+    )
+    governance_summary = _load_json_artifact(
+        Path("outputs") / "model_validation_pack" / "governance_summary.json"
+    )
+    psi_report = _load_json_artifact(
+        Path("outputs") / "oot_validation" / "psi_report.json"
+    )
+
+    if validation_summary or governance_summary or psi_report:
+        governance_cols = st.columns(6)
+        champion_name = (validation_summary or {}).get("champion_model")
+        if isinstance(champion_name, str):
+            champion_name = champion_name.replace("Current ", "")
+        oot_status = (validation_summary or {}).get("oot_status")
+        if oot_status == "STABLE WITH PROXY LIMITATION":
+            oot_status = "STABLE / PROXY"
+        governance_cols[0].metric(
+            "Approval Status",
+            (validation_summary or {}).get("approval_status", "Artifact not available")
+        )
+        governance_cols[1].metric(
+            "Champion Model",
+            champion_name or "Artifact not available"
+        )
+        governance_cols[2].metric(
+            "Calibration",
+            (validation_summary or {}).get("calibration_status", "Artifact not available")
+        )
+        governance_cols[3].metric(
+            "OOT Status",
+            oot_status or "Artifact not available"
+        )
+        psi_value = (psi_report or {}).get("psi")
+        governance_cols[4].metric(
+            "PSI",
+            f"{psi_value:.6f}" if isinstance(psi_value, (int, float)) else "Artifact not available"
+        )
+        governance_cols[5].metric(
+            "Governance",
+            (governance_summary or {}).get("governance_status", "Artifact not available")
+        )
+    else:
+        st.warning("Artifact not available")
 
     st.markdown('</div>', unsafe_allow_html=True)
 

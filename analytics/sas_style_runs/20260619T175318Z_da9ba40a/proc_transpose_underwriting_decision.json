@@ -1,0 +1,29 @@
+[
+  {
+    "dimension": "underwriting_decision",
+    "measure": "count",
+    "APPROVE": 25043.0,
+    "HIGH RISK REVIEW": 4621.0,
+    "REJECT": 11329.0,
+    "WATCH": 9007.0,
+    "TOTAL": 50000.0
+  },
+  {
+    "dimension": "underwriting_decision",
+    "measure": "total_ead",
+    "APPROVE": 132553403.7699992,
+    "HIGH RISK REVIEW": 123988358.00999992,
+    "REJECT": 446037350.2199992,
+    "WATCH": 135367148.46000004,
+    "TOTAL": 837946260.4599984
+  },
+  {
+    "dimension": "underwriting_decision",
+    "measure": "current_credit_loss_proxy",
+    "APPROVE": 2131869.5176327284,
+    "HIGH RISK REVIEW": 36061083.53125206,
+    "REJECT": 309391133.3446039,
+    "WATCH": 12959732.845661351,
+    "TOTAL": 360543819.23915005
+  }
+]

@@ -8,7 +8,7 @@ from src.reporting.report_generator import generate_institutional_report
 from src.shared.governance import artifact_lineage, create_governance_context, write_artifact_lineage
 
 
-def test_institutional_report_generates_real_pdf() -> None:
+def test_institutional_report_generates_real_pdf(tmp_path) -> None:
     portfolio = pd.DataFrame(
         [
             {
@@ -27,18 +27,21 @@ def test_institutional_report_generates_real_pdf() -> None:
             },
         ]
     )
-    result = generate_institutional_report(portfolio, "test_kronos_enterprise_report.pdf")
+    result = generate_institutional_report(
+        portfolio,
+        str(tmp_path / "test_kronos_enterprise_report.pdf"),
+    )
     pdf_path = Path(result["pdf_report_path"])
     assert pdf_path.exists()
     assert pdf_path.stat().st_size > 0
     assert result["executive_summary"]["portfolio_size"] == 2
 
 
-def test_governance_artifact_lineage_contract() -> None:
+def test_governance_artifact_lineage_contract(tmp_path) -> None:
     context = create_governance_context("Tests")
     lineage = artifact_lineage()
     assert context.dashboard_name == "Tests"
     assert {"pd_model", "lgd_model", "ead_model", "scored_portfolio"}.issubset(lineage)
     assert lineage["scored_portfolio"]["exists"] is True
-    manifest = write_artifact_lineage()
+    manifest = write_artifact_lineage(tmp_path / "artifact_lineage.json")
     assert manifest.exists()

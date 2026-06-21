@@ -1,0 +1,1862 @@
+[
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 1629,
+    "total_ead": 6379150.9199999925,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 653,
+    "total_ead": 8592338.460000003,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 486,
+    "total_ead": 7914166.770000001,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 476,
+    "total_ead": 14090841.950000001,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 736,
+    "total_ead": 30347306.47,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 2064,
+    "total_ead": 8363484.450000006,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 781,
+    "total_ead": 10061377.209999986,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 610,
+    "total_ead": 9946905.699999994,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 497,
+    "total_ead": 14533118.700000014,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 897,
+    "total_ead": 36799540.94999995,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 1717,
+    "total_ead": 6862056.509999998,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 673,
+    "total_ead": 9045041.079999994,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 449,
+    "total_ead": 7307850.520000007,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 479,
+    "total_ead": 14339470.479999997,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 729,
+    "total_ead": 29825667.44999996,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 2581,
+    "total_ead": 10527396.480000006,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 970,
+    "total_ead": 12749905.139999999,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 738,
+    "total_ead": 12247346.530000005,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 724,
+    "total_ead": 22059874.239999987,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1046,
+    "total_ead": 43275180.749999955,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 2224,
+    "total_ead": 9107220.110000003,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 821,
+    "total_ead": 10666679.30000002,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 565,
+    "total_ead": 9530231.040000003,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 625,
+    "total_ead": 18549718.819999997,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 895,
+    "total_ead": 37212234.94000001,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 2516,
+    "total_ead": 10064975.500000035,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 963,
+    "total_ead": 12289543.840000007,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 720,
+    "total_ead": 11722106.47000002,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 671,
+    "total_ead": 19767324.480000015,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1143,
+    "total_ead": 46418986.01,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 2060,
+    "total_ead": 8226010.02,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 829,
+    "total_ead": 10834394.350000001,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 607,
+    "total_ead": 9515825.150000006,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 566,
+    "total_ead": 16764988.94000001,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1017,
+    "total_ead": 41578457.50000002,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 2007,
+    "total_ead": 7977152.48,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 746,
+    "total_ead": 9868818.72,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 569,
+    "total_ead": 9252497.18,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 536,
+    "total_ead": 15929208.169999998,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 995,
+    "total_ead": 40327232.32000004,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 2517,
+    "total_ead": 10111693.889999997,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 918,
+    "total_ead": 11880513.299999986,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 705,
+    "total_ead": 11398614.799999991,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 644,
+    "total_ead": 18754003.280000005,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1168,
+    "total_ead": 47982532.20000005,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 1741,
+    "total_ead": 6988979.719999993,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 633,
+    "total_ead": 8190029.399999999,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 439,
+    "total_ead": 7207494.649999992,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 430,
+    "total_ead": 12358300.649999999,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 795,
+    "total_ead": 32202472.469999988,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 3980,
+    "total_ead": 67323804.57,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 4849,
+    "total_ead": 79704427.00999996,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 4047,
+    "total_ead": 67380086.03999996,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 6059,
+    "total_ead": 100859703.13999996,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 5130,
+    "total_ead": 85066084.21000004,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 6013,
+    "total_ead": 100262936.30000007,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 5079,
+    "total_ead": 86919675.96000004,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 4853,
+    "total_ead": 83354908.87000003,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 5952,
+    "total_ead": 100127357.47000003,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 4038,
+    "total_ead": 66947276.88999997,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 9421,
+    "total_ead": 385969611.05999994,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 5648,
+    "total_ead": 167146849.71000004,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 5888,
+    "total_ead": 96043038.81000002,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 7987,
+    "total_ead": 104178640.8,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 21056,
+    "total_ead": 84608120.08000003,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "industry_by_risk_band",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 50000,
+    "total_ead": 837946260.4600002,
+    "cell_type": "GRAND_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 2669,
+    "total_ead": 27653448.309999976,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1042,
+    "total_ead": 27877724.490000058,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 269,
+    "total_ead": 11792631.770000001,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 3267,
+    "total_ead": 32795327.21000005,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1259,
+    "total_ead": 32685158.490000013,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 323,
+    "total_ead": 14223941.309999993,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 2759,
+    "total_ead": 28234929.350000016,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1013,
+    "total_ead": 27074493.05999996,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 275,
+    "total_ead": 12070663.630000008,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 4122,
+    "total_ead": 42681498.09999999,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1539,
+    "total_ead": 40658690.61999996,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 398,
+    "total_ead": 17519514.419999998,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 3414,
+    "total_ead": 33461960.239999928,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1327,
+    "total_ead": 34756243.83000004,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 389,
+    "total_ead": 16847880.139999986,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 4105,
+    "total_ead": 43092277.08999981,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1530,
+    "total_ead": 40996572.250000015,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 378,
+    "total_ead": 16174086.960000006,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 3346,
+    "total_ead": 34406365.49999993,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1365,
+    "total_ead": 36439339.49000001,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 368,
+    "total_ead": 16073970.969999984,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 3238,
+    "total_ead": 33658137.369999975,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1249,
+    "total_ead": 33811655.16,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 366,
+    "total_ead": 15885116.339999989,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 3962,
+    "total_ead": 39998307.60000004,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1590,
+    "total_ead": 42691623.77000008,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 400,
+    "total_ead": 17437426.099999994,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 2740,
+    "total_ead": 27446805.290000025,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 1043,
+    "total_ead": 28344658.660000037,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 255,
+    "total_ead": 11155812.940000009,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Construction",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 3980,
+    "total_ead": 67323804.57000004,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Education",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 4849,
+    "total_ead": 79704427.01000005,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Energy",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 4047,
+    "total_ead": 67380086.03999999,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Financial Services",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 6059,
+    "total_ead": 100859703.13999994,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Government",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 5130,
+    "total_ead": 85066084.20999995,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Healthcare",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 6013,
+    "total_ead": 100262936.29999983,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Manufacturing",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 5079,
+    "total_ead": 86919675.95999992,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Retail",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 4853,
+    "total_ead": 83354908.86999996,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Technology",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 5952,
+    "total_ead": 100127357.47000012,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "Transportation",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 4038,
+    "total_ead": 66947276.890000075,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 1",
+    "count": 33622,
+    "total_ead": 343429056.05999976,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 2",
+    "count": 12957,
+    "total_ead": 345336159.8200002,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "STAGE 3",
+    "count": 3421,
+    "total_ead": 149181044.57999998,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "industry_by_ifrs9_stage",
+    "row_dimension": "industry",
+    "row_value": "TOTAL",
+    "column_dimension": "ifrs9_stage",
+    "column_value": "TOTAL",
+    "count": 50000,
+    "total_ead": 837946260.46,
+    "cell_type": "GRAND_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "Central",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 4288,
+    "total_ead": 17356805.400000032,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "Central",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 1614,
+    "total_ead": 21339865.809999995,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "Central",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 1195,
+    "total_ead": 19477388.54999999,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "Central",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 1189,
+    "total_ead": 34943718.819999985,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "Central",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1873,
+    "total_ead": 77631823.55000003,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "East",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 4237,
+    "total_ead": 17063167.130000073,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "East",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 1597,
+    "total_ead": 20755723.809999995,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "East",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 1228,
+    "total_ead": 20020534.269999992,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "East",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 1124,
+    "total_ead": 33542244.03000007,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "East",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1932,
+    "total_ead": 79002593.21000005,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "North",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 4625,
+    "total_ead": 18658962.360000018,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "North",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 1865,
+    "total_ead": 24409272.449999988,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "North",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 1295,
+    "total_ead": 21229933.02,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "North",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 1214,
+    "total_ead": 35888961.15999994,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "North",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 2039,
+    "total_ead": 83212779.10999995,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "South",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 4159,
+    "total_ead": 16529053.770000046,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "South",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 1544,
+    "total_ead": 19843997.91000002,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "South",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 1152,
+    "total_ead": 18827412.149999995,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "South",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 1080,
+    "total_ead": 32087141.83999997,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "South",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1812,
+    "total_ead": 74222182.65000026,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "West",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 3747,
+    "total_ead": 15000131.419999985,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "West",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 1367,
+    "total_ead": 17829780.820000008,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "West",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 1018,
+    "total_ead": 16487770.820000011,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "West",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 1041,
+    "total_ead": 30684783.860000033,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "West",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 1765,
+    "total_ead": 71900232.53999995,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "Central",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 10159,
+    "total_ead": 170749602.13000003,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "East",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 10118,
+    "total_ead": 170384262.45000017,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "North",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 11038,
+    "total_ead": 183399908.0999999,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "South",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 9747,
+    "total_ead": 161509788.3200003,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "West",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 8938,
+    "total_ead": 151902699.45999998,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "DEFAULT RISK",
+    "count": 9421,
+    "total_ead": 385969611.06000024,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "HIGH RISK",
+    "count": 5648,
+    "total_ead": 167146849.70999998,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "MODERATE RISK",
+    "count": 5888,
+    "total_ead": 96043038.80999999,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "NEAR PRIME",
+    "count": 7987,
+    "total_ead": 104178640.80000001,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "PRIME",
+    "count": 21056,
+    "total_ead": 84608120.08000016,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "region_by_risk_band",
+    "row_dimension": "region",
+    "row_value": "TOTAL",
+    "column_dimension": "risk_band",
+    "column_value": "TOTAL",
+    "count": 50000,
+    "total_ead": 837946260.4600004,
+    "cell_type": "GRAND_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AAA",
+    "column_dimension": "decision",
+    "column_value": "APPROVE",
+    "count": 19725,
+    "total_ead": 73501932.92000036,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AAA",
+    "column_dimension": "decision",
+    "column_value": "WATCH",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AAA",
+    "column_dimension": "decision",
+    "column_value": "HIGH RISK REVIEW",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AAA",
+    "column_dimension": "decision",
+    "column_value": "REJECT",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AA",
+    "column_dimension": "decision",
+    "column_value": "APPROVE",
+    "count": 2817,
+    "total_ead": 27614610.59000004,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AA",
+    "column_dimension": "decision",
+    "column_value": "WATCH",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AA",
+    "column_dimension": "decision",
+    "column_value": "HIGH RISK REVIEW",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AA",
+    "column_dimension": "decision",
+    "column_value": "REJECT",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "A",
+    "column_dimension": "decision",
+    "column_value": "APPROVE",
+    "count": 2501,
+    "total_ead": 31436860.260000054,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "A",
+    "column_dimension": "decision",
+    "column_value": "WATCH",
+    "count": 4000,
+    "total_ead": 56233357.11000014,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "A",
+    "column_dimension": "decision",
+    "column_value": "HIGH RISK REVIEW",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "A",
+    "column_dimension": "decision",
+    "column_value": "REJECT",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BBB",
+    "column_dimension": "decision",
+    "column_value": "APPROVE",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BBB",
+    "column_dimension": "decision",
+    "column_value": "WATCH",
+    "count": 5007,
+    "total_ead": 79133791.34999998,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BBB",
+    "column_dimension": "decision",
+    "column_value": "HIGH RISK REVIEW",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BBB",
+    "column_dimension": "decision",
+    "column_value": "REJECT",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BB",
+    "column_dimension": "decision",
+    "column_value": "APPROVE",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BB",
+    "column_dimension": "decision",
+    "column_value": "WATCH",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BB",
+    "column_dimension": "decision",
+    "column_value": "HIGH RISK REVIEW",
+    "count": 2939,
+    "total_ead": 72250386.24000004,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BB",
+    "column_dimension": "decision",
+    "column_value": "REJECT",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "B",
+    "column_dimension": "decision",
+    "column_value": "APPROVE",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "B",
+    "column_dimension": "decision",
+    "column_value": "WATCH",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "B",
+    "column_dimension": "decision",
+    "column_value": "HIGH RISK REVIEW",
+    "count": 1682,
+    "total_ead": 51737971.770000026,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "B",
+    "column_dimension": "decision",
+    "column_value": "REJECT",
+    "count": 4914,
+    "total_ead": 157819847.12000036,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "CCC",
+    "column_dimension": "decision",
+    "column_value": "APPROVE",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "CCC",
+    "column_dimension": "decision",
+    "column_value": "WATCH",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "CCC",
+    "column_dimension": "decision",
+    "column_value": "HIGH RISK REVIEW",
+    "count": 0,
+    "total_ead": 0.0,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "CCC",
+    "column_dimension": "decision",
+    "column_value": "REJECT",
+    "count": 6415,
+    "total_ead": 288217503.1000003,
+    "cell_type": "DETAIL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "A",
+    "column_dimension": "decision",
+    "column_value": "TOTAL",
+    "count": 6501,
+    "total_ead": 87670217.37000018,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AA",
+    "column_dimension": "decision",
+    "column_value": "TOTAL",
+    "count": 2817,
+    "total_ead": 27614610.59000004,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "AAA",
+    "column_dimension": "decision",
+    "column_value": "TOTAL",
+    "count": 19725,
+    "total_ead": 73501932.92000036,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "B",
+    "column_dimension": "decision",
+    "column_value": "TOTAL",
+    "count": 6596,
+    "total_ead": 209557818.8900004,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BB",
+    "column_dimension": "decision",
+    "column_value": "TOTAL",
+    "count": 2939,
+    "total_ead": 72250386.24000004,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "BBB",
+    "column_dimension": "decision",
+    "column_value": "TOTAL",
+    "count": 5007,
+    "total_ead": 79133791.34999998,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "CCC",
+    "column_dimension": "decision",
+    "column_value": "TOTAL",
+    "count": 6415,
+    "total_ead": 288217503.1000003,
+    "cell_type": "ROW_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "TOTAL",
+    "column_dimension": "decision",
+    "column_value": "APPROVE",
+    "count": 25043,
+    "total_ead": 132553403.77000046,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "TOTAL",
+    "column_dimension": "decision",
+    "column_value": "HIGH RISK REVIEW",
+    "count": 4621,
+    "total_ead": 123988358.01000006,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "TOTAL",
+    "column_dimension": "decision",
+    "column_value": "REJECT",
+    "count": 11329,
+    "total_ead": 446037350.2200007,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "TOTAL",
+    "column_dimension": "decision",
+    "column_value": "WATCH",
+    "count": 9007,
+    "total_ead": 135367148.4600001,
+    "cell_type": "COLUMN_TOTAL"
+  },
+  {
+    "table_name": "risk_grade_by_decision",
+    "row_dimension": "risk_grade",
+    "row_value": "TOTAL",
+    "column_dimension": "decision",
+    "column_value": "TOTAL",
+    "count": 50000,
+    "total_ead": 837946260.4600012,
+    "cell_type": "GRAND_TOTAL"
+  }
+]

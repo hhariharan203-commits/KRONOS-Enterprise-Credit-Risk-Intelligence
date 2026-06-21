@@ -1,0 +1,16 @@
+{
+    "validation_status": "PASSED",
+    "methodology": "Proxy OOT Validation",
+    "limitations": [
+        "Dataset does not contain origination, vintage, reporting, or observation dates. Validation uses chronological record-order fallback and should not be interpreted as true future-period model validation."
+    ],
+    "key_metrics": {
+        "oot_auc": 0.942631,
+        "oot_ks_statistic": 0.739438,
+        "oot_f1_score": 0.748771,
+        "oot_default_rate": 0.2373,
+        "psi": 0.001287,
+        "psi_status": "NO MATERIAL DRIFT"
+    },
+    "recommendation": "Use results as a proxy stability diagnostic only. Add a true origination, vintage, reporting, or observation date before treating this as future-period model validation."
+}

@@ -1,0 +1,27 @@
+{
+    "strengths": [
+        "Governed feature list excludes prohibited identifier fields.",
+        "Calibration outputs include Brier score, decile analysis, and reliability charts.",
+        "Proxy OOT framework quantifies score shift, PSI, and stability metrics.",
+        "Challenger framework compares four challenger models against the champion."
+    ],
+    "weaknesses": [
+        "Borrower-level dataset lacks true origination, vintage, reporting, or observation date.",
+        "OOT validation is proxy record-order validation, not true future-period validation.",
+        "LGD and EAD are outside this PD validation pack scope.",
+        "Independent model validation sign-off remains simulated through local artifacts."
+    ],
+    "assumptions": [
+        "Current VotingClassifier remains the approved champion by policy.",
+        "Saved PD model, scaler, and feature list are the active production-demo artifacts.",
+        "Merged credit dataset remains the validation population for Phase 1."
+    ],
+    "limitations": [
+        "Dataset does not contain origination, vintage, reporting, or observation dates. Validation uses chronological record-order fallback and should not be interpreted as true future-period model validation."
+    ],
+    "monitoring_focus": [
+        "Capture a true loan origination or observation date for future validation.",
+        "Monitor PSI and score distribution drift after each scoring refresh.",
+        "Review challenger performance periodically without automatic replacement."
+    ]
+}
