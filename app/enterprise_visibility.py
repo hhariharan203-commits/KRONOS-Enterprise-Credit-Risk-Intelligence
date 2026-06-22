@@ -273,9 +273,6 @@ def load_warehouse_evidence(database_path: str | None = None) -> dict:
     try:
         import streamlit as st
 
-        st.write("Warehouse path:", path)
-        st.write("Warehouse exists:", path.exists())
-
         if not path.is_file():
             return {"status": ARTIFACT_NOT_AVAILABLE}
 
@@ -287,7 +284,6 @@ def load_warehouse_evidence(database_path: str | None = None) -> dict:
         )
 
     except Exception as exc:
-        st.error(f"Warehouse Error: {exc}")
         LOGGER.exception("PHASE4E ERROR [warehouse]: %r", exc)
         return {"status": ARTIFACT_NOT_AVAILABLE}
 
