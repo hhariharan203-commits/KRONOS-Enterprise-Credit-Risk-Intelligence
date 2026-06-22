@@ -692,8 +692,28 @@ def render(shared_data=None):
                 "Artifact not available",
             ),
         )
-    else:
-        st.warning("Artifact not available")
+   else:
+    st.info(
+        """
+        Enterprise Warehouse Status: Not Deployed
+
+        The Phase 4A–4D governed DuckDB warehouse artifact is not included
+        in the Streamlit Cloud deployment because repository storage limits
+        prohibit distribution of large enterprise warehouse files.
+
+        KRONOS core analytics remain fully operational:
+        • Credit Risk Scoring
+        • Expected Loss Analytics
+        • IFRS 9 Staging
+        • Stress Testing
+        • Contagion Analysis
+        • Model Validation
+        • Executive Dashboards
+
+        Full enterprise warehouse evidence is available in local
+        enterprise builds and governance environments.
+        """
+    )
 
     st.markdown('</div>', unsafe_allow_html=True)
 
