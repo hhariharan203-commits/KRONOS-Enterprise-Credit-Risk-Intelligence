@@ -1,6 +1,7 @@
 import importlib
 import sys
 from pathlib import Path
+import subprocess
 
 APP_DIR = Path(__file__).resolve().parent
 ROOT_DIR = APP_DIR.parent
@@ -22,6 +23,30 @@ st.set_page_config(
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+WAREHOUSE_DB = BASE_DIR / "data" / "warehouse" / "kronos_risk.duckdb"
+
+def ensure_warehouse():
+    if WAREHOUSE_DB.exists():
+        return
+
+    with st.spinner("Building KRONOS Enterprise Warehouse..."):
+        subprocess.run(
+            ["python", "-m", "src.enterprise_data.pipeline"],
+            check=True,
+        )
+
+        subprocess.run(
+            ["python", "-m", "src.enterprise_data.etl.scheduler"],
+            check=True,
+        )
+
+        subprocess.run(
+            ["python", "-m", "src.enterprise_data.risk_marts.runner"],
+            check=True,
+        )
+
+ensure_warehouse()
 
 DATA_FILES = {
     "portfolio": BASE_DIR / "data" / "processed" / "scored_portfolio.csv",
