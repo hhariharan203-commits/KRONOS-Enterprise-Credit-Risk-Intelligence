@@ -683,7 +683,20 @@ def _render_validation_image(column, relative_path, caption):
         if image_path.is_file():
             st.image(str(image_path), caption=caption, width="stretch")
         else:
-            st.warning("Artifact not available")
+            st.info(
+    """
+    Enterprise Model Governance Evidence
+
+    Model governance marts depend on the governed DuckDB
+    enterprise warehouse artifact.
+
+    The warehouse is excluded from cloud deployment due to
+    storage limitations.
+
+    Governance evidence remains available in local enterprise
+    environments.
+    """
+)
 
 
 def _governance_block(items: list) -> None:
