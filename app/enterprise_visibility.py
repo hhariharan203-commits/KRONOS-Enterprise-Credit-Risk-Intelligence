@@ -269,15 +269,25 @@ def _load_warehouse_evidence_cached(
 
 def load_warehouse_evidence(database_path: str | None = None) -> dict:
     path = Path(database_path) if database_path else WAREHOUSE_DB
+
     try:
+        import streamlit as st
+
+        st.write("Warehouse path:", path)
+        st.write("Warehouse exists:", path.exists())
+
         if not path.is_file():
             return {"status": ARTIFACT_NOT_AVAILABLE}
+
         stat = path.stat()
+
         return _load_warehouse_evidence_cached(
             str(path.resolve()),
             (int(stat.st_size), int(stat.st_mtime_ns)),
         )
+
     except Exception as exc:
+        st.error(f"Warehouse Error: {exc}")
         LOGGER.exception("PHASE4E ERROR [warehouse]: %r", exc)
         return {"status": ARTIFACT_NOT_AVAILABLE}
 
