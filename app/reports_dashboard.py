@@ -880,19 +880,9 @@ def _render_enterprise_visibility_sections():
             )
         else:
             st.warning("Artifact not available")
-   else:
-    st.info(
-        """
-        Enterprise Risk Warehouse Evidence
+    else:
+        st.warning("Artifact not available")
 
-        The governed DuckDB enterprise warehouse is excluded
-        from Streamlit Cloud deployment due to storage limits.
-
-        Warehouse architecture, operations documentation,
-        and data dictionary remain available through the
-        enterprise artifact repository.
-        """
-    )
     risk_mart_docs = st.columns(4)
     phase4d_documents = (
         (
