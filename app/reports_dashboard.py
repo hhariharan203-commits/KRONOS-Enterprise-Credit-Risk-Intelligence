@@ -790,7 +790,18 @@ def _render_enterprise_visibility_sections():
             warehouse.get("view_count", "Artifact not available"),
         )
     else:
-        st.warning("Artifact not available")
+    st.info(
+        """
+        Enterprise Risk Warehouse Evidence
+
+        The governed DuckDB enterprise warehouse is excluded
+        from Streamlit Cloud deployment due to storage limits.
+
+        Warehouse architecture, operations documentation,
+        and data dictionary remain available through the
+        enterprise artifact repository.
+        """
+    )
 
     warehouse_docs = st.columns(3)
     with warehouse_docs[0]:
@@ -881,8 +892,18 @@ def _render_enterprise_visibility_sections():
         else:
             st.warning("Artifact not available")
     else:
-        st.warning("Artifact not available")
+    st.info(
+        """
+        Enterprise Risk Warehouse Evidence
 
+        The governed DuckDB enterprise warehouse is excluded
+        from Streamlit Cloud deployment due to storage limits.
+
+        Warehouse architecture, operations documentation,
+        and data dictionary remain available through the
+        enterprise artifact repository.
+        """
+    )
     risk_mart_docs = st.columns(4)
     phase4d_documents = (
         (
