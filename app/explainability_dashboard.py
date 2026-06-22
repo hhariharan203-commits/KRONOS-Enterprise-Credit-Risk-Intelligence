@@ -1500,8 +1500,20 @@ def render(shared_data=None):
             width="stretch",
             hide_index=True,
         )
-    else:
-        st.warning("Artifact not available")
+    st.info(
+    """
+    Enterprise Model Governance Evidence
+
+    Model governance marts depend on the governed DuckDB
+    enterprise warehouse artifact.
+
+    The warehouse is excluded from cloud deployment due to
+    storage limitations.
+
+    Governance evidence remains available in local enterprise
+    environments.
+    """
+)
 
     # ==========================================================
     # EXPLAINABILITY EXPLORER
