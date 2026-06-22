@@ -24,27 +24,72 @@ st.set_page_config(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import subprocess
+import streamlit as st
+
 WAREHOUSE_DB = BASE_DIR / "data" / "warehouse" / "kronos_risk.duckdb"
+
+
+def run_command(command: list[str], title: str) -> bool:
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+        )
+
+        st.write(f"### {title}")
+
+        if result.stdout:
+            st.code(result.stdout)
+
+        if result.returncode != 0:
+            st.error(f"{title} FAILED")
+
+            if result.stderr:
+                st.code(result.stderr)
+
+            return False
+
+        st.success(f"{title} SUCCESS")
+        return True
+
+    except Exception as exc:
+        st.error(f"{title} EXCEPTION")
+        st.exception(exc)
+        return False
+
 
 def ensure_warehouse():
     if WAREHOUSE_DB.exists():
+        st.success("Warehouse already exists")
         return
 
-    with st.spinner("Building KRONOS Enterprise Warehouse..."):
-        subprocess.run(
-            ["python", "-m", "src.enterprise_data.pipeline"],
-            check=True,
-        )
+    st.warning("Warehouse not found. Building KRONOS warehouse...")
 
-        subprocess.run(
-            ["python", "-m", "src.enterprise_data.etl.scheduler"],
-            check=True,
-        )
+    if not run_command(
+        ["python", "-m", "src.enterprise_data.pipeline"],
+        "PHASE 4A PIPELINE",
+    ):
+        st.stop()
 
-        subprocess.run(
-            ["python", "-m", "src.enterprise_data.risk_marts.runner"],
-            check=True,
-        )
+    if not run_command(
+        ["python", "-m", "src.enterprise_data.etl.scheduler"],
+        "PHASE 4B ETL",
+    ):
+        st.stop()
+
+    if not run_command(
+        ["python", "-m", "src.enterprise_data.risk_marts.runner"],
+        "PHASE 4D RISK MARTS",
+    ):
+        st.stop()
+
+    if WAREHOUSE_DB.exists():
+        st.success("Warehouse created successfully")
+    else:
+        st.error("Pipeline completed but warehouse file was not created")
+
 
 ensure_warehouse()
 
