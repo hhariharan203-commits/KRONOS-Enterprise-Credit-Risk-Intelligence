@@ -789,20 +789,21 @@ def _render_enterprise_visibility_sections():
             "Views",
             warehouse.get("view_count", "Artifact not available"),
         )
+    else:
     st.info(
-    """
-    Enterprise Model Governance Evidence
+        """
+        Enterprise Model Governance Evidence
 
-    Model governance marts depend on the governed DuckDB
-    enterprise warehouse artifact.
+        Model governance marts depend on the governed DuckDB
+        enterprise warehouse artifact.
 
-    The warehouse is excluded from cloud deployment due to
-    storage limitations.
+        The warehouse is excluded from cloud deployment due to
+        storage limitations.
 
-    Governance evidence remains available in local enterprise
-    environments.
-    """
-)
+        Governance evidence remains available in local enterprise
+        environments.
+        """
+    )
 
     warehouse_docs = st.columns(3)
     with warehouse_docs[0]:
@@ -858,21 +859,21 @@ def _render_enterprise_visibility_sections():
                 width="stretch",
                 hide_index=True,
             )
-       st.info(
-    """
-    Enterprise Model Governance Evidence
+      else:
+    st.info(
+        """
+        Enterprise Model Governance Evidence
 
-    Model governance marts depend on the governed DuckDB
-    enterprise warehouse artifact.
+        Model governance marts depend on the governed DuckDB
+        enterprise warehouse artifact.
 
-    The warehouse is excluded from cloud deployment due to
-    storage limitations.
+        The warehouse is excluded from cloud deployment due to
+        storage limitations.
 
-    Governance evidence remains available in local enterprise
-    environments.
-    """
-)
-
+        Governance evidence remains available in local enterprise
+        environments.
+        """
+    )
         summary_columns = st.columns(2)
         with summary_columns[0]:
             st.markdown("**Portfolio Quality Summary**")
