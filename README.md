@@ -402,7 +402,7 @@ Quick Start
 
 Clone Repository
 
-git clone https://github.com/HARIHARAN B - Analytics/KRONOS.git
+git clone https://github.com/<username>/KRONOS.git
 cd KRONOS
 
 Create Environment
@@ -480,7 +480,7 @@ KRONOS includes:
 Current Coverage:
 
 - 80+ Test Modules
-- 146+ Automated Tests
+- 147+ Automated Tests
 
 ---
 
