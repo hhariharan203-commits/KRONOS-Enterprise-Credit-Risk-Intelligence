@@ -1,7 +1,6 @@
 import importlib
 import sys
 from pathlib import Path
-import subprocess
 
 APP_DIR = Path(__file__).resolve().parent
 ROOT_DIR = APP_DIR.parent
@@ -23,75 +22,6 @@ st.set_page_config(
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-import subprocess
-import streamlit as st
-
-WAREHOUSE_DB = BASE_DIR / "data" / "warehouse" / "kronos_risk.duckdb"
-
-
-def run_command(command: list[str], title: str) -> bool:
-    try:
-        result = subprocess.run(
-            command,
-            capture_output=True,
-            text=True,
-        )
-
-        st.write(f"### {title}")
-
-        if result.stdout:
-            st.code(result.stdout)
-
-        if result.returncode != 0:
-            st.error(f"{title} FAILED")
-
-            if result.stderr:
-                st.code(result.stderr)
-
-            return False
-
-        st.success(f"{title} SUCCESS")
-        return True
-
-    except Exception as exc:
-        st.error(f"{title} EXCEPTION")
-        st.exception(exc)
-        return False
-
-
-def ensure_warehouse():
-    if WAREHOUSE_DB.exists():
-        st.success("Warehouse already exists")
-        return
-
-    st.warning("Warehouse not found. Building KRONOS warehouse...")
-
-    if not run_command(
-        ["python", "-m", "src.enterprise_data.pipeline"],
-        "PHASE 4A PIPELINE",
-    ):
-        st.stop()
-
-    if not run_command(
-        ["python", "-m", "src.enterprise_data.etl.scheduler"],
-        "PHASE 4B ETL",
-    ):
-        st.stop()
-
-    if not run_command(
-        ["python", "-m", "src.enterprise_data.risk_marts.runner"],
-        "PHASE 4D RISK MARTS",
-    ):
-        st.stop()
-
-    if WAREHOUSE_DB.exists():
-        st.success("Warehouse created successfully")
-    else:
-        st.error("Pipeline completed but warehouse file was not created")
-
-
-ensure_warehouse()
 
 DATA_FILES = {
     "portfolio": BASE_DIR / "data" / "processed" / "scored_portfolio.csv",
